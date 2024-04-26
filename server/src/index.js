@@ -9,6 +9,10 @@ const PORT = 3000;
 
 app.use(apiEndpoints.HEALTH_CHECK, healthCheckRoute);
 
+app.use('/', (req, res) => {
+  res.send('Server is running');
+});
+
 app.listen(PORT, (error) => {
   error ? console.log(error) : console.log(`Server listening on port ${PORT}`);
 });
