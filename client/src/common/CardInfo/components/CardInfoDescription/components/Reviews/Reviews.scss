@@ -1,0 +1,104 @@
+.reviewsWrapper {
+  .blockAddReview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #f7f7f7;
+
+    .addReviewBtn {
+      width: 200px;
+      height: 40px;
+      background-color: #008ec8;
+
+      &:hover {
+        background-color: #00a7e9;
+      }
+    }
+  }
+  .itemReview {
+    margin: 25px 0;
+    .reviewHeader {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .reviewDate {
+        font-size: 14px;
+        font-weight: 500;
+        color: #959595;
+      }
+
+      .reviewRating {
+        font-size: 1.3rem;
+      }
+    }
+
+    .replySection {
+      border-left: 1px solid #cbcbcb;
+      padding-left: 10px;
+      margin-left: 10px;
+      .replyBtn,
+      .openRepliesBtn {
+        font-size: 12px;
+        margin-top: 5px;
+        width: 80px;
+        height: 20px;
+        color: #008ec8;
+        justify-content: flex-start;
+        background-color: transparent;
+        letter-spacing: 1px;
+        font-weight: 600;
+
+        svg {
+          width: 15px;
+          height: 15px;
+          stroke: #008ec8;
+          margin-right: 5px;
+        }
+
+        &:hover {
+          color: #f84147;
+
+          svg {
+            stroke: #f84147;
+          }
+        }
+      }
+
+      .openRepliesBtn {
+        width: 150px;
+        margin-top: 15px;
+      }
+    }
+  }
+
+  .repliesList {
+    .itemReview {
+      margin: 5px 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .reviewsWrapper {
+    .blockAddReview {
+      justify-content: center;
+      background-color: #fff;
+      .addReviewBtn {
+        width: 90%;
+        height: 40px;
+        background-color: #f7f7f7;
+        border: 1px solid #959595;
+        color: #008ec8;
+        font-size: 15px;
+        letter-spacing: 1px;
+
+        &:hover {
+          background-color: #f7f7f7;
+        }
+      }
+    }
+  }
+}

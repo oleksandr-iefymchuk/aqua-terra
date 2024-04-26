@@ -1,0 +1,250 @@
+.cardInfoWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+
+  .sliderContainer {
+    margin: 30px 15px 30px 0;
+    max-width: 400px;
+    height: 480px;
+    border: 1px solid #cbcbcb;
+    align-self: flex-start;
+
+    .arrowNext,
+    .arrowPrev {
+      width: 40px;
+      height: 40px;
+      z-index: 10;
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      background-color: transparent;
+
+      svg {
+        fill: #000;
+      }
+    }
+
+    .arrowNext {
+      right: 0;
+    }
+
+    .card {
+      height: 400px;
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+
+      img {
+        // border: 1px solid #000;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .slick-dots {
+      position: static;
+    }
+
+    .slick-dots.slick-thumb {
+      li {
+        width: 50px;
+        height: 50px;
+      }
+
+      li.slick-active {
+        width: 60px;
+        height: 60px;
+        border: 1px solid #000;
+      }
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .cardInfo {
+    margin: 30px 0 30px 15px;
+    flex: 1;
+    text-align: left;
+    align-self: start;
+
+    .cardInfoHeader {
+      border: 1px solid #cbcbcb;
+      padding: 15px;
+
+      .quantityBlock {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        .availableProduct {
+          color: green;
+        }
+
+        .unavailableProduct {
+          color: #a2a2a2;
+        }
+
+        .cardInfoPrice {
+          width: 100%;
+          font-size: 30px;
+          font-weight: 500;
+          margin: 20px 0;
+        }
+
+        .cardInfoQuantity {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          .activeBtnIncreaseQuantity,
+          .disabledBtnIncreaseQuantity {
+            background-color: transparent;
+            width: 50px;
+            height: 30px;
+          }
+
+          .activeBtnIncreaseQuantity {
+            svg {
+              fill: rgb(45, 45, 45);
+              stroke: rgb(45, 45, 45);
+              width: 20px;
+            }
+          }
+
+          .disabledBtnIncreaseQuantity {
+            svg {
+              fill: rgb(232, 232, 232);
+              stroke: rgb(232, 232, 232);
+              width: 20px;
+            }
+            pointer-events: none;
+          }
+
+          .disabledBuyButton,
+          .activeBuyButton {
+            width: 140px;
+            height: 50px;
+            border-radius: 5px;
+            background-color: #008ec8;
+            margin-left: 20px;
+
+            svg {
+              fill: #fff;
+              stroke: #fff;
+              margin-right: 5px;
+            }
+          }
+
+          .activeBuyButton {
+            &:hover {
+              background-color: #00a7e9;
+            }
+          }
+
+          .disabledBuyButton {
+            opacity: 0.3;
+            pointer-events: none;
+          }
+
+          .inBasket {
+            background-color: #26b663;
+
+            &:hover {
+              background-color: #2dd674;
+            }
+          }
+        }
+
+        .favoritesBalanceControls {
+          display: flex;
+          flex: 1;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 18px;
+          .favoritesButton {
+            background-color: transparent;
+
+            svg {
+              width: 30px;
+              height: 28px;
+            }
+          }
+
+          .balanceButton {
+            background-color: transparent;
+            color: #000;
+            svg {
+              width: 30px;
+              height: 28px;
+              fill: #000000;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .cardInfoWrapper {
+    justify-content: center;
+
+    .sliderContainer {
+      margin: 10px 0;
+      width: 100%;
+    }
+
+    .cardInfo {
+      margin: 5px 0;
+      flex: none;
+      width: 100%;
+      .cardInfoHeader {
+        .quantityBlock {
+          .cardInfoPrice {
+            margin: 5px 0;
+          }
+
+          .cardInfoQuantity {
+            justify-content: center;
+
+            .quantity {
+              font-size: 20px;
+            }
+          }
+
+          .favoritesBalanceControls {
+            width: 100%;
+            flex: none;
+            margin-top: 20px;
+            justify-content: center;
+
+            .favoritesButton {
+              width: 140px;
+              font-size: 16px;
+              color: #000;
+
+              svg {
+                margin-right: 10px;
+              }
+            }
+
+            .balanceButton {
+              width: 140px;
+              font-size: 16px;
+              svg {
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

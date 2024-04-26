@@ -1,0 +1,15 @@
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  // width: 90%;
+  // margin: 0 auto;
+  // flex: 1;
+}
+
+@media screen and (max-width: 1024px) {
+  .products {
+    justify-content: flex-start;
+    // width: 93%;
+  }
+}

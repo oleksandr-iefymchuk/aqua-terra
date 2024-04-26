@@ -1,0 +1,39 @@
+.footerWrapper {
+  background-color: #212526;
+  color: #fff;
+  // min-height: 200px;
+  margin-top: 20px;
+  padding: 30px 5%;
+  font-weight: 200;
+
+  .footerNavBar {
+    width: 50%;
+    ul {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      li {
+        margin-bottom: 15px;
+
+        a {
+          text-decoration: none;
+          color: #fff;
+
+          &:hover {
+            color: #008ec8;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .footerWrapper {
+    .footerNavBar {
+      width: 100%;
+    }
+  }
+}

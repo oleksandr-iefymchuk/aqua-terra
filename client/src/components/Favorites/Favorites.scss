@@ -1,0 +1,49 @@
+.favoritesWrap {
+  margin: 0 auto;
+  width: 90%;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+
+  .quantityProducts {
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .emptyBasket {
+    color: #a2a2a2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 300;
+
+    p {
+      margin: 30px;
+    }
+  }
+
+  .sortListWrapper {
+    width: 100%;
+
+    .sortListBlock {
+      width: 100%;
+    }
+
+    .products {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .favoritesWrap {
+    .quantityProducts {
+      margin-bottom: 5px;
+    }
+  }
+}

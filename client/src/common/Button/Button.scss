@@ -1,0 +1,49 @@
+button {
+  cursor: pointer;
+  background-color: #3b3b3b;
+  border: none;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: #008ec8;
+    transition: 0.3s;
+  }
+
+  .value {
+    background-color: #008ec8;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .svgWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  button {
+    width: 40px;
+    height: 40px;
+
+    .value {
+      font-size: 10px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

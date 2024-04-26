@@ -1,0 +1,166 @@
+@mixin button-light {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 4px;
+  background-color: #008ec8;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #008ec8, 0 0 15px #008ec8, 0 0 30px #008ec8,
+    0 0 60px #008ec8;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+}
+
+@mixin button-light-hover {
+  height: 50%;
+  width: 100%;
+  border-radius: 0;
+  transition-delay: 0.3s;
+}
+
+.controlBlockWrapper {
+  display: flex;
+  justify-content: center;
+  background-color: #212526;
+  padding: 8px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+  .controlBlock {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 90%;
+    position: relative;
+
+    .catalogButtonWrap {
+      cursor: pointer;
+      position: relative;
+      width: 200px;
+      height: 50px;
+
+      .catalogButton {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        color: #fff;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: none;
+        border-right: none;
+        letter-spacing: 1px;
+        overflow: hidden;
+        text-decoration: none;
+        transition: 0.5s;
+        backdrop-filter: blur(15px);
+        z-index: 2;
+
+        svg {
+          margin-right: 10px;
+        }
+
+        &:hover {
+          letter-spacing: 3px;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50%;
+          height: 100%;
+          background: linear-gradient(
+            to left,
+            rgba(255, 255, 255, 0.15),
+            transparent
+          );
+          transform: skew(45deg) translateX(0);
+          transition: 0.5s;
+        }
+
+        &:hover::before {
+          transform: skew(45deg) translateX(200px);
+        }
+      }
+
+      &::before {
+        @include button-light;
+        top: -1px;
+      }
+
+      &:hover::before {
+        @include button-light-hover;
+        top: 0;
+      }
+
+      &::after {
+        @include button-light;
+        bottom: -1px;
+      }
+
+      &:hover::after {
+        @include button-light-hover;
+        bottom: 0;
+      }
+    }
+
+    .searchBar {
+      display: flex;
+      align-items: baseline;
+      flex: 0.8;
+
+      .searchButton {
+        width: 70px;
+        height: 40px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .controlBlockWrapper {
+    .controlBlock {
+      .catalogButtonWrap {
+        width: 100%;
+        .catalogButton {
+          width: 100%;
+          border: none;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+        &::before,
+        &::after {
+          content: none;
+        }
+      }
+      .searchBar {
+        flex: 1;
+        min-width: 30%;
+        position: relative;
+        margin: 0 5px;
+
+        .searchButton {
+          position: absolute;
+          background-color: transparent;
+          right: 1%;
+          top: 3%;
+          width: 34px;
+          height: 37px;
+        }
+      }
+    }
+  }
+}
