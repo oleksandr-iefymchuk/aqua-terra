@@ -74,18 +74,18 @@ const CardInfoDescription = ({
     </table>
   );
 
-  const markdownPath =
-    window.location.hostname === '127.0.0.1'
-      ? '/public/markdown/'
-      : '/markdown/';
+  // const markdownPath =
+  //   window.location.hostname === '127.0.0.1'
+  //     ? '/public/markdown/'
+  //     : '/markdown/';
 
   useEffect(() => {
-    fetch(`${markdownPath}/${description}`)
+    fetch(`/public/markdown/${description}`)
       .then((res) => res.text())
       .then((markdown) => {
         setMarkdown(markdown);
       });
-  }, [description, markdownPath]);
+  }, [description]);
 
   return (
     <div className="cardInfoDescription" id="reviews">
