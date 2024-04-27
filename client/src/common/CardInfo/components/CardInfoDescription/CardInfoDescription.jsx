@@ -74,10 +74,10 @@ const CardInfoDescription = ({
     </table>
   );
 
-  const isLocalDevelopment =
-    window.location.hostname === 'localhost' ||
-    window.location.hostname === '127.0.0.1';
-  const markdownPath = isLocalDevelopment ? '/public/markdown/' : '/markdown/';
+  const markdownPath =
+    window.location.hostname === '127.0.0.1'
+      ? '/public/markdown/'
+      : '/markdown/';
 
   useEffect(() => {
     fetch(`${markdownPath}${description}`)

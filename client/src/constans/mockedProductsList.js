@@ -2,11 +2,11 @@ export const mockedProductsList = [
   {
     id: '30347',
     images: [
-      '/src/assets/boilers/ocean_flat/30347_30348_30349.webp',
-      '/src/assets/boilers/ocean_flat/30347_30348_30349_2.webp',
-      '/src/assets/boilers/ocean_flat/30347_30348_30349_3.webp',
-      '/src/assets/boilers/ocean_flat/30347_30348_30349_4.webp',
-      '/src/assets/boilers/ocean_flat/30347_30348_30349_5.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_2.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_3.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_4.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_5.webp',
     ],
     title: 'Бойлер OCEAN FLAT 50л 2,0 КВт емальований бак сухий ТЕН',
     slug: 'bojler-ocean-flat-50l-2-0-k-vt-emalovanij-bak-suhij-ten',
@@ -34,11 +34,11 @@ export const mockedProductsList = [
   {
     id: '30348',
     images: [
-      '/src/assets/boilers/ocean_flat/30347_30348_30349.webp',
-      '/src/assets/boilers/ocean_flat/30347_30348_30349_2.webp',
-      '/src/assets/boilers/ocean_flat/30347_30348_30349_3.webp',
-      '/src/assets/boilers/ocean_flat/30347_30348_30349_4.webp',
-      '/src/assets/boilers/ocean_flat/30347_30348_30349_5.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_2.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_3.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_4.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_5.webp',
     ],
     title: 'Бойлер OCEAN FLAT 80л 2,0 КВт емальований бак сухий ТЕН',
     slug: 'bojler-ocean-flat-80l-2-0-k-vt-emalovanij-bak-suhij-ten',
@@ -58,11 +58,11 @@ export const mockedProductsList = [
   {
     id: '30349',
     images: [
-      '/src/assets/boilers/ocean_flat/30347_30348_30349.webp',
-      '/src/assets/boilers/ocean_flat/30347_30348_30349_2.webp',
-      '/src/assets/boilers/ocean_flat/30347_30348_30349_3.webp',
-      '/src/assets/boilers/ocean_flat/30347_30348_30349_4.webp',
-      '/src/assets/boilers/ocean_flat/30347_30348_30349_5.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_2.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_3.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_4.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_5.webp',
     ],
     title: 'Бойлер OCEAN FLAT 100л 2,0 КВт емальований бак сухий ТЕН',
     slug: 'bojler-ocean-flat-100l-2-0-k-vt-emalovanij-bak-suhij-ten',
@@ -82,11 +82,11 @@ export const mockedProductsList = [
   {
     id: '27928',
     images: [
-      '/src/assets/boilers/ocean_flat/27928_27929_27930.webp',
-      '/src/assets/boilers/ocean_flat/27928_27929_27930_2.webp',
-      '/src/assets/boilers/ocean_flat/27928_27929_27930_3.webp',
-      '/src/assets/boilers/ocean_flat/27928_27929_27930_4.webp',
-      '/src/assets/boilers/ocean_flat/27928_27929_27930_5.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_2.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_3.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_4.webp',
+      '/images/products/boilers/ocean_flat/30347_30348_30349_5.webp',
     ],
     title: 'Бойлер OCEAN FLAT 50л 2,0 КВт емальований бак мокрий ТЕН',
     slug: 'bojler-ocean-flat-50l-2-0-k-vt-emalovanij-bak-mokrij-ten',
@@ -106,11 +106,11 @@ export const mockedProductsList = [
   {
     id: '27929',
     images: [
-      '/src/assets/boilers/ocean_flat/27928_27929_27930.webp',
-      '/src/assets/boilers/ocean_flat/27928_27929_27930_2.webp',
-      '/src/assets/boilers/ocean_flat/27928_27929_27930_3.webp',
-      '/src/assets/boilers/ocean_flat/27928_27929_27930_4.webp',
-      '/src/assets/boilers/ocean_flat/27928_27929_27930_5.webp',
+      '/images/products/boilers/ocean_flat/27928_27929_27930.webp',
+      '/images/products/boilers/ocean_flat/27928_27929_27930_2.webp',
+      '/images/products/boilers/ocean_flat/27928_27929_27930_3.webp',
+      '/images/products/boilers/ocean_flat/27928_27929_27930_4.webp',
+      '/images/products/boilers/ocean_flat/27928_27929_27930_5.webp',
     ],
     title: 'Бойлер OCEAN FLAT 80л 2,0 КВт емальований бак мокрий ТЕН',
     slug: 'bojler-ocean-flat-80l-2-0-k-vt-emalovanij-bak-mokrij-ten',
@@ -130,11 +130,11 @@ export const mockedProductsList = [
   {
     id: '27930',
     images: [
-      '/src/assets/boilers/ocean_flat/27928_27929_27930.webp',
-      '/src/assets/boilers/ocean_flat/27928_27929_27930_2.webp',
-      '/src/assets/boilers/ocean_flat/27928_27929_27930_3.webp',
-      '/src/assets/boilers/ocean_flat/27928_27929_27930_4.webp',
-      '/src/assets/boilers/ocean_flat/27928_27929_27930_5.webp',
+      '/images/products/boilers/ocean_flat/27928_27929_27930.webp',
+      '/images/products/boilers/ocean_flat/27928_27929_27930_2.webp',
+      '/images/products/boilers/ocean_flat/27928_27929_27930_3.webp',
+      '/images/products/boilers/ocean_flat/27928_27929_27930_4.webp',
+      '/images/products/boilers/ocean_flat/27928_27929_27930_5.webp',
     ],
     title: 'Бойлер OCEAN FLAT 100л 2,0 КВт емальований бак мокрий ТЕН',
     slug: 'bojler-ocean-flat-100l-2-0-k-vt-emalovanij-bak-mokrij-ten',
@@ -154,11 +154,11 @@ export const mockedProductsList = [
   {
     id: '37188',
     images: [
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_2.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_3.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_4.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_5.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_2.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_3.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_4.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_5.webp',
     ],
     title: 'Бойлер OCEAN 50л мокрий тен CUBE RZF50D-4 ET+WT',
     slug: 'bojler-ocean-50l-mokrij-ten-cube-rz-f50-d-4-et-wt',
@@ -177,11 +177,11 @@ export const mockedProductsList = [
   {
     id: '37190',
     images: [
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_2.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_3.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_4.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_5.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_2.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_3.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_4.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_5.webp',
     ],
     title: 'Бойлер OCEAN 80л мокрий тен CUBE RZF80D-4 ET+WT',
     slug: 'bojler-ocean-80l-mokrij-ten-cube-rz-f80-d-4-et-wt',
@@ -200,11 +200,11 @@ export const mockedProductsList = [
   {
     id: '37191',
     images: [
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_2.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_3.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_4.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_5.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_2.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_3.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_4.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_5.webp',
     ],
     title: 'Бойлер OCEAN 100л мокрий тен CUBE RZF100D-4 ET+WT',
     slug: 'bojler-ocean-100l-mokrij-ten-cube-rz-f100-d-4-et-wt',
@@ -223,11 +223,11 @@ export const mockedProductsList = [
   {
     id: '37192',
     images: [
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_2.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_3.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_4.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_5.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_2.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_3.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_4.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_5.webp',
     ],
     title: 'Бойлер OCEAN 50л сухий тен CUBE RZF50D-4 ET+DT',
     slug: 'bojler-ocean-50l-suhij-ten-cube-rz-f50-d-4-et-dt',
@@ -246,11 +246,11 @@ export const mockedProductsList = [
   {
     id: '37193',
     images: [
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_2.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_3.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_4.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_5.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_2.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_3.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_4.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_5.webp',
     ],
     title: 'Бойлер OCEAN 80л сухий тен CUBE RZF80D-4 ET+DT',
     slug: 'bojler-ocean-80l-suhij-ten-cube-rz-f80-d-4-et-dt',
@@ -269,11 +269,11 @@ export const mockedProductsList = [
   {
     id: '37194',
     images: [
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_2.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_3.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_4.webp',
-      '/src/assets/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_5.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_2.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_3.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_4.webp',
+      '/images/products/boilers/ocean_cube/37188_37190_37191_37192_37193_37194_5.webp',
     ],
     title: 'Бойлер OCEAN 100л сухий тен CUBE RZF100D-4 ET+DT',
     slug: 'bojler-ocean-100l-suhij-ten-cube-rz-f100-d-4-et-dt',
@@ -292,8 +292,8 @@ export const mockedProductsList = [
   {
     id: '301427688',
     images: [
-      '/src/assets/products/301427688.webp',
-      '/src/assets/products/301427688.webp',
+      '/images/products/301427688.webp',
+      '/images/products/301427688.webp',
     ],
     title: 'Набір ручних інструментів WMC TOOLS 100 предметів',
     slug: 'nab-r-ruchnih-nstrument-v-wmc-tools-100-predmet-v',
@@ -307,8 +307,8 @@ export const mockedProductsList = [
   {
     id: '270450021',
     images: [
-      '/src/assets/products/270450021.webp',
-      '/src/assets/products/270450021.webp',
+      '/images/products/270450021.webp',
+      '/images/products/270450021.webp',
     ],
     title:
       'Набір інструментів Intertool Cr-V Storm 1/2" & 1/4" 100 предметів (ET-8100)',
@@ -323,8 +323,8 @@ export const mockedProductsList = [
   {
     id: '301427768',
     images: [
-      '/src/assets/products/301427768.webp',
-      '/src/assets/products/301427768.webp',
+      '/images/products/301427768.webp',
+      '/images/products/301427768.webp',
     ],
     title: 'Набір інструментів WMC TOOLS 130 шт.',
     slug: 'nab-r-nstrument-v-wmc-tools-130-sht',
@@ -338,8 +338,8 @@ export const mockedProductsList = [
   {
     id: '57203739',
     images: [
-      '/src/assets/products/57203739.webp',
-      '/src/assets/products/57203739.webp',
+      '/images/products/57203739.webp',
+      '/images/products/57203739.webp',
     ],
     title: 'Жилет безпеки Lavita LA 171600',
     slug: 'zhilet-bezpeki-lavita-la-171600',
@@ -353,8 +353,8 @@ export const mockedProductsList = [
   {
     id: '373561911',
     images: [
-      '/src/assets/products/373561911.webp',
-      '/src/assets/products/373561911.webp',
+      '/images/products/373561911.webp',
+      '/images/products/373561911.webp',
     ],
     title: 'Штани робочі Ardon Cool Trend 46 Синьо-чорні',
     slug: 'shtani-roboch-ardon-cool-trend-46-sino-chorn',
@@ -368,8 +368,8 @@ export const mockedProductsList = [
   {
     id: '373562781',
     images: [
-      '/src/assets/products/373562781.webp',
-      '/src/assets/products/373562781.webp',
+      '/images/products/373562781.webp',
+      '/images/products/373562781.webp',
     ],
     title: 'Куртка робоча Insight WALTER L Сіро-чорна',
     slug: 'kurtka-robocha-insight-walter-l-s-ro-chorna',
@@ -382,10 +382,7 @@ export const mockedProductsList = [
   },
   {
     id: '197259',
-    images: [
-      '/src/assets/products/197259.webp',
-      '/src/assets/products/197259.webp',
-    ],
+    images: ['/images/products/197259.webp', '/images/products/197259.webp'],
     title: 'Мережевий шуруповерт Зенит Профи ЗШ-550',
     slug: 'merezhevij-shurupovert-zenit-profi-z-sh-550',
     price: 1112,
@@ -398,8 +395,8 @@ export const mockedProductsList = [
   {
     id: '215226661',
     images: [
-      '/src/assets/products/215226661.webp',
-      '/src/assets/products/215226661.webp',
+      '/images/products/215226661.webp',
+      '/images/products/215226661.webp',
     ],
     title: 'Кутова шліфмашина Metabo WEV 11-125 Quick',
     slug: 'kutova-shl-fmashina-metabo-wev-11-125-quick',
@@ -413,8 +410,8 @@ export const mockedProductsList = [
   {
     id: '256597571',
     images: [
-      '/src/assets/products/256597571.webp',
-      '/src/assets/products/256597571.webp',
+      '/images/products/256597571.webp',
+      '/images/products/256597571.webp',
     ],
     title: 'Лобзик електричний Tekhmann TJS-800 MR',
     slug: 'lobzik-elektrichnij-tekhmann-tjs-800-mr',
