@@ -80,7 +80,7 @@ const CardInfoDescription = ({
       : '/markdown/';
 
   useEffect(() => {
-    fetch(`${markdownPath}${description}`)
+    fetch(`${markdownPath}/${description}`)
       .then((res) => res.text())
       .then((markdown) => {
         setMarkdown(markdown);
