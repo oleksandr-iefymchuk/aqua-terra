@@ -42,22 +42,22 @@ const App = () => {
         {isMobileDevice && <CategoryMenu categories={categories} />}
         <main>
           <Routes>
-            <Route path="/registration" element={<Registration />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/catalog" element={<Catalog />} />
-            <Route path="/catalog/:category" element={<Catalog />} />
-            <Route path="/:productSlug" element={<CardInfo />} />
-            <Route path="/basket" element={<Basket />} />
-            <Route path="/order" element={<Order />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/about" element={<About />}></Route>
-            <Route path="/contacts" element={<Contacts />}></Route>
-            <Route path="/delivery-info" element={<DeliveryInfo />}></Route>
-            <Route path="/sale" element={<DiscountedProducts />}></Route>
-            <Route path="/novelty" element={<Novelty />}></Route>
+            <Route path='/registration' element={<Registration />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/catalog' element={<Catalog />} />
+            <Route path='/catalog/:category' element={<Catalog />} />
+            <Route path='/:productSlug' element={<CardInfo />} />
+            <Route path='/basket' element={<Basket />} />
+            <Route path='/order' element={<Order />} />
+            <Route path='/favorites' element={<Favorites />} />
+            <Route path='/about' element={<About />}></Route>
+            <Route path='/contacts' element={<Contacts />}></Route>
+            <Route path='/delivery-info' element={<DeliveryInfo />}></Route>
+            <Route path='/sale' element={<DiscountedProducts />}></Route>
+            <Route path='/novelty' element={<Novelty />}></Route>
 
-            <Route path="/search" element={<SearchList />}></Route>
+            <Route path='/search' element={<SearchList />}></Route>
           </Routes>
         </main>
         <Footer />

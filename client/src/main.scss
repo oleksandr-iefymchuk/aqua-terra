@@ -34,3 +34,14 @@ body {
     }
   }
 }
+
+@media screen and (max-width: 1024px) {
+  html,
+  body {
+    #root {
+      main {
+        margin-top: 57px;
+      }
+    }
+  }
+}
