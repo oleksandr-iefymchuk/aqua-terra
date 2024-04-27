@@ -8,11 +8,11 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import ReactMarkdown from 'react-markdown';
 import { useTabContext } from '../../../../contexts/TabControlContext';
 
 import ButtonWrapper from '../../../Button/Button';
 import Reviews from './components/Reviews/Reviews';
+import Markdown from 'markdown-to-jsx';
 
 const CardInfoDescription = ({
   id,
@@ -74,18 +74,15 @@ const CardInfoDescription = ({
     </table>
   );
 
-  // const markdownPath =
-  //   window.location.hostname === '127.0.0.1'
-  //     ? '/public/markdown/'
-  //     : '/markdown/';
-
+  const markdownPath =
+    window.location.hostname === '127.0.0.1' ? '/public/markdown' : '/markdown';
   useEffect(() => {
-    fetch(`/public/markdown/${description}`)
+    fetch(`${markdownPath}/${description}`)
       .then((res) => res.text())
       .then((markdown) => {
         setMarkdown(markdown);
       });
-  }, [description]);
+  }, [description, markdownPath]);
 
   return (
     <div className="cardInfoDescription" id="reviews">
@@ -102,7 +99,7 @@ const CardInfoDescription = ({
                 isExpandedDescription ? 'contentExpanded' : 'contentCollapsed'
               }
             >
-              <ReactMarkdown>{markdown}</ReactMarkdown>
+              <Markdown>{markdown}</Markdown>
             </div>
             {markdown.split('\n').length > 10 && (
               <ButtonWrapper

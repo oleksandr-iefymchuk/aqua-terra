@@ -29,7 +29,7 @@ export const mockedProductsList = [
       Висота: '87,2',
       'Вага нетто': '22,0 кг',
     },
-    description: 'OCEAN_FLAT.md',
+    description: 'ocean-flat.md',
   },
   {
     id: '30348',
@@ -53,7 +53,7 @@ export const mockedProductsList = [
       Ємність: 80,
       Форма: 'Плоский',
     },
-    description: 'OCEAN_FLAT.md',
+    description: 'ocean-flat.md',
   },
   {
     id: '30349',
@@ -77,7 +77,7 @@ export const mockedProductsList = [
       Ємність: 100,
       Форма: 'Плоский',
     },
-    description: 'OCEAN_FLAT.md',
+    description: 'ocean-flat.md',
   },
   {
     id: '27928',
@@ -101,7 +101,7 @@ export const mockedProductsList = [
       Ємність: 50,
       Форма: 'Плоский',
     },
-    description: 'OCEAN_FLAT.md',
+    description: 'ocean-flat.md',
   },
   {
     id: '27929',
@@ -125,7 +125,7 @@ export const mockedProductsList = [
       Ємність: 80,
       Форма: 'Плоский',
     },
-    description: 'OCEAN_FLAT.md',
+    description: 'ocean-flat.md',
   },
   {
     id: '27930',
@@ -149,7 +149,7 @@ export const mockedProductsList = [
       Ємність: 100,
       Форма: 'Плоский',
     },
-    description: 'OCEAN_FLAT.md',
+    description: 'ocean-flat.md',
   },
   {
     id: '37188',
