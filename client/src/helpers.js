@@ -4,7 +4,7 @@ export const calculateDiscountedPrice = (price, discount) => {
   return discountedPrice;
 };
 
-export const isNewProduct = (date) => {
+export const isNewProduct = date => {
   const currentDate = new Date();
   const dateAdded = new Date(date);
   const differenceInMilliseconds = currentDate - dateAdded;

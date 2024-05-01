@@ -17,9 +17,7 @@ const CatalogBatton = ({
   const dispatch = useDispatch();
   const isMobileDevice = useMediaQuery({ maxWidth: 1024 });
 
-  const isShowCategoryMenu = useSelector(
-    (state) => state.app.isShowCategoryMenu,
-  );
+  const isShowCategoryMenu = useSelector(state => state.app.isShowCategoryMenu);
 
   const toggleCategory = () => {
     dispatch(toggleCategoryMenu());
@@ -27,16 +25,16 @@ const CatalogBatton = ({
 
   useEffect(() => {
     if (isShowCategoryMenu && isMobileDevice) {
-      document.body.classList.add('categoryMenuOpen');
+      document.body.classList.add('category-menu-open');
     } else {
-      document.body.classList.remove('categoryMenuOpen');
+      document.body.classList.remove('category-menu-open');
     }
   }, [isShowCategoryMenu, isMobileDevice]);
 
   return (
-    <div className="catalogButtonWrap">
+    <div className='catalog-btn-wrap'>
       {isShowCategoryMenu && isMobileDevice && (
-        <div className="categoryMenuOverlay" onClick={toggleCategory}></div>
+        <div className='category-menu-overlay' onClick={toggleCategory}></div>
       )}
       <ButtonWrapper
         buttonClassName={buttonClassName}

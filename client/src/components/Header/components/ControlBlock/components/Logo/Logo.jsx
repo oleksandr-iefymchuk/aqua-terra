@@ -3,7 +3,7 @@ import logo from '../../../../../../assets/logo.png';
 import './Logo.scss';
 
 const Logo = ({ onClick }) => (
-  <img className="logo" src={logo} alt="logo" onClick={onClick} />
+  <img className='logo' src={logo} alt='logo' onClick={onClick} />
 );
 
 Logo.propTypes = {

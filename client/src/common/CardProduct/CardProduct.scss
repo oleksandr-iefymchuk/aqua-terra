@@ -1,4 +1,4 @@
-.cardProduct {
+.card-product {
   position: relative;
   width: 25%;
   height: 400px;
@@ -38,7 +38,7 @@
     font-size: 12px;
     letter-spacing: 1px;
 
-    .badgeNew {
+    .badge-new {
       display: block;
       width: fit-content;
       background-color: #015ebc;
@@ -47,7 +47,7 @@
       margin-bottom: 3px;
     }
 
-    .badgeDiscount {
+    .badge-discount {
       display: block;
       width: fit-content;
       background-color: #ff6200;
@@ -57,12 +57,12 @@
     }
   }
 
-  .favoritesBtnWrap {
+  .favorites-btn-wrap {
     position: absolute;
     top: 2%;
     right: 2%;
 
-    .favoritesButton {
+    .favorites-btn {
       width: auto;
       height: auto;
       border-radius: 50%;
@@ -70,36 +70,36 @@
     }
   }
 
-  .cardProductInfo {
+  .card-product-info {
     text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     font-size: 14px;
 
-    .availableProduct {
+    .available-product {
       color: green;
     }
 
-    .unavailableProduct {
+    .unavailable-product {
       color: #a2a2a2;
     }
 
-    .cardProductPrice {
+    .card-product-price {
       margin-top: 5px;
       font-weight: 700;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
 
-      .discountedPrice {
+      .discounted-price {
         text-decoration: line-through;
         color: #a2a2a2;
         font-weight: 400;
       }
 
-      .activeBuyButton,
-      .disabledBuyButton {
+      .active-buy-btn,
+      .disabled-buy-btn {
         width: 36px;
         height: 30px;
         background-color: transparent;
@@ -112,7 +112,7 @@
         }
       }
 
-      .disabledBuyButton {
+      .disabled-buy-btn {
         opacity: 0.3;
         pointer-events: none;
       }
@@ -121,7 +121,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .cardProduct {
+  .card-product {
     width: 33.3%;
     height: 345px;
     margin: 0;
@@ -138,10 +138,10 @@
 
 @media screen and (max-width: 768px) {
   .products {
-    .cardProduct {
+    .card-product {
       width: 50%;
 
-      .cardProductInfo {
+      .card-product-info {
         font-size: 12px;
       }
     }

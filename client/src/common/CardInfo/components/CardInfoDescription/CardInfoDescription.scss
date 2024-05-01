@@ -1,7 +1,7 @@
-.cardInfoDescription {
+.card-info-description {
   color: #000;
 
-  .customTabList {
+  .custom-tab-list {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   }
 
@@ -45,19 +45,19 @@
     padding: 20px 0;
   }
 
-  .contentCollapsed {
+  .content-collapsed {
     max-height: 325px;
     overflow: hidden;
     transition: max-height 1s ease-out;
   }
 
-  .contentExpanded {
+  .content-expanded {
     max-height: 3500px;
     overflow: hidden;
     transition: max-height 1s ease-in;
   }
 
-  .expandBtn {
+  .expand-btn {
     display: flex;
     justify-content: flex-start;
     margin-top: 5px;

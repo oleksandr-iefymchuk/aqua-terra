@@ -9,7 +9,7 @@ import ReviewFormModal from '../ReviewFormModal/ReviewFormModal';
 
 const Reviews = ({ id, reviews, setReviews }) => {
   const isMobileDevice = useMediaQuery({ maxWidth: 768 });
-  const productReviews = reviews.filter((review) => review.productId === id);
+  const productReviews = reviews.filter(review => review.productId === id);
   const [openModalForm, setOpenModalForm] = useState(false);
   const [parentCommentId, setParentCommentId] = useState(null);
   const [replyToUser, setReplyToUser] = useState(null);
@@ -27,44 +27,44 @@ const Reviews = ({ id, reviews, setReviews }) => {
     setParentCommentId(null);
   };
 
-  const toggleReplies = (reviewId) => {
+  const toggleReplies = reviewId => {
     if (openRepliesIds.includes(reviewId)) {
-      setOpenRepliesIds(openRepliesIds.filter((id) => id !== reviewId));
+      setOpenRepliesIds(openRepliesIds.filter(id => id !== reviewId));
     } else {
       setOpenRepliesIds([...openRepliesIds, reviewId]);
     }
   };
 
   return (
-    <div className="reviewsWrapper">
-      <div className="blockAddReview">
+    <div className='reviews-wrapper'>
+      <div className='block-add-review'>
         {!isMobileDevice && <p>Залиште свій відгук на цей товар</p>}
         <ButtonWrapper
-          buttonClassName="addReviewBtn"
+          buttonClassName='add-review-btn'
           onClick={handleOpenModalForm}
-          buttonText="Написати відгук"
+          buttonText='Написати відгук'
         />
       </div>
       {productReviews.map(
         ({ id, userName, rating, comment, date, replies }, index) => (
-          <div className="itemReview" key={index}>
-            <div className="reviewHeader">
+          <div className='item-review' key={index}>
+            <div className='review-header'>
               <h4>{userName}</h4>
-              <p className="reviewDate">{date}</p>
-              <Rating className="reviewRating" value={rating} readOnly />
+              <p className='review-date'>{date}</p>
+              <Rating className='review-rating' value={rating} readOnly />
             </div>
             <p>{comment}</p>
 
-            <div className="replySection">
+            <div className='reply-section'>
               <ButtonWrapper
-                buttonClassName="replyBtn"
+                buttonClassName='reply-btn'
                 onClick={() => handleOpenModalForm(userName, id)}
-                buttonText="Відповісти"
-                icon="arrow-return"
+                buttonText='Відповісти'
+                icon='arrow-return'
               />
               {replies.length > 0 && (
                 <ButtonWrapper
-                  buttonClassName="openRepliesBtn"
+                  buttonClassName='open-replies-btn'
                   onClick={() => toggleReplies(id)}
                   buttonText={
                     openRepliesIds.includes(id)
@@ -75,15 +75,15 @@ const Reviews = ({ id, reviews, setReviews }) => {
               )}
 
               {openRepliesIds.includes(id) && (
-                <div className="repliesList">
+                <div className='replies-list'>
                   {replies
                     .slice()
                     .reverse()
                     .map((reply, replyIndex) => (
-                      <div className="itemReview" key={replyIndex}>
-                        <div className="reviewHeader">
+                      <div className='item-review' key={replyIndex}>
+                        <div className='review-header'>
                           <h4>{reply.userName}</h4>
-                          <p className="reviewDate">{reply.date}</p>
+                          <p className='review-date'>{reply.date}</p>
                         </div>
                         <p>{reply.comment}</p>
                       </div>
@@ -92,7 +92,7 @@ const Reviews = ({ id, reviews, setReviews }) => {
               )}
             </div>
           </div>
-        ),
+        )
       )}
       <ReviewFormModal
         id={id}

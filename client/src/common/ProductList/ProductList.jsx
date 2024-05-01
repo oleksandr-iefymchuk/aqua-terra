@@ -5,11 +5,9 @@ import CardProduct from '../CardProduct/CardProduct';
 
 const ProductList = ({ products }) => {
   return (
-    <div className="products">
+    <div className='products'>
       {products &&
-        products.map((product) => (
-          <CardProduct key={product.id} {...product} />
-        ))}
+        products.map(product => <CardProduct key={product.id} {...product} />)}
     </div>
   );
 };

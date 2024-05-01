@@ -12,7 +12,7 @@ const CustomAlert = ({
 }) => {
   return (
     <Snackbar
-      className="alert"
+      className='alert'
       anchorOrigin={{
         vertical: 'top',
         horizontal: 'right',
@@ -21,7 +21,7 @@ const CustomAlert = ({
       autoHideDuration={autoHideDuration}
       onClose={onClose}
     >
-      <Alert variant="filled" onClose={onClose} severity={severity}>
+      <Alert variant='filled' onClose={onClose} severity={severity}>
         {message}
       </Alert>
     </Snackbar>

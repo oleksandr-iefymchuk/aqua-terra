@@ -5,9 +5,9 @@ import { headerNavbarLinks } from '../../../../constans/constants';
 
 const Navigation = () => {
   return (
-    <div className="navWrapper">
-      <div className="controlPanel">
-        <nav className="navBar">
+    <div className='nav-wrap'>
+      <div className='control-panel'>
+        <nav className='nav-bar'>
           <ul>
             {headerNavbarLinks.map(({ link, name }) => (
               <li key={link}>
@@ -16,7 +16,7 @@ const Navigation = () => {
             ))}
           </ul>
         </nav>
-        <div className="contacts">
+        <div className='contacts'>
           <p>
             <span>Телефон:</span> +38 (093) 93-04-137
           </p>

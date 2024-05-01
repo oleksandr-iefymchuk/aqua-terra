@@ -1,4 +1,4 @@
-.cardInfoTitle {
+.card-info-title {
   p {
     display: inline-block;
     margin-right: 40px;
@@ -15,7 +15,7 @@
     display: flex;
     justify-content: space-between;
 
-    .shareOverlay {
+    .share-overlay {
       position: fixed;
       top: 0;
       left: 0;
@@ -28,7 +28,7 @@
       align-items: center;
     }
 
-    .sharePopup {
+    .share-popup {
       background-color: #ffffff;
       width: 400px;
       height: 140px;
@@ -45,7 +45,7 @@
       padding: 10px 15px;
       gap: 4px;
 
-      .sharePopupHeader {
+      .share-popup-header {
         width: 100%;
         display: flex;
         align-items: center;
@@ -55,7 +55,7 @@
         border-bottom: 1px solid #a2a2a2;
         font-size: 14px;
 
-        .closePopupBtn {
+        .close-popup-btn {
           width: 25px;
           height: 25px;
           background-color: transparent;
@@ -67,7 +67,7 @@
         }
       }
 
-      .messengerBtn {
+      .messenger-btn {
         width: 45px;
         height: 45px;
         background-color: #dcdcdc;
@@ -81,15 +81,15 @@
     }
   }
 
-  .availableProduct {
+  .available-product {
     color: green;
   }
 
-  .unavailableProduct {
+  .unavailable-product {
     color: #a2a2a2;
   }
 
-  .productCode {
+  .product-code {
     margin-top: 5px;
     display: flex;
     align-items: center;
@@ -99,7 +99,7 @@
       display: flex;
       align-items: center;
 
-      .linkComment {
+      .link-comment {
         cursor: pointer;
         color: #3e77aa;
         margin-left: 5px;
@@ -110,7 +110,7 @@
       }
     }
 
-    .shareButton {
+    .share-btn {
       width: 30px;
       height: auto;
       margin-right: 10px;
@@ -128,7 +128,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .cardInfoTitle {
+  .card-info-title {
     text-align: left;
 
     p {
@@ -142,10 +142,10 @@
     .title {
       align-items: flex-start;
 
-      .sharePopup {
+      .share-popup {
         width: 90%;
         height: 120px;
-        .messengerBtn {
+        .messenger-btn {
           width: 40px;
           height: 40px;
 
@@ -157,7 +157,7 @@
       }
     }
 
-    .productCode {
+    .product-code {
       gap: 5px;
 
       .reviews {
@@ -166,7 +166,7 @@
         }
       }
 
-      .shareButton {
+      .share-btn {
         margin-right: 0;
       }
     }

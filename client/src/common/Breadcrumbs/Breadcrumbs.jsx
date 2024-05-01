@@ -1,5 +1,5 @@
 import './Breadcrumbs.scss';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -29,9 +29,19 @@ const Breadcrumbs = () => {
   };
 
   const pathWithoutProductId = pathnameParts.filter(
-    (part) => !part.match(/^\d+$/),
+    part => !part.match(/^\d+$/)
   );
-  const generateBreadcrumbs = (pathParts) => {
+
+  useEffect(() => {
+    const mainElement = document.querySelector('main');
+    if (location.pathname === '/') {
+      mainElement.classList.add('home-page');
+    } else {
+      mainElement.classList.remove('home-page');
+    }
+  }, [location.pathname]);
+
+  const generateBreadcrumbs = pathParts => {
     let path = '';
     return pathParts.map((part, index) => {
       path += '/' + part;
@@ -41,8 +51,8 @@ const Breadcrumbs = () => {
           {index === 0 ? (
             <Fragment>
               <Button
-                icon="home"
-                buttonClassName="linkHome"
+                icon='home'
+                buttonClassName='link-home'
                 onClick={handleGoHome}
               />
               {' / '}
@@ -63,8 +73,8 @@ const Breadcrumbs = () => {
 
   if (location.pathname !== '/') {
     return (
-      <div className="breadcrumbsWrap">
-        <div className="breadcrumbs">
+      <div className='breadcrumbs-wrap'>
+        <div className='breadcrumbs'>
           {generateBreadcrumbs(pathWithoutProductId)}
         </div>
       </div>

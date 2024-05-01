@@ -4,7 +4,7 @@ import './DiscountedProducts.scss';
 import FilterProducts from '../../common/FilterProducts/FilterProducts';
 
 const DiscountedProducts = () => {
-  const products = useSelector((state) => state.products);
+  const products = useSelector(state => state.products);
   const discountedProducts = products.filter(({ discount }) => discount > 0);
 
   const [isShowFilterMenu, setShowFilterMenu] = useState(false);
@@ -18,7 +18,7 @@ const DiscountedProducts = () => {
   }, []);
 
   return (
-    <div className="discountedProducts">
+    <div className='discounted-products'>
       <h2>Товари зі знижкою</h2>
       <FilterProducts
         products={filteredProducts}

@@ -1,12 +1,11 @@
-.homeWrapper {
+.home-wrap {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   overflow: hidden;
   padding-bottom: 25px;
-  // font-size: 14px;
 
-  .catalogButton {
+  .catalog-btn {
     width: 300px;
     height: 40px;
     display: flex;
@@ -20,14 +19,14 @@
     font-size: 18px;
   }
 
-  .productsList {
+  .products-list {
     width: 80%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
 
-    .productCategory {
+    .product-category {
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
@@ -36,13 +35,13 @@
       margin-top: 20px;
       width: 50%;
 
-      .categoryTitle {
+      .category-title {
         display: flex;
         width: 90%;
         margin-bottom: 10px;
         align-items: center;
 
-        .categoryButtons {
+        .category-buttons {
           border-radius: 50%;
           width: 40px;
           height: 40px;
@@ -62,7 +61,7 @@
         flex: 1;
         margin: 0%;
 
-        .cardProduct {
+        .card-product {
           width: 50%;
         }
       }
@@ -71,12 +70,12 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .homeWrapper {
-    .catalogButtonWrap {
+  .home-wrap {
+    .catalog-btn-wrap {
       width: 60%;
       margin-top: 20px;
 
-      .homeCatalogBtn {
+      .home-catalog-btn {
         width: 100%;
         position: relative;
         justify-content: center;
@@ -90,16 +89,16 @@
       }
     }
 
-    .productsList {
+    .products-list {
       width: 100%;
 
-      .productCategory {
+      .product-category {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        .categoryTitle {
+        .category-title {
           width: 100%;
           justify-content: center;
           margin-bottom: 10px;
@@ -109,7 +108,7 @@
           width: 50%;
           justify-content: center;
 
-          .cardProduct {
+          .card-product {
             width: 50%;
             height: 345px;
 
@@ -117,11 +116,11 @@
               font-size: 9px;
             }
 
-            .favoritesBtnWrap {
+            .favorites-btn-wrap {
               right: 3%;
             }
 
-            .cardProductInfo {
+            .card-product-info {
               font-size: 11px;
             }
           }
@@ -132,32 +131,15 @@
 }
 
 @media screen and (max-width: 768px) {
-  .homeWrapper {
-    .catalogButtonWrap {
+  .home-wrap {
+    .catalog-btn-wrap {
       width: 90%;
     }
-    .productsList {
-      .productCategory {
+    .products-list {
+      .product-category {
         .products {
           width: 96%;
           justify-content: center;
-
-          // .cardProduct {
-          //   width: 50%;
-          //   height: 345px;
-
-          //   a {
-          //     font-size: 9px;
-          //   }
-
-          //   .favoritesBtnWrap {
-          //     right: 3%;
-          //   }
-
-          //   .cardProductInfo {
-          //     font-size: 11px;
-          //   }
-          // }
         }
       }
     }

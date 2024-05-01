@@ -21,18 +21,18 @@ const Banner = () => {
     autoplaySpeed: 4000,
     pauseOnHover: true,
     dotsClass: 'slick-dots slick-thumb',
-    nextArrow: <ButtonWrapper buttonClassName="arrowNext" icon="arrowNext" />,
-    prevArrow: <ButtonWrapper buttonClassName="arrowPrev" icon="arrowPrev" />,
+    nextArrow: <ButtonWrapper buttonClassName='arrow-next' icon='arrow-next' />,
+    prevArrow: <ButtonWrapper buttonClassName='arrow-prev' icon='arrow-prev' />,
   };
 
   return (
-    <div className="bannersWrapper">
-      <div className="sliderContainer">
+    <div className='banners-wrap'>
+      <div className='slider-container'>
         <Slider {...settings}>
           {banners.map((banner, index) => (
             <Link to={banner.route} key={index}>
-              <div className="card">
-                <h2 className="bannerTitle">{banner.title}</h2>
+              <div className='card'>
+                <h2 className='bannerTitle'>{banner.title}</h2>
                 <img src={banner.image} alt={banner.title} />
               </div>
             </Link>

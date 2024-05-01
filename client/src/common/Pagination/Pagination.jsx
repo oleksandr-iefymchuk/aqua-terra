@@ -19,7 +19,7 @@ const Pagination = ({ products }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handlePageChange = (pageNumber) => {
+  const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
   };
 
@@ -30,15 +30,15 @@ const Pagination = ({ products }) => {
   }, [products, currentPage, totalPages]);
 
   return (
-    <div className="pagination">
-      <ProductList className="products" products={currentProducts} />
+    <div className='pagination'>
+      <ProductList className='products' products={currentProducts} />
 
-      <div className="paginationBtnBlock">
+      <div className='pagination-btn-block'>
         {totalPages > 0 && (
           <ButtonWrapper
-            buttonClassName="paginationButtons"
-            icon="arrowPrev"
-            svgColor="#000"
+            buttonClassName='pagination-buttons'
+            icon='arrow-prev'
+            svgColor='#000'
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
           />
@@ -50,8 +50,8 @@ const Pagination = ({ products }) => {
               key={pageNumber}
               buttonClassName={
                 pageNumber === currentPage
-                  ? 'paginationButtons active'
-                  : 'paginationButtons'
+                  ? 'pagination-buttons active'
+                  : 'pagination-buttons'
               }
               buttonText={pageNumber.toString()}
               onClick={() => handlePageChange(pageNumber)}
@@ -60,9 +60,9 @@ const Pagination = ({ products }) => {
         })}
         {totalPages > 0 && (
           <ButtonWrapper
-            buttonClassName="paginationButtons"
-            icon="arrowNext"
-            svgColor="#000"
+            buttonClassName='pagination-buttons'
+            icon='arrow-next'
+            svgColor='#000'
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
           />

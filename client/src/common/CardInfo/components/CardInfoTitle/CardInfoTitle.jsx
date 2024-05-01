@@ -13,9 +13,9 @@ const CardInfoTitle = ({ id, title, quantity, reviews }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { setValue } = useTabContext();
 
-  const productReviews = reviews.filter((review) => review.productId === id);
+  const productReviews = reviews.filter(review => review.productId === id);
 
-  const calculateAverageRating = (reviews) => {
+  const calculateAverageRating = reviews => {
     if (reviews.length === 0) return 0;
     const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
     return totalRating / reviews.length;
@@ -23,14 +23,14 @@ const CardInfoTitle = ({ id, title, quantity, reviews }) => {
 
   const togglePopup = () => {
     if (!isOpen) {
-      document.body.classList.add('mobileMenuOpen');
+      document.body.classList.add('mobile-menu-open');
     } else {
-      document.body.classList.remove('mobileMenuOpen');
+      document.body.classList.remove('mobile-menu-open');
     }
     setIsOpen(!isOpen);
   };
 
-  const openNewTab = (url) => {
+  const openNewTab = url => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
@@ -45,7 +45,7 @@ const CardInfoTitle = ({ id, title, quantity, reviews }) => {
     }
   };
 
-  const getReviewsWordForm = (count) => {
+  const getReviewsWordForm = count => {
     const cases = [2, 0, 1, 1, 1, 2];
     return ['відгук', 'відгуки', 'відгуків'][
       count % 100 > 4 && count % 100 < 20
@@ -55,24 +55,24 @@ const CardInfoTitle = ({ id, title, quantity, reviews }) => {
   };
 
   return (
-    <div className="cardInfoTitle">
-      <div className="title">
+    <div className='card-info-title'>
+      <div className='title'>
         <h2>{title}</h2>
         {isOpen && (
           <Fragment>
-            <div className="shareOverlay" onClick={togglePopup}></div>
-            <div className="sharePopup">
-              <div className="sharePopupHeader">
+            <div className='share-overlay' onClick={togglePopup}></div>
+            <div className='share-popup'>
+              <div className='share-popup-header'>
                 <h3>Поділитися</h3>
                 <ButtonWrapper
-                  buttonClassName="closePopupBtn"
-                  icon="close"
+                  buttonClassName='close-popup-btn'
+                  icon='close'
                   onClick={togglePopup}
                 />
               </div>
               {messengers(window.location.href).map((messenger, index) => (
                 <ButtonWrapper
-                  buttonClassName="messengerBtn"
+                  buttonClassName='messenger-btn'
                   icon={messenger.icon}
                   key={index}
                   onClick={() => openNewTab(messenger.link)}
@@ -82,11 +82,11 @@ const CardInfoTitle = ({ id, title, quantity, reviews }) => {
           </Fragment>
         )}
       </div>
-      <div className="productCode">
+      <div className='product-code'>
         {!isMobileDevice && (
           <p
             className={
-              quantity !== 0 ? 'availableProduct' : 'unavailableProduct'
+              quantity !== 0 ? 'available-product' : 'unavailable-product'
             }
           >
             {quantity !== 0 ? 'В наявності' : 'Немає в наявності'}
@@ -95,31 +95,31 @@ const CardInfoTitle = ({ id, title, quantity, reviews }) => {
         <p>
           Код: <span>{id}</span>{' '}
         </p>
-        <div className="reviews">
+        <div className='reviews'>
           {productReviews.length > 0 ? (
             <Fragment>
               <Rating
-                className="rating"
+                className='rating'
                 value={calculateAverageRating(productReviews)}
                 precision={0.5}
                 readOnly
               />
-              <p className="linkComment" onClick={scrollToReviews}>
+              <p className='link-comment' onClick={scrollToReviews}>
                 {`${productReviews.length} ${getReviewsWordForm(
-                  productReviews.length,
+                  productReviews.length
                 )}`}
               </p>
             </Fragment>
           ) : (
             <p
-              className="linkComment"
+              className='link-comment'
               onClick={scrollToReviews}
             >{`Написати відгук`}</p>
           )}
         </div>
         <ButtonWrapper
-          buttonClassName="shareButton"
-          icon="share"
+          buttonClassName='share-btn'
+          icon='share'
           onClick={togglePopup}
         />
       </div>

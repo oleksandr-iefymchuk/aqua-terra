@@ -1,11 +1,11 @@
 import storeActionType from './actionTypes';
 
-const selectCategory = (category) => ({
+const selectCategory = category => ({
   type: storeActionType.SET_SELECTED_CATEGORY,
   payload: category,
 });
 
-const selectSubcategory = (subcategory) => ({
+const selectSubcategory = subcategory => ({
   type: storeActionType.SET_SELECTED_SUBCATEGORY,
   payload: subcategory,
 });
@@ -26,7 +26,7 @@ const closeMobileMenu = () => ({
   type: storeActionType.CLOSE_MOBILE_MENU,
 });
 
-const searchProduct = (product) => ({
+const searchProduct = product => ({
   type: storeActionType.SEARCH_PRODUCT,
   payload: product,
 });

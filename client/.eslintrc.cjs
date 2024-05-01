@@ -17,6 +17,18 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'no-multi-spaces': 'error',
-    'prettier/prettier': ['error', { singleQuote: true, jsxSingleQuote: true }],  },
+    'arrow-parens': ['error', 'as-needed'],
+    'prettier/prettier': [
+      'error',
+      {
+        printWidth: 80,
+        trailingComma: 'es5',
+        semi: true,
+        jsxSingleQuote: true,
+        singleQuote: true,
+        endOfLine: 'auto',
+        'max-len': ['error', { code: 80 }],
+      },
+    ],
+  },
 };

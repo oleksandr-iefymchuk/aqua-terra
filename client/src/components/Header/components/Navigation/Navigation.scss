@@ -1,17 +1,17 @@
-.navWrapper {
+.nav-wrap {
   display: flex;
   justify-content: center;
   background-color: #000000;
   margin-top: 77px;
 
-  .controlPanel {
+  .control-panel {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 90%;
     padding: 15px 0;
 
-    .navBar {
+    .nav-bar {
       ul {
         list-style-type: none;
         display: flex;
@@ -48,7 +48,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .navWrapper {
+  .nav-wrap {
     display: none;
   }
 }

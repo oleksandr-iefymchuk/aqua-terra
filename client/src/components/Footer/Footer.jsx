@@ -4,8 +4,8 @@ import { foterNavLinks } from '../../constans/constants';
 
 const Footer = () => {
   return (
-    <div className="footerWrapper">
-      <nav className="footerNavBar">
+    <div className='footer-wrap'>
+      <nav className='footer-nav-bar'>
         <ul>
           {foterNavLinks.map(({ link, name }) => (
             <li key={link}>

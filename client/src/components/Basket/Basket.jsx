@@ -13,22 +13,22 @@ const Basket = () => {
   const handleOrder = () => navigate('/order');
   const handlecontinueShopping = () => navigate('/');
 
-  const basketProducts = useSelector((store) => store.user.basketProducts);
+  const basketProducts = useSelector(store => store.user.basketProducts);
 
   const sum = basketProducts.reduce(
     (total, product) => total + product.price * product.quantity,
-    0,
+    0
   );
 
   const totalDiscount = basketProducts.reduce((total, product) => {
-    const currentProduct = basketProducts.find((p) => p.id === product.id);
+    const currentProduct = basketProducts.find(p => p.id === product.id);
     const totalPrice = currentProduct
       ? currentProduct.price * product.quantity
       : 0;
 
     const discountedPrice = calculateDiscountedPrice(
       totalPrice,
-      product.discount,
+      product.discount
     );
 
     const discount = totalPrice - discountedPrice;
@@ -38,27 +38,27 @@ const Basket = () => {
   const totalAmount = sum - totalDiscount;
 
   return (
-    <div className="basketWrap">
-      <h2 className="basketTitle">Кошик</h2>
-      <div className="basket">
+    <div className='basket-wrap'>
+      <h2 className='basket-title'>Кошик</h2>
+      <div className='basket'>
         {basketProducts.length > 0 && (
           <Button
-            buttonClassName="continueShoppingBtn"
-            buttonText="Продовжити покупки"
+            buttonClassName='continue-shopping-btn'
+            buttonText='Продовжити покупки'
             onClick={handlecontinueShopping}
           />
         )}
 
-        <div className="basketList">
-          {basketProducts.map((product) => (
+        <div className='basket-list'>
+          {basketProducts.map(product => (
             <BasketItem key={product.id} {...product} />
           ))}
         </div>
         {basketProducts.length > 0 ? (
-          <div className="totalAmountBlock">
+          <div className='total-amount-block'>
             <p>
               Сума:{' '}
-              <span className="sum">
+              <span className='sum'>
                 {new Intl.NumberFormat(undefined, {
                   style: 'currency',
                   currency: 'UAH',
@@ -67,7 +67,7 @@ const Basket = () => {
             </p>
             <p>
               Знижка:{' '}
-              <span className="totalDiscount">
+              <span className='total-discount'>
                 {new Intl.NumberFormat(undefined, {
                   style: 'currency',
                   currency: 'UAH',
@@ -76,7 +76,7 @@ const Basket = () => {
             </p>
             <p>
               Всього до сплати:{' '}
-              <span className="totalAmount">
+              <span className='total-amount'>
                 {new Intl.NumberFormat(undefined, {
                   style: 'currency',
                   currency: 'UAH',
@@ -85,18 +85,18 @@ const Basket = () => {
             </p>
 
             <Button
-              buttonClassName="orderBtn"
-              buttonText="Перейти до оформлення"
+              buttonClassName='order-btn'
+              buttonText='Перейти до оформлення'
               onClick={handleOrder}
             />
           </div>
         ) : (
-          <div className="emptyBasket">
+          <div className='empty-basket'>
             <SvgIcon
-              name="emptyBasket"
-              color="#a2a2a2"
-              width="300px"
-              height="200px"
+              name='empty-basket'
+              color='#a2a2a2'
+              width='300px'
+              height='200px'
             />
             <p>В кошику немає товарів. Але це ніколи не пізно виправити :) </p>
           </div>

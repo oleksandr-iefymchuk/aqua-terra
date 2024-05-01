@@ -2,7 +2,7 @@ import './DeliveryInfo.scss';
 
 const DeliveryInfo = () => {
   return (
-    <section className="deliveryInfo">
+    <section className='delivery-info'>
       <h2>Умови доставки та оплати</h2>
       <h3>Способи доставки</h3>
       <ul>

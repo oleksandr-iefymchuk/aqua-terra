@@ -2,9 +2,9 @@ import './About.scss';
 
 const About = () => {
   return (
-    <div className="aboutWrap">
+    <div className='about-wrap'>
       <h1>Інтернет-магазин сантехніки AquaZone</h1>
-      <div className="about">
+      <div className='about'>
         <p>
           Інтернет-магазин AquaZone здійснює продаж інженерної сантехніки в м.
           Миколаїв та по Україні. Ми продаємо товари за справедливими цінами та
@@ -43,7 +43,7 @@ const About = () => {
           <li>ПН-ПТ 9:00 - 17:00</li>
           <li>СБ-НД - вихідні</li>
         </ul>
-        <p className="wait">Чекаємо на Вас тут!</p>
+        <p className='wait'>Чекаємо на Вас тут!</p>
       </div>
     </div>
   );

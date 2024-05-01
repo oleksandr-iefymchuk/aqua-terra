@@ -1,14 +1,14 @@
-.bannersWrapper {
+.banners-wrap {
   background-color: #212526;
   width: 100%;
   margin: 0 auto;
 
-  .sliderContainer {
+  .slider-container {
     margin: 0 auto;
     height: 500px;
 
-    .arrowNext,
-    .arrowPrev {
+    .arrow-next,
+    .arrow-prev {
       width: 60px;
       height: 60px;
       z-index: 10;
@@ -24,10 +24,11 @@
       }
     }
 
-    .arrowNext {
+    .arrow-next {
       right: 2%;
     }
-    .arrowPrev {
+
+    .arrow-prev {
       left: 2%;
     }
 
@@ -70,8 +71,8 @@
 }
 
 @media (max-width: 768px) {
-  .bannersWrapper {
-    .sliderContainer {
+  .banners-wrap {
+    .slider-container {
       height: 220px;
 
       .card {

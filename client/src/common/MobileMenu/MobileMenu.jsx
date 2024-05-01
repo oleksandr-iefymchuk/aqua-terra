@@ -18,8 +18,8 @@ const MobileMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const favoriteProducts = useSelector((store) => store.user.favoriteProducts);
-  const isShowMobileMenu = useSelector((state) => state.app.isShowMobileMenu);
+  const favoriteProducts = useSelector(store => store.user.favoriteProducts);
+  const isShowMobileMenu = useSelector(state => state.app.isShowMobileMenu);
 
   const navigationHome = () => {
     navigate('/');
@@ -43,36 +43,36 @@ const MobileMenu = () => {
 
   useEffect(() => {
     if (isShowMobileMenu) {
-      document.body.classList.add('mobileMenuOpen');
+      document.body.classList.add('mobile-menu-open');
     } else {
-      document.body.classList.remove('mobileMenuOpen');
-      document.body.classList.remove('categoryMenuOpen');
+      document.body.classList.remove('mobile-menu-open');
+      document.body.classList.remove('category-menu-open');
     }
   }, [isShowMobileMenu]);
 
   return (
     <Fragment>
       {isShowMobileMenu && (
-        <div className="mobileMenuOverlay" onClick={handleCloseMenu}></div>
+        <div className='mobile-menu-overlay' onClick={handleCloseMenu}></div>
       )}
-      <div className={`mobileMenu ${isShowMobileMenu ? 'show' : 'hide'}`}>
-        <div className="mobileMenuNavigation">
-          <div className="mobileMenuHeader">
-            <div className="mobMenuLogo">
+      <div className={`mobile-menu ${isShowMobileMenu ? 'show' : 'hide'}`}>
+        <div className='mobile-menu-navigation'>
+          <div className='mobile-menu-header'>
+            <div className='mobile-menu-logo'>
               <Logo onClick={navigationHome} />
               <h3>AquaZone</h3>
             </div>
             <ButtonWrapper
-              buttonClassName="mobileMenuCloseBtn"
-              icon="close"
+              buttonClassName='mobile-menu-close-btn'
+              icon='close'
               onClick={() => dispatch(closeMobileMenu())}
             />
           </div>
-          <div className="mobileUserBox">
+          <div className='mobile-user-box'>
             <ButtonWrapper
-              buttonClassName="mobileBtnUser"
-              buttonText="Кабінет"
-              icon="user"
+              buttonClassName='mobile-btn-user'
+              buttonText='Кабінет'
+              icon='user'
               onClick={() => {
                 console.log('Login');
                 dispatch(toggleMobileMenu());
@@ -80,28 +80,28 @@ const MobileMenu = () => {
             />
 
             <ButtonWrapper
-              buttonClassName="mobileBtnFavorite"
-              imgClassName="favoritesImg"
-              buttonText="Улюблене"
-              icon="favorites"
+              buttonClassName='mobile-btn-favorite'
+              imgClassName='favorites-img'
+              buttonText='Улюблене'
+              icon='favorites'
               value={favoriteProducts.length}
               onClick={navigationFavorites}
             />
           </div>
           <CatalogBatton
-            buttonClassName="mobileMenuCatalogBtn"
-            svgWrapperClassName="svgWrapper"
-            buttonText="Каталог товарів"
+            buttonClassName='mobile-menu-catalog-btn'
+            svgWrapperClassName='svg-wrapper'
+            buttonText='Каталог товарів'
             categories={categories}
-            iconBurger="menu"
+            iconBurger='menu'
           />
           <ButtonWrapper
-            buttonClassName="mobileBtnStock"
-            buttonText="Акції"
-            icon="sale"
+            buttonClassName='mobile-btn-stock'
+            buttonText='Акції'
+            icon='sale'
             onClick={navigationStock}
           />
-          <nav className="mobileNavBar">
+          <nav className='mobile-nav-bar'>
             <ul>
               {foterNavLinks.map(({ link, name }) => (
                 <li key={link} onClick={() => dispatch(toggleMobileMenu())}>
@@ -111,7 +111,7 @@ const MobileMenu = () => {
             </ul>
           </nav>
         </div>
-        <p className="schedule">
+        <p className='schedule'>
           Пн-Пт з 09:00 до 18:00 <br />
           Сб-Нд - вихідний
         </p>

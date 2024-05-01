@@ -1,4 +1,4 @@
-.priceFilter {
+.price-filter {
   margin: 20px 15px;
   text-align: left;
 
@@ -6,13 +6,15 @@
     color: #3e77aa;
     font-weight: 400;
   }
-  .priceInputs {
+
+  .price-inputs {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
-    .minPriceInput,
-    .maxPriceInput {
+
+    .min-price-input,
+    .max-price-input {
       padding-left: 5px;
       border: 1px solid #eaedf7;
       border-radius: 5px;
@@ -22,7 +24,7 @@
       border: none;
     }
 
-    .btnPriceFilter {
+    .btn-price-filter {
       width: 35px;
       height: 35px;
       background-color: #008ec8;
@@ -33,7 +35,7 @@
     }
   }
 
-  .rangeSlider {
+  .range-slider {
     display: block;
     width: 200px;
     margin: 5px auto;
@@ -41,18 +43,19 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .priceFilter {
+  .price-filter {
     margin: 20px 0;
     padding: 0 15px;
-    .priceInputs {
+
+    .price-inputs {
       justify-content: space-evenly;
 
-      .btnPriceFilter {
+      .btn-price-filter {
         width: 105px;
       }
     }
 
-    .rangeSlider {
+    .range-slider {
       width: 90%;
     }
   }

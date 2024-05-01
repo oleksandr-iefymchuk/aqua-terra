@@ -1,11 +1,11 @@
-.basketWrap {
+.basket-wrap {
   margin: 15px auto;
   width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  .basketTitle {
+  .basket-title {
     margin-bottom: 20px;
   }
 
@@ -15,7 +15,7 @@
     align-items: center;
     width: 70%;
 
-    .continueShoppingBtn {
+    .continue-shopping-btn {
       width: 256px;
       height: 36px;
       align-self: flex-end;
@@ -34,7 +34,7 @@
       }
     }
 
-    .basketList {
+    .basket-list {
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -42,7 +42,7 @@
       margin-top: 10px;
     }
 
-    .totalAmountBlock {
+    .total-amount-block {
       align-self: flex-end;
       display: flex;
       flex-direction: column;
@@ -73,12 +73,12 @@
           margin-left: 15px;
         }
 
-        .totalAmount {
+        .total-amount {
           color: #f05a00;
         }
       }
 
-      .orderBtn {
+      .order-btn {
         margin-top: 15px;
         width: 256px;
         height: 36px;
@@ -87,7 +87,7 @@
       }
     }
 
-    .emptyBasket {
+    .empty-basket {
       color: #a2a2a2;
       font-size: 18px;
       font-weight: 300;
@@ -101,11 +101,11 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .basketWrap {
+  .basket-wrap {
     .basket {
       width: 100%;
 
-      .continueShoppingBtn {
+      .continue-shopping-btn {
         align-self: center;
       }
     }

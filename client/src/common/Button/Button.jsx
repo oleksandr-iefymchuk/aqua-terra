@@ -26,7 +26,7 @@ const ButtonWrapper = ({
             onClick={onClick}
           >
             {icon && (
-              <span className="svgWrapper">
+              <span className='svg-wrapper'>
                 <SvgIcon
                   name={icon}
                   color={svgColor}
@@ -36,7 +36,7 @@ const ButtonWrapper = ({
               </span>
             )}
             {buttonText}
-            {value > 0 && <span className="value">{value}</span>}
+            {value > 0 && <span className='value'>{value}</span>}
           </button>
         </div>
       ) : (
@@ -47,7 +47,7 @@ const ButtonWrapper = ({
           onClick={onClick}
         >
           {icon && (
-            <span className="svgWrapper">
+            <span className='svg-wrapper'>
               <SvgIcon
                 name={icon}
                 color={svgColor}
@@ -57,7 +57,7 @@ const ButtonWrapper = ({
             </span>
           )}
           {buttonText}
-          {value > 0 && <span className="value">{value}</span>}
+          {value > 0 && <span className='value'>{value}</span>}
         </button>
       )}
     </>

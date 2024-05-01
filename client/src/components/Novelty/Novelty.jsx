@@ -4,13 +4,13 @@ import { isNewProduct } from '../../helpers';
 import SortList from '../../common/SortList/SortList';
 
 const Novelty = () => {
-  const products = useSelector((state) => state.products);
-  const newProducts = products.filter((product) =>
-    isNewProduct(product.dateAdded),
+  const products = useSelector(state => state.products);
+  const newProducts = products.filter(product =>
+    isNewProduct(product.dateAdded)
   );
 
   return (
-    <div className="noveltyWrap">
+    <div className='novelty-wrap'>
       <h2>Новинки</h2>
       <SortList products={newProducts}></SortList>
     </div>

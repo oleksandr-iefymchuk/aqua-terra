@@ -22,11 +22,9 @@ const CategoryMenu = ({ categories }) => {
   const [isHovered, setIsHovered] = useState(false);
   const isMobileDevice = useMediaQuery({ maxWidth: 1024 });
 
-  const isShowCategoryMenu = useSelector(
-    (state) => state.app.isShowCategoryMenu,
-  );
+  const isShowCategoryMenu = useSelector(state => state.app.isShowCategoryMenu);
 
-  const handleCategoryClick = async (category) => {
+  const handleCategoryClick = async category => {
     dispatch(selectCategory(category.name));
     dispatch(selectSubcategory(null));
     dispatch(closeCategoryMenu());
@@ -34,7 +32,7 @@ const CategoryMenu = ({ categories }) => {
     navigate(`/catalog/${category.linkName}`);
   };
 
-  const handleSubcategoryClick = async (subcategory) => {
+  const handleSubcategoryClick = async subcategory => {
     dispatch(selectSubcategory(subcategory.name));
     dispatch(selectCategory(null));
     dispatch(closeCategoryMenu());
@@ -42,7 +40,7 @@ const CategoryMenu = ({ categories }) => {
     navigate(`/catalog/${subcategory.linkName}`);
   };
 
-  const handleCategoryHover = (category) => {
+  const handleCategoryHover = category => {
     setHoveredCategory(category.name);
     setIsHovered(true);
   };
@@ -54,22 +52,22 @@ const CategoryMenu = ({ categories }) => {
 
   return (
     <div
-      className={`categoryMenu ${isShowCategoryMenu ? 'show' : 'hide'}`}
+      className={`category-menu ${isShowCategoryMenu ? 'show' : 'hide'}`}
       onMouseLeave={handleMouseLeave}
     >
       {isMobileDevice && (
-        <div className="categoryHeader">
+        <div className='category-header'>
           <ButtonWrapper
-            buttonClassName="categoryBtn"
-            icon="arrowPrev"
-            color="#008ec8"
+            buttonClassName='category-btn'
+            icon='arrow-prev'
+            color='#008ec8'
             onClick={() => dispatch(closeCategoryMenu())}
           />
           <h3>Категорія товарів</h3>
           <ButtonWrapper
-            buttonClassName="categoryBtn"
-            icon="close"
-            color="#008ec8"
+            buttonClassName='category-btn'
+            icon='close'
+            color='#008ec8'
             onClick={() => {
               dispatch(closeCategoryMenu());
               dispatch(closeMobileMenu());
@@ -77,11 +75,11 @@ const CategoryMenu = ({ categories }) => {
           />
         </div>
       )}
-      <div className="categoryList">
+      <div className='category-list'>
         {categories.map((categoryData, index) => (
-          <div className="category" key={index}>
+          <div className='category' key={index}>
             <div
-              className={`categoryItem ${
+              className={`category-item ${
                 hoveredCategory === categoryData.name ? 'active' : ''
               }`}
               onClick={() => handleCategoryClick(categoryData)}
@@ -89,34 +87,34 @@ const CategoryMenu = ({ categories }) => {
             >
               {categoryData.name}
               {!isMobileDevice && (
-                <SvgIcon name="arrowNext" color="#008ec8"></SvgIcon>
+                <SvgIcon name='arrow-next' color='#008ec8'></SvgIcon>
               )}
             </div>
             {isMobileDevice && (
               <ButtonWrapper
-                buttonClassName="categoryBtn"
-                icon="arrowNext"
-                color="#008ec8"
+                buttonClassName='category-btn'
+                icon='arrow-next'
+                color='#008ec8'
                 onClick={() => handleCategoryHover(categoryData)}
               />
             )}
           </div>
         ))}
       </div>
-      <div className={`subcategoryMenu ${isHovered ? 'show' : 'hide'}`}>
+      <div className={`subcategory-menu ${isHovered ? 'show' : 'hide'}`}>
         {isMobileDevice && (
-          <div className="subcategoryHeader">
+          <div className='subcategory-header'>
             <ButtonWrapper
-              buttonClassName="categoryBtn"
-              icon="arrowPrev"
-              color="#008ec8"
+              buttonClassName='category-btn'
+              icon='arrow-prev'
+              color='#008ec8'
               onClick={() => setIsHovered(false)}
             />
             <h3>{hoveredCategory}</h3>
             <ButtonWrapper
-              buttonClassName="categoryBtn"
-              icon="close"
-              color="#008ec8"
+              buttonClassName='category-btn'
+              icon='close'
+              color='#008ec8'
               onClick={() => {
                 dispatch(closeCategoryMenu());
                 dispatch(closeMobileMenu());
@@ -124,19 +122,19 @@ const CategoryMenu = ({ categories }) => {
             />
           </div>
         )}
-        <div className="subcategoryList">
+        <div className='subcategory-list'>
           {categories
-            .filter((category) => category.name === hoveredCategory)
-            .map((category) =>
+            .filter(category => category.name === hoveredCategory)
+            .map(category =>
               category.subcategories.map((subcategory, subIndex) => (
                 <div
                   key={subIndex}
-                  className="subcategoryItem"
+                  className='subcategory-item'
                   onClick={() => handleSubcategoryClick(subcategory)}
                 >
                   {subcategory.name}
                 </div>
-              )),
+              ))
             )}
         </div>
       </div>

@@ -1,19 +1,19 @@
-.cardInfoWrapper {
+.card-info-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   width: 90%;
 
-  .sliderContainer {
+  .slider-container {
     margin: 30px 15px 30px 0;
     max-width: 400px;
     height: 480px;
     border: 1px solid #cbcbcb;
     align-self: flex-start;
 
-    .arrowNext,
-    .arrowPrev {
+    .arrow-next,
+    .arrow-prev {
       width: 40px;
       height: 40px;
       z-index: 10;
@@ -27,7 +27,7 @@
       }
     }
 
-    .arrowNext {
+    .arrow-next {
       right: 0;
     }
 
@@ -39,7 +39,6 @@
       padding: 15px;
 
       img {
-        // border: 1px solid #000;
         max-width: 100%;
         max-height: 100%;
         object-fit: contain;
@@ -69,48 +68,49 @@
     }
   }
 
-  .cardInfo {
+  .card-info {
     margin: 30px 0 30px 15px;
     flex: 1;
     text-align: left;
     align-self: start;
 
-    .cardInfoHeader {
+    .card-info-header {
       border: 1px solid #cbcbcb;
       padding: 15px;
 
-      .quantityBlock {
+      .quantity-block {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
 
-        .availableProduct {
+        .available-product {
           color: green;
         }
 
-        .unavailableProduct {
+        .unavailable-product {
           color: #a2a2a2;
         }
 
-        .cardInfoPrice {
+        .card-info-price {
           width: 100%;
           font-size: 30px;
           font-weight: 500;
           margin: 20px 0;
         }
 
-        .cardInfoQuantity {
+        .card-info-quantity {
           display: flex;
           align-items: center;
           width: 100%;
-          .activeBtnIncreaseQuantity,
-          .disabledBtnIncreaseQuantity {
+
+          .active-btn-increase-quantity,
+          .disabled-btn-increase-quantity {
             background-color: transparent;
             width: 50px;
             height: 30px;
           }
 
-          .activeBtnIncreaseQuantity {
+          .active-btn-increase-quantity {
             svg {
               fill: rgb(45, 45, 45);
               stroke: rgb(45, 45, 45);
@@ -118,7 +118,7 @@
             }
           }
 
-          .disabledBtnIncreaseQuantity {
+          .disabled-btn-increase-quantity {
             svg {
               fill: rgb(232, 232, 232);
               stroke: rgb(232, 232, 232);
@@ -127,8 +127,8 @@
             pointer-events: none;
           }
 
-          .disabledBuyButton,
-          .activeBuyButton {
+          .disabled-buy-btn,
+          .active-buy-btn {
             width: 140px;
             height: 50px;
             border-radius: 5px;
@@ -142,18 +142,18 @@
             }
           }
 
-          .activeBuyButton {
+          .active-buy-btn {
             &:hover {
               background-color: #00a7e9;
             }
           }
 
-          .disabledBuyButton {
+          .disabled-buy-btn {
             opacity: 0.3;
             pointer-events: none;
           }
 
-          .inBasket {
+          .in-basket {
             background-color: #26b663;
 
             &:hover {
@@ -162,13 +162,14 @@
           }
         }
 
-        .favoritesBalanceControls {
+        .favorites-balance-controls {
           display: flex;
           flex: 1;
           align-items: center;
           justify-content: flex-end;
           gap: 18px;
-          .favoritesButton {
+
+          .favorites-btn {
             background-color: transparent;
 
             svg {
@@ -177,7 +178,7 @@
             }
           }
 
-          .balanceButton {
+          .balance-btn {
             background-color: transparent;
             color: #000;
             svg {
@@ -193,25 +194,26 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .cardInfoWrapper {
+  .card-info-wrapper {
     justify-content: center;
 
-    .sliderContainer {
+    .slider-container {
       margin: 10px 0;
       width: 100%;
     }
 
-    .cardInfo {
+    .card-info {
       margin: 5px 0;
       flex: none;
       width: 100%;
-      .cardInfoHeader {
-        .quantityBlock {
-          .cardInfoPrice {
+
+      .card-info-header {
+        .quantity-block {
+          .card-info-price {
             margin: 5px 0;
           }
 
-          .cardInfoQuantity {
+          .card-info-quantity {
             justify-content: center;
 
             .quantity {
@@ -219,13 +221,13 @@
             }
           }
 
-          .favoritesBalanceControls {
+          .favorites-balance-controls {
             width: 100%;
             flex: none;
             margin-top: 20px;
             justify-content: center;
 
-            .favoritesButton {
+            .favorites-btn {
               width: 140px;
               font-size: 16px;
               color: #000;
@@ -235,7 +237,7 @@
               }
             }
 
-            .balanceButton {
+            .balance-btn {
               width: 140px;
               font-size: 16px;
               svg {

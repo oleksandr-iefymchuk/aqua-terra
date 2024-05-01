@@ -23,7 +23,7 @@ const ReviewFormModal = ({
   const [rating, setRating] = useState(null);
   const [notification, setNotification] = useState(null);
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     const { name, value } = event.target;
     setFormData({
       ...formData,
@@ -33,7 +33,7 @@ const ReviewFormModal = ({
 
   const handleCloseAlert = () => setNotification(null);
 
-  const handleAddReview = (e) => {
+  const handleAddReview = e => {
     e.preventDefault();
     const { name, email, message } = formData;
     if (!rating && !parentCommentId) {
@@ -54,7 +54,7 @@ const ReviewFormModal = ({
 
     if (parentCommentId) {
       const parentComment = reviews.find(
-        (review) => review.id === parentCommentId,
+        review => review.id === parentCommentId
       );
       if (parentComment) {
         parentComment.replies.push(newReview);
@@ -92,54 +92,54 @@ const ReviewFormModal = ({
       )}
       <Modal open={openModalForm} onClose={closeModalForm} closeAfterTransition>
         <Fade in={openModalForm}>
-          <div className="formContainer">
-            <div className="formHeader">
+          <div className='form-container'>
+            <div className='form-header'>
               {!parentCommentId && <h4>Додати новий відгук</h4>}
               {replyToUser && typeof replyToUser === 'string' && (
                 <h4>Відповідь для {replyToUser}</h4>
               )}
 
               <ButtonWrapper
-                buttonClassName="closeFormBtn"
-                icon="close"
+                buttonClassName='close-form-btn'
+                icon='close'
                 onClick={closeModalForm}
               />
             </div>
 
-            <form className="formAddReview" onSubmit={handleAddReview}>
+            <form className='form-add-review' onSubmit={handleAddReview}>
               <TextField
-                type="text"
-                className="reviewInput"
+                type='text'
+                className='review-input'
                 label="Ім'я та прізвище"
-                name="name"
+                name='name'
                 value={formData.name}
                 onChange={handleChange}
-                size="small"
+                size='small'
                 required
               />
               <TextField
-                type="email"
-                className="reviewInput"
-                label="E-пошта"
-                name="email"
+                type='email'
+                className='review-input'
+                label='E-пошта'
+                name='email'
                 value={formData.email}
                 onChange={handleChange}
-                size="small"
+                size='small'
                 required
               />
               <TextField
                 multiline
-                className="reviewInput textarea"
-                label="Повідомлення"
-                name="message"
+                className='review-input textarea'
+                label='Повідомлення'
+                name='message'
                 value={formData.message}
                 onChange={handleChange}
-                size="small"
+                size='small'
                 rows={5}
                 required
               />
               {!parentCommentId && (
-                <div className="ratingStars">
+                <div className='rating-stars'>
                   <p>Оцінити товар:</p>
                   <Rating
                     value={rating}
@@ -148,8 +148,8 @@ const ReviewFormModal = ({
                 </div>
               )}
               <ButtonWrapper
-                buttonClassName="submitReviewBtn"
-                type="submit"
+                buttonClassName='submit-review-btn'
+                type='submit'
                 buttonText={
                   !parentCommentId ? 'Залишити відгук' : 'Залишити відповідь'
                 }

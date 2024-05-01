@@ -6,14 +6,11 @@ import { categories } from '../../constans/constants';
 import FilterProducts from '../../common/FilterProducts/FilterProducts';
 
 const Catalog = () => {
-  const activeCategory = useSelector((store) => store.app.selectedCategory);
-  const activeSubcategory = useSelector(
-    (store) => store.app.selectedSubcategory,
-  );
+  const activeCategory = useSelector(store => store.app.selectedCategory);
+  const activeSubcategory = useSelector(store => store.app.selectedSubcategory);
 
-  const products = useSelector((state) => state.products);
+  const products = useSelector(state => state.products);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  console.log('filteredProducts:', filteredProducts);
 
   useEffect(() => {
     if (products) {
@@ -21,13 +18,13 @@ const Catalog = () => {
     }
     if (activeCategory) {
       const selectedCategory = categories.find(
-        (cat) => cat.name === activeCategory,
+        cat => cat.name === activeCategory
       );
       if (selectedCategory) {
-        let filteredByCategory = products.filter((product) =>
+        let filteredByCategory = products.filter(product =>
           selectedCategory.subcategories.some(
-            (subcat) => subcat.name === product.subcategory,
-          ),
+            subcat => subcat.name === product.subcategory
+          )
         );
         setFilteredProducts(filteredByCategory);
       }
@@ -35,7 +32,7 @@ const Catalog = () => {
 
     if (activeSubcategory) {
       let filteredProducts = products.filter(
-        (product) => product.subcategory === activeSubcategory,
+        product => product.subcategory === activeSubcategory
       );
       setFilteredProducts(filteredProducts);
     }
@@ -43,7 +40,7 @@ const Catalog = () => {
   }, [activeCategory, activeSubcategory, products]);
 
   return (
-    <div className="catalogWrapper">
+    <div className='catalog-wrap'>
       <h2>{activeCategory || activeSubcategory || 'Каталог'}</h2>
       <FilterProducts products={filteredProducts} showFilterButton={true} />
     </div>

@@ -4,7 +4,7 @@ import Navigation from './components/Navigation/Navigation';
 
 const Header = () => {
   return (
-    <header className="headerWrapper">
+    <header className='header-wrap'>
       <ControlBlock />
       <Navigation />
     </header>

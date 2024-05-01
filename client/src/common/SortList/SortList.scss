@@ -1,12 +1,13 @@
-.sortListWrapper {
+.sort-list-wrap {
   width: 100%;
-  .sortListBlock {
+
+  .sort-list-block {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin: 0 auto;
 
-    .sortListOptions {
+    .sort-list-options {
       margin-top: 15px;
       padding: 5px 15px;
       border-radius: 5px;
@@ -16,17 +17,17 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .sortListWrapper {
-    .sortListBlock {
-      &.justifyEnd {
+  .sort-list-wrap {
+    .sort-list-block {
+      &.justify-end {
         justify-content: flex-end;
       }
 
-      &.justifyBetween {
+      &.justify-between {
         justify-content: space-between;
       }
 
-      .filterBtn {
+      .filter-btn {
         width: 160px;
         height: 35px;
         border-radius: 5px;
@@ -35,7 +36,7 @@
           margin-right: 5px;
         }
       }
-      .sortListOptions {
+      .sort-list-options {
         width: 160px;
         height: 35px;
         margin-top: 0;

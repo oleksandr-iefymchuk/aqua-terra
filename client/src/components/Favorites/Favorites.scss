@@ -1,4 +1,4 @@
-.favoritesWrap {
+.favorites-wrap {
   margin: 0 auto;
   width: 90%;
   padding-top: 20px;
@@ -7,13 +7,13 @@
   align-items: center;
   text-align: left;
 
-  .quantityProducts {
+  .quantity-products {
     width: 100%;
     font-weight: 600;
     margin-bottom: 20px;
   }
 
-  .emptyBasket {
+  .empty-basket {
     color: #a2a2a2;
     display: flex;
     flex-wrap: wrap;
@@ -27,10 +27,10 @@
     }
   }
 
-  .sortListWrapper {
+  .sort-list-wrap {
     width: 100%;
 
-    .sortListBlock {
+    .sort-list-block {
       width: 100%;
     }
 
@@ -41,8 +41,8 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .favoritesWrap {
-    .quantityProducts {
+  .favorites-wrap {
+    .quantity-products {
       margin-bottom: 5px;
     }
   }

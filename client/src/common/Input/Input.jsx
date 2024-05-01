@@ -11,14 +11,14 @@ const InputWrapper = ({
   htmlFor,
 }) => {
   return (
-    <div className="inputBlock">
+    <div className='input-block'>
       {label && (
-        <label className="label" htmlFor={htmlFor}>
+        <label className='label' htmlFor={htmlFor}>
           {label}
         </label>
       )}
       <input
-        className="inputBody"
+        className='input-body'
         type={type}
         id={id}
         placeholder={placeholder}

@@ -1,12 +1,11 @@
-.footerWrapper {
+.footer-wrap {
   background-color: #212526;
   color: #fff;
-  // min-height: 200px;
   margin-top: 20px;
   padding: 30px 5%;
   font-weight: 200;
 
-  .footerNavBar {
+  .footer-nav-bar {
     width: 50%;
     ul {
       list-style-type: none;
@@ -31,8 +30,8 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .footerWrapper {
-    .footerNavBar {
+  .footer-wrap {
+    .footer-nav-bar {
       width: 100%;
     }
   }

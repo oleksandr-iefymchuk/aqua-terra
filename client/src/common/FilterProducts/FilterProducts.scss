@@ -1,10 +1,10 @@
-.filterProductsWrapper {
+.filter-products-wrap {
   display: flex;
   position: relative;
   width: 100%;
   margin: 0 auto;
 
-  .filterMenuOverlay {
+  .filter-menu-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -21,15 +21,14 @@
     border: 1px solid #eaedf7;
     border-left: none;
     margin-top: 65px;
-    // width: 300px;
 
-    .paramBox {
+    .param-box {
       text-align: left;
       margin-bottom: 0px;
       margin-top: 0;
       border-bottom: 1px solid #eaedf7;
 
-      .paramName {
+      .param-name {
         color: #3e77aa;
         font-weight: 400;
       }
@@ -38,7 +37,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .filterProductsWrapper {
+  .filter-products-wrap {
     .filters {
       display: flex;
       flex-direction: column;
@@ -65,7 +64,7 @@
         transform: translateX(0%);
       }
 
-      .filterTitle {
+      .filter-title {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -74,7 +73,7 @@
         background-color: #eaedf7;
         padding: 10px 15px;
 
-        .closeFilterBtn {
+        .close-filter-btn {
           width: 30px;
           position: absolute;
           right: 3%;
@@ -88,19 +87,7 @@
         }
       }
 
-      // .paramBox {
-      //   padding: 10px 15px;
-      //   text-align: left;
-      //   margin-bottom: 20px;
-      //   border-bottom: 1px solid #eaedf7;
-
-      //   .paramBoxContent {
-      //     .paramName {
-      //       margin: 15px 0;
-      //     }
-      //   }
-      // }
-      .showFilteredProductsBtn {
+      .show-filtered-products-btn {
         margin: 50px auto 30px auto;
         width: 250px;
         height: 40px;

@@ -27,7 +27,7 @@ const CardInfoDescription = ({
   const [isExpandedCharacteristics, setIsExpandedCharacteristics] =
     useState(false);
 
-  const productReviews = reviews.filter((review) => review.productId === id);
+  const productReviews = reviews.filter(review => review.productId === id);
   console.log('productReviews:', productReviews);
 
   const toggleExpandDescription = () =>
@@ -76,34 +76,37 @@ const CardInfoDescription = ({
 
   const markdownPath =
     window.location.hostname === '127.0.0.1' ? '/public/markdown' : '/markdown';
+
   useEffect(() => {
-    fetch(`${markdownPath}/${description}`)
-      .then((res) => res.text())
-      .then((markdown) => {
-        setMarkdown(markdown);
-      });
+    if (description) {
+      fetch(`${markdownPath}/${description}`)
+        .then(res => res.text())
+        .then(markdown => {
+          setMarkdown(markdown);
+        });
+    }
   }, [description, markdownPath]);
 
   return (
-    <div className="cardInfoDescription" id="reviews">
+    <div className='card-info-description' id='reviews'>
       <ThemeProvider theme={styles}>
         <TabContext value={value}>
-          <TabList onChange={handleChangeTab} className="customTabList">
-            <Tab label="Опис" value="description" />
-            <Tab label="Характеристики" value="characteristics" />
-            <Tab label="Відгуки" value="reviews" />
+          <TabList onChange={handleChangeTab} className='custom-tab-list'>
+            <Tab label='Опис' value='description' />
+            <Tab label='Характеристики' value='characteristics' />
+            <Tab label='Відгуки' value='reviews' />
           </TabList>
-          <TabPanel value="description" className="description">
+          <TabPanel value='description' className='description'>
             <div
               className={
-                isExpandedDescription ? 'contentExpanded' : 'contentCollapsed'
+                isExpandedDescription ? 'content-expanded' : 'content-collapsed'
               }
             >
               <Markdown>{markdown}</Markdown>
             </div>
             {markdown.split('\n').length > 10 && (
               <ButtonWrapper
-                buttonClassName="expandBtn"
+                buttonClassName='expand-btn'
                 icon={isExpandedDescription ? 'collapse' : 'expand'}
                 onClick={toggleExpandDescription}
                 buttonText={
@@ -112,19 +115,19 @@ const CardInfoDescription = ({
               />
             )}
           </TabPanel>
-          <TabPanel value="characteristics" className="characteristics">
+          <TabPanel value='characteristics' className='characteristics'>
             <div
               className={
                 isExpandedCharacteristics
-                  ? 'contentExpanded'
-                  : 'contentCollapsed'
+                  ? 'content-expanded'
+                  : 'content-collapsed'
               }
             >
               {renderCharacteristics()}
             </div>
             {Object.keys(param).length > 6 && (
               <ButtonWrapper
-                buttonClassName="expandBtn"
+                buttonClassName='expand-btn'
                 icon={isExpandedCharacteristics ? 'collapse' : 'expand'}
                 onClick={toggleExpandCharacteristics}
                 buttonText={
@@ -133,7 +136,7 @@ const CardInfoDescription = ({
               />
             )}
           </TabPanel>
-          <TabPanel value="reviews" className="reviews">
+          <TabPanel value='reviews' className='reviews'>
             <Reviews id={id} reviews={reviews} setReviews={setReviews} />
           </TabPanel>
         </TabContext>

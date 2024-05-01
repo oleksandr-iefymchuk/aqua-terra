@@ -1,5 +1,5 @@
-.reviewsWrapper {
-  .blockAddReview {
+.reviews-wrapper {
+  .block-add-review {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -7,7 +7,7 @@
     padding: 15px;
     background-color: #f7f7f7;
 
-    .addReviewBtn {
+    .add-review-btn {
       width: 200px;
       height: 40px;
       background-color: #008ec8;
@@ -17,30 +17,31 @@
       }
     }
   }
-  .itemReview {
+  .item-review {
     margin: 25px 0;
-    .reviewHeader {
+    .review-header {
       display: flex;
       align-items: center;
       gap: 10px;
 
-      .reviewDate {
+      .review-date {
         font-size: 14px;
         font-weight: 500;
         color: #959595;
       }
 
-      .reviewRating {
+      .review-rating {
         font-size: 1.3rem;
       }
     }
 
-    .replySection {
+    .reply-section {
       border-left: 1px solid #cbcbcb;
       padding-left: 10px;
       margin-left: 10px;
-      .replyBtn,
-      .openRepliesBtn {
+
+      .reply-btn,
+      .open-replies-btn {
         font-size: 12px;
         margin-top: 5px;
         width: 80px;
@@ -67,26 +68,27 @@
         }
       }
 
-      .openRepliesBtn {
+      .open-replies-btn {
         width: 150px;
         margin-top: 15px;
       }
     }
   }
 
-  .repliesList {
-    .itemReview {
+  .replies-list {
+    .item-review {
       margin: 5px 0;
     }
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .reviewsWrapper {
-    .blockAddReview {
+  .reviews-wrapper {
+    .block-add-review {
       justify-content: center;
       background-color: #fff;
-      .addReviewBtn {
+
+      .add-review-btn {
         width: 90%;
         height: 40px;
         background-color: #f7f7f7;

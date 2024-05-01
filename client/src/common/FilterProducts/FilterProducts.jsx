@@ -24,13 +24,13 @@ const FilterProducts = ({ products, showFilterButton }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedParams, setSelectedParams] = useState({});
 
-  const applyFilters = (params) => {
+  const applyFilters = params => {
     let filtered = products;
 
     Object.entries(params).forEach(([paramName, selectedValues]) => {
       if (selectedValues.length > 0) {
-        filtered = filtered.filter((product) =>
-          selectedValues.includes(product.param[paramName]),
+        filtered = filtered.filter(product =>
+          selectedValues.includes(product.param[paramName])
         );
       }
     });
@@ -44,7 +44,7 @@ const FilterProducts = ({ products, showFilterButton }) => {
     const updatedParams = {
       ...selectedParams,
       [paramName]: isChecked
-        ? updatedValues.filter((item) => item !== value)
+        ? updatedValues.filter(item => item !== value)
         : [...updatedValues, value],
     };
     setSelectedParams(updatedParams);
@@ -65,25 +65,25 @@ const FilterProducts = ({ products, showFilterButton }) => {
 
   const availableParams = Object.keys(allParamValues).reduce(
     (acc, paramName) => {
-      acc[paramName] = allParamValues[paramName].filter((paramValue) => {
+      acc[paramName] = allParamValues[paramName].filter(paramValue => {
         const tempSelectedParams = {
           ...selectedParams,
           [paramName]: [paramValue],
         };
-        const filtered = products.filter((product) =>
+        const filtered = products.filter(product =>
           Object.entries(tempSelectedParams).every(
             ([key, values]) =>
-              values.length === 0 || values.includes(product.param[key]),
-          ),
+              values.length === 0 || values.includes(product.param[key])
+          )
         );
         return filtered.length > 0;
       });
       return acc;
     },
-    {},
+    {}
   );
 
-  const getProductsWordUkr = (count) => {
+  const getProductsWordUkr = count => {
     const cases = [2, 0, 1, 1, 1, 2];
     const titles = ['товар', 'товари', 'товарів'];
     return titles[
@@ -95,11 +95,11 @@ const FilterProducts = ({ products, showFilterButton }) => {
 
   const toggleFilterMenu = () => {
     if (!isShowFilterMenu) {
-      document.body.classList.add('mobileMenuOpen');
+      document.body.classList.add('mobile-menu-open');
     } else {
-      document.body.classList.remove('mobileMenuOpen');
+      document.body.classList.remove('mobile-menu-open');
     }
-    setShowFilterMenu((prevState) => !prevState);
+    setShowFilterMenu(prevState => !prevState);
   };
 
   useEffect(() => {
@@ -109,39 +109,39 @@ const FilterProducts = ({ products, showFilterButton }) => {
   }, [products]);
 
   return (
-    <div className="filterProductsWrapper">
+    <div className='filter-products-wrap'>
       {isShowFilterMenu && (
-        <div className="filterMenuOverlay" onClick={toggleFilterMenu}></div>
+        <div className='filter-menu-overlay' onClick={toggleFilterMenu}></div>
       )}
       {products.length > 0 && (
         <div className={`filters ${isShowFilterMenu ? 'show' : 'hide'}`}>
           {isMobileDevice && (
-            <div className="filterTitle">
+            <div className='filter-title'>
               <h3>Фільтр</h3>
               <ButtonWrapper
-                buttonClassName="closeFilterBtn"
+                buttonClassName='close-filter-btn'
                 onClick={toggleFilterMenu}
-                icon="close"
+                icon='close'
               />
             </div>
           )}
-          <div className="filterParam">
-            {Object.keys(allParamValues).map((paramName) => (
-              <Accordion key={paramName} defaultExpanded className="paramBox">
+          <div className='filter-param'>
+            {Object.keys(allParamValues).map(paramName => (
+              <Accordion key={paramName} defaultExpanded className='param-box'>
                 <AccordionSummary
                   sx={{
                     '.MuiAccordionSummary-content.Mui-expanded': {
                       margin: '5px 0',
                     },
                   }}
-                  className="paramBoxContent"
+                  className='param-box-content'
                   expandIcon={<ExpandMoreIcon style={{ color: '#3e77aa' }} />}
                 >
-                  <h4 className="paramName">{paramName}</h4>
+                  <h4 className='param-name'>{paramName}</h4>
                 </AccordionSummary>
                 <AccordionDetails>
                   <FormGroup>
-                    {allParamValues[paramName].map((paramValue) => (
+                    {allParamValues[paramName].map(paramValue => (
                       <FormControlLabel
                         key={paramValue}
                         control={
@@ -176,7 +176,7 @@ const FilterProducts = ({ products, showFilterButton }) => {
           </div>
           {isMobileDevice && (
             <ButtonWrapper
-              buttonClassName="showFilteredProductsBtn"
+              buttonClassName='show-filtered-products-btn'
               buttonText={`Показати ${
                 filteredProducts.length
               } ${getProductsWordUkr(filteredProducts.length)}`}

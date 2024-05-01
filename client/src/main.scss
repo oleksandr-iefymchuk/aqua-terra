@@ -11,11 +11,11 @@ body {
   line-height: 1.5;
   font-weight: 400;
 
-  &.mobileMenuOpen {
+  &.mobile-menu-open {
     overflow: hidden;
   }
 
-  &.categoryMenuOpen {
+  &.category-menu-open {
     overflow: hidden;
   }
 
@@ -39,8 +39,8 @@ body {
   html,
   body {
     #root {
-      main {
-        margin-top: 57px;
+      .home-page {
+        margin-top: 56px;
       }
     }
   }

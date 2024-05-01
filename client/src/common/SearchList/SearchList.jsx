@@ -1,14 +1,14 @@
+import './SearchList.scss';
 import { useState, useEffect, Fragment } from 'react';
 import { useSelector } from 'react-redux';
-import './SearchList.scss';
 import questionMark from '../../assets/question-mark.png';
 
 import ButtonWrapper from '../Button/Button';
 import SortList from '../SortList/SortList';
 
 const SearchList = () => {
-  const searchValue = useSelector((state) => state.app.searchValue);
-  const allProducts = useSelector((state) => state.products);
+  const searchValue = useSelector(state => state.app.searchValue);
+  const allProducts = useSelector(state => state.products);
 
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -32,36 +32,32 @@ const SearchList = () => {
   }, [searchValue, allProducts, isEmptySearchField]);
 
   return (
-    <div className="searchListWrap">
+    <div className='search-list-wrap'>
       {filteredProducts.length > 0 ? (
         <Fragment>
-          <h2 className="searchListTitle">
+          <h2 className='search-list-title'>
             Результати пошуку &quot;
-            <span className="searchValue">{searchValue}</span>&quot;
+            <span className='search-value'>{searchValue}</span>&quot;
           </h2>
           <SortList products={filteredProducts}></SortList>
         </Fragment>
       ) : (
-        <div className="emptySearchList">
-          <img
-            className="questionMark"
-            src={questionMark}
-            alt="question mark"
-          />
-          <div className="searchInfo">
-            <h2 className="emptySearchListTitle">
+        <div className='empty-search-list'>
+          <img src={questionMark} alt='question mark' />
+          <div className='search-info'>
+            <h2 className='empty-search-list-title'>
               За запитом &quot;
-              <span className="searchValue">{searchValue}</span>&quot; нічого не
-              знайдено :(
+              <span className='search-value'>{searchValue}</span>&quot; нічого
+              не знайдено :(
             </h2>
             <p>
               Перевірте правильність написання запиту, спробуйте використати
               синоніми чи більш загальні запити.
             </p>
             <ButtonWrapper
-              buttonClassName="catalogButton"
-              onClick={() => console.log('catalogButton')}
-              buttonText="Скористатись каталогом"
+              buttonClassName='catalog-btn'
+              onClick={() => console.log('catalog-btn')}
+              buttonText='Скористатись каталогом'
             />
           </div>
         </div>

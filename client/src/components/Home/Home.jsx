@@ -11,13 +11,13 @@ import CatalogBatton from '../../common/CatalogBatton/CatalogBatton';
 
 const Home = () => {
   const { BUTTON_CATALOG } = BUTTON_LABELS;
-  const products = useSelector((state) => state.products);
+  const products = useSelector(state => state.products);
 
   const [categoryIndexes, setCategoryIndexes] = useState({});
   const isMobileDevice = useMediaQuery({ maxWidth: 1024 });
 
   const setCurrentIndex = (category, index) => {
-    setCategoryIndexes((prevIndexes) => ({
+    setCategoryIndexes(prevIndexes => ({
       ...prevIndexes,
       [category]: index,
     }));
@@ -28,24 +28,24 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="homeWrapper">
+    <div className='home-wrap'>
       <Banner />
       {isMobileDevice && (
         <CatalogBatton
           categories={categories}
-          iconBurger="menu"
+          iconBurger='menu'
           buttonText={BUTTON_CATALOG}
-          buttonClassName="homeCatalogBtn"
+          buttonClassName='home-catalog-btn'
         />
       )}
 
-      <div className="productsList">
-        {categories.map((categoryData) => {
+      <div className='products-list'>
+        {categories.map(categoryData => {
           const { name: categoryName, subcategories } = categoryData;
 
           const categoryProducts = subcategories.reduce((acc, subcategory) => {
             const subcategoryProducts = products.filter(
-              (product) => product.subcategory === subcategory.name,
+              product => product.subcategory === subcategory.name
             );
             return [...acc, ...subcategoryProducts];
           }, []);
@@ -53,28 +53,28 @@ const Home = () => {
           const currentIndex = categoryIndexes[categoryName] || 0;
           const displayedProducts = categoryProducts.slice(
             currentIndex,
-            currentIndex + 2,
+            currentIndex + 2
           );
 
           return (
-            <div className="productCategory" key={categoryName}>
-              <div className="categoryTitle">
+            <div className='product-category' key={categoryName}>
+              <div className='category-title'>
                 <h2>{categoryName}</h2>
                 <ButtonWrapper
-                  buttonClassName="categoryButtons"
+                  buttonClassName='category-buttons'
                   disabled={currentIndex === 0}
                   onClick={() =>
                     setCurrentIndex(categoryName, currentIndex - 2)
                   }
-                  icon="arrowPrev"
+                  icon='arrow-prev'
                 />
                 <ButtonWrapper
-                  buttonClassName="categoryButtons"
+                  buttonClassName='category-buttons'
                   disabled={currentIndex + 2 >= categoryProducts.length}
                   onClick={() =>
                     setCurrentIndex(categoryName, currentIndex + 2)
                   }
-                  icon="arrowNext"
+                  icon='arrow-next'
                 />
               </div>
               <ProductList products={displayedProducts} />

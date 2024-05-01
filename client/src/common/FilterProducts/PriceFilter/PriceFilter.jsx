@@ -12,15 +12,15 @@ const PriceFilter = ({ products, setFilteredProducts }) => {
 
   const getMinPrice = useCallback(() => {
     if (products.length === 0) return 0;
-    return Math.min(...products.map((product) => product.price));
+    return Math.min(...products.map(product => product.price));
   }, [products]);
 
   const getMaxPrice = useCallback(() => {
     if (products.length === 0) return 0;
-    return Math.max(...products.map((product) => product.price));
+    return Math.max(...products.map(product => product.price));
   }, [products]);
 
-  const handleMinInputChange = (event) => {
+  const handleMinInputChange = event => {
     let newMinPrice;
     if (event.target.value === '') {
       newMinPrice = 0;
@@ -31,7 +31,7 @@ const PriceFilter = ({ products, setFilteredProducts }) => {
     setMinPrice(newMinPrice);
   };
 
-  const handleMaxInputChange = (event) => {
+  const handleMaxInputChange = event => {
     let newMaxPrice;
     if (event.target.value === '') {
       newMaxPrice = 0;
@@ -50,7 +50,7 @@ const PriceFilter = ({ products, setFilteredProducts }) => {
 
   const applyPriceFilter = () => {
     const filtered = products.filter(
-      (product) => product.price >= minPrice && product.price <= maxPrice,
+      product => product.price >= minPrice && product.price <= maxPrice
     );
     setFilteredProducts(filtered);
   };
@@ -61,23 +61,23 @@ const PriceFilter = ({ products, setFilteredProducts }) => {
   }, [getMinPrice, getMaxPrice]);
 
   return (
-    <div className="priceFilter">
+    <div className='price-filter'>
       <h4>Ціна:</h4>
       <Slider
-        className="rangeSlider"
+        className='range-slider'
         value={[parseInt(minPrice), parseInt(maxPrice)]}
         onChange={handlePriceRangeChange}
         min={getMinPrice()}
         max={getMaxPrice()}
-        valueLabelDisplay="off"
-        aria-labelledby="range-slider"
-        getAriaValueText={(value) => value.toString()}
+        valueLabelDisplay='off'
+        aria-labelledby='range-slider'
+        getAriaValueText={value => value.toString()}
       />
-      <div className="priceInputs">
+      <div className='price-inputs'>
         <Input
-          className="minPriceInput"
+          className='min-price-input'
           value={minPrice}
-          margin="dense"
+          margin='dense'
           inputProps={{
             step: 1,
             min: getMinPrice(),
@@ -88,9 +88,9 @@ const PriceFilter = ({ products, setFilteredProducts }) => {
         />{' '}
         <span> - </span>
         <Input
-          className="maxPriceInput"
+          className='max-price-input'
           value={maxPrice}
-          margin="dense"
+          margin='dense'
           inputProps={{
             step: 1,
             min: minPrice,
@@ -100,8 +100,8 @@ const PriceFilter = ({ products, setFilteredProducts }) => {
           onChange={handleMaxInputChange}
         />
         <ButtonWrapper
-          buttonClassName="btnPriceFilter"
-          buttonText="OK"
+          buttonClassName='btn-price-filter'
+          buttonText='OK'
           onClick={applyPriceFilter}
         />
       </div>

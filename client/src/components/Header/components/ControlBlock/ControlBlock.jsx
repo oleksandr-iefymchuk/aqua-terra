@@ -20,7 +20,6 @@ import ButtonWrapper from '../../../../common/Button/Button';
 import InputWrapper from '../../../../common/Input/Input';
 import CatalogBatton from '../../../../common/CatalogBatton/CatalogBatton';
 import MobileMenu from '../../../../common/MobileMenu/MobileMenu';
-// import CategoryMenu from '../../../Catalog/components/CategoryMenu/CategoryMenu';
 
 const ControlBlock = () => {
   const { BUTTON_SEARCH, BUTTON_CATALOG } = BUTTON_LABELS;
@@ -34,9 +33,9 @@ const ControlBlock = () => {
   const navigationSearchList = () => navigate('/search');
 
   const isMobileDevice = useMediaQuery({ maxWidth: 1024 });
-  const isShowMobileMenu = useSelector((state) => state.app.isShowMobileMenu);
+  const isShowMobileMenu = useSelector(state => state.app.isShowMobileMenu);
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = e => {
     const { value } = e.target;
     setSearchValue(value);
   };
@@ -47,14 +46,14 @@ const ControlBlock = () => {
   };
 
   return (
-    <div className="controlBlockWrapper">
-      <div className="controlBlock">
+    <div className='control-block-wrap'>
+      <div className='control-block'>
         <Logo onClick={navigationHome} />
 
         {isMobileDevice ? (
           <Fragment>
             <ButtonWrapper
-              buttonClassName="mobileMenuButton"
+              buttonClassName='mobile-menu-btn'
               icon={!isShowMobileMenu ? 'burger' : 'close'}
               onClick={() => dispatch(toggleMobileMenu())}
             />
@@ -63,27 +62,27 @@ const ControlBlock = () => {
         ) : (
           <Fragment>
             <CatalogBatton
-              buttonBlockClassName="catalogButtonWrap"
-              buttonClassName="catalogButton"
+              buttonBlockClassName='catalog-btn-wrap'
+              buttonClassName='catalog-btn'
               buttonText={BUTTON_CATALOG}
               categories={categories}
               isShowButtonText={!isMobileDevice}
-              iconBurger="menu"
+              iconBurger='menu'
             />
             {/* <CategoryMenu categories={categories} /> */}
           </Fragment>
         )}
 
-        <div className="searchBar">
+        <div className='search-bar'>
           <InputWrapper
             placeholder={SEARCH_PLACEHOLDER}
-            type="text"
+            type='text'
             value={searchValue}
             onChangeInput={handleSearchChange}
           />
           <ButtonWrapper
             disabled={searchValue.trim() === ''}
-            buttonClassName="searchButton"
+            buttonClassName='search-btn'
             buttonText={!isMobileDevice && BUTTON_SEARCH}
             icon={isMobileDevice && 'search'}
             onClick={handleSearchSubmit}

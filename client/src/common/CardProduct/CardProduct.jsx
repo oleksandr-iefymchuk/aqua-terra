@@ -28,17 +28,17 @@ const CardProduct = ({
   const navigationBasket = () => navigate('/basket');
 
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
-  const favorites = useSelector((store) => store.user.favoriteProducts);
-  const basketProducts = useSelector((store) => store.user.basketProducts);
+  const products = useSelector(state => state.products);
+  const favorites = useSelector(store => store.user.favoriteProducts);
+  const basketProducts = useSelector(store => store.user.basketProducts);
 
-  const currentProduct = products.find((product) => product.id === id);
+  const currentProduct = products.find(product => product.id === id);
   const currentBasketProduct = basketProducts.find(
-    (product) => product.id === id,
+    product => product.id === id
   );
 
-  const isFavorite = favorites.some((item) => item.id === id);
-  const isInBasket = basketProducts.some((item) => item.id === id);
+  const isFavorite = favorites.some(item => item.id === id);
+  const isInBasket = basketProducts.some(item => item.id === id);
 
   const handleAddToBasket = () => {
     const newItem = {
@@ -69,43 +69,47 @@ const CardProduct = ({
   };
 
   return (
-    <div className="cardProduct">
-      <div className="badges">
-        {isNewProduct(dateAdded) && <span className="badgeNew">Новинка</span>}
-        {discount > 0 && <span className="badgeDiscount">-{discount}%</span>}
+    <div className='card-product'>
+      <div className='badges'>
+        {isNewProduct(dateAdded) && <span className='badge-new'>Новинка</span>}
+        {discount > 0 && <span className='badge-discount'>-{discount}%</span>}
       </div>
 
       <ButtonWrapper
-        buttonBlockClassName="favoritesBtnWrap"
-        buttonClassName="favoritesButton"
-        icon={isFavorite ? 'favoritesFilled' : 'favorites'}
-        svgColor="#f05a00"
+        buttonBlockClassName='favorites-btn-wrap'
+        buttonClassName='favorites-btn'
+        icon={isFavorite ? 'favorites-filled' : 'favorites'}
+        svgColor='#f05a00'
         onClick={handleAddToFavotites}
       />
       <Link to={`/${slug}`}>
         <img src={images[0]} alt={title} />
       </Link>
-      <div className="cardProductInfo">
+      <div className='card-product-info'>
         <p>Код: {id}</p>
         <Link to={`/${slug}`}>
           <h3>{title}</h3>
         </Link>
         <p
-          className={quantity !== 0 ? 'availableProduct' : 'unavailableProduct'}
+          className={
+            quantity !== 0 ? 'available-product' : 'unavailable-product'
+          }
         >
           {quantity !== 0 ? 'В наявності' : 'Немає в наявності'}
         </p>
 
-        <div className="cardProductPrice">
-          <div className="price">
-            <p className={`oldPrice ${discount > 0 ? 'discountedPrice' : ''}`}>
+        <div className='card-product-price'>
+          <div className='price'>
+            <p
+              className={`old-price ${discount > 0 ? 'discounted-price' : ''}`}
+            >
               {new Intl.NumberFormat(undefined, {
                 style: 'currency',
                 currency: 'UAH',
               }).format(price)}
             </p>
             {discount > 0 && (
-              <p className="newPrice">
+              <p className='new-price'>
                 {new Intl.NumberFormat(undefined, {
                   style: 'currency',
                   currency: 'UAH',
@@ -118,9 +122,9 @@ const CardProduct = ({
             buttonClassName={`${
               currentProduct.quantity <= 0 &&
               (!currentBasketProduct || currentBasketProduct.quantity <= 0)
-                ? 'disabledBuyButton'
-                : 'activeBuyButton'
-            } ${isInBasket ? 'inBasket' : ''}`}
+                ? 'disabled-buy-btn'
+                : 'active-buy-btn'
+            } ${isInBasket ? 'in-basket' : ''}`}
             disabled={
               currentProduct.quantity <= 0 &&
               (!currentBasketProduct || currentBasketProduct.quantity <= 0)

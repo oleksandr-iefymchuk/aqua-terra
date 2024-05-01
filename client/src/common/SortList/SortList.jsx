@@ -14,11 +14,11 @@ const SortList = ({
   const isMobileDevice = useMediaQuery({ maxWidth: 1024 });
   const [sortType, setSortType] = useState('');
 
-  const handleSortChange = (e) => {
+  const handleSortChange = e => {
     setSortType(e.target.value);
   };
 
-  const sortProducts = (type) => {
+  const sortProducts = type => {
     switch (type) {
       case 'priceAsc':
         return products.slice().sort((a, b) => a.price - b.price);
@@ -37,33 +37,33 @@ const SortList = ({
 
   const sortedProducts = sortProducts(sortType);
   return (
-    <div className="sortListWrapper">
+    <div className='sort-list-wrap'>
       {products.length > 0 && (
         <div
-          className={`sortListBlock ${
-            showFilterButton ? 'justifyBetween' : 'justifyEnd'
+          className={`sort-list-block ${
+            showFilterButton ? 'justify-between' : 'justify-end'
           }`}
         >
           {isMobileDevice && showFilterButton && (
             <ButtonWrapper
-              buttonClassName="filterBtn"
-              icon="filter"
-              buttonText="Фільтр"
+              buttonClassName='filter-btn'
+              icon='filter'
+              buttonText='Фільтр'
               onClick={setShowFilterMenu}
             />
           )}
 
           <select
-            className="sortListOptions"
+            className='sort-list-options'
             value={sortType}
             onChange={handleSortChange}
           >
-            <option value="">За замовчуванням</option>
-            <option value="priceAsc">Від дешевих до дорогих</option>
-            <option value="priceDesc">Від дорогих до дешевих</option>
-            <option value="nameAsc">Назва: від А до Я</option>
-            <option value="nameDesc">Назва: від Я до А</option>
-            <option value="popularity">За популярністю</option>
+            <option value=''>За замовчуванням</option>
+            <option value='priceAsc'>Від дешевих до дорогих</option>
+            <option value='priceDesc'>Від дорогих до дешевих</option>
+            <option value='nameAsc'>Назва: від А до Я</option>
+            <option value='nameDesc'>Назва: від Я до А</option>
+            <option value='popularity'>За популярністю</option>
           </select>
         </div>
       )}
