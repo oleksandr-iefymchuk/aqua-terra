@@ -1,7 +1,7 @@
 import {
   GET_PRODUCTS,
   INCREASE_QUANTITY_PRODUCT,
-  DECREASE_QUANTITY_PRODUCT,
+  DECREASE_QUANTITY_PRODUCT
 } from './actionTypes';
 
 const productsInitialState = [];
@@ -12,17 +12,17 @@ const productsReducer = (state = productsInitialState, action) => {
       return [...action.payload];
 
     case INCREASE_QUANTITY_PRODUCT:
-      return state.map((product) =>
+      return state.map(product =>
         product.id === action.payload.id
           ? { ...product, quantity: product.quantity + action.payload.quantity }
-          : product,
+          : product
       );
 
     case DECREASE_QUANTITY_PRODUCT:
-      return state.map((product) =>
+      return state.map(product =>
         product.id === action.payload.id
           ? { ...product, quantity: product.quantity - action.payload.quantity }
-          : product,
+          : product
       );
 
     default:

@@ -6,6 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import { categories } from './constans/constants';
 import { getProductsThunk } from './store/products/thunk';
+import { getReviewsThunk } from './store/reviews/thunk';
 
 import Header from './components/Header/Header';
 import Registration from './components/Registration/Registration';
@@ -25,6 +26,7 @@ import Catalog from './components/Catalog/Catalog';
 import CategoryMenu from './common/CategoryMenu/CategoryMenu';
 import Contacts from './components/Contacts/Contacts';
 import Breadcrumbs from './common/Breadcrumbs/Breadcrumbs';
+import Progress from './common/Progress/Progress';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,6 +34,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getProductsThunk());
+    dispatch(getReviewsThunk());
   }, [dispatch]);
 
   return (
@@ -39,6 +42,7 @@ const App = () => {
       <Router>
         <Header />
         <Breadcrumbs />
+        <Progress />
         {isMobileDevice && <CategoryMenu categories={categories} />}
         <main>
           <Routes>

@@ -11,3 +11,9 @@ export const isNewProduct = date => {
   const halfYearInMilliseconds = 6 * 30 * 24 * 60 * 60 * 1000;
   return differenceInMilliseconds <= halfYearInMilliseconds;
 };
+
+export const formatDate = dateString => {
+  const dateOnly = dateString.slice(0, 10);
+  const [year, month, day] = dateOnly.split('-');
+  return `${day}.${month}.${year}`;
+};

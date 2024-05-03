@@ -1,19 +1,25 @@
 import './Reviews.scss';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useMediaQuery } from 'react-responsive';
 import { Rating } from '@mui/material';
+import { formatDate } from '../../../../../../helpers';
 
 import ButtonWrapper from '../../../../../Button/Button';
 import ReviewFormModal from '../ReviewFormModal/ReviewFormModal';
 
-const Reviews = ({ id, reviews, setReviews }) => {
+const Reviews = ({ productId }) => {
   const isMobileDevice = useMediaQuery({ maxWidth: 768 });
-  const productReviews = reviews.filter(review => review.productId === id);
   const [openModalForm, setOpenModalForm] = useState(false);
   const [parentCommentId, setParentCommentId] = useState(null);
   const [replyToUser, setReplyToUser] = useState(null);
   const [openRepliesIds, setOpenRepliesIds] = useState([]);
+
+  const reviews = useSelector(store => store.reviews);
+  const productReviews = reviews.filter(
+    review => review.productId === productId
+  );
 
   const handleOpenModalForm = (userName, parentCommentId) => {
     setOpenModalForm(true);
@@ -46,11 +52,11 @@ const Reviews = ({ id, reviews, setReviews }) => {
         />
       </div>
       {productReviews.map(
-        ({ id, userName, rating, comment, date, replies }, index) => (
+        ({ _id, userName, rating, comment, date, replies }, index) => (
           <div className='item-review' key={index}>
             <div className='review-header'>
               <h4>{userName}</h4>
-              <p className='review-date'>{date}</p>
+              <p className='review-date'>{formatDate(date)}</p>
               <Rating className='review-rating' value={rating} readOnly />
             </div>
             <p>{comment}</p>
@@ -58,23 +64,23 @@ const Reviews = ({ id, reviews, setReviews }) => {
             <div className='reply-section'>
               <ButtonWrapper
                 buttonClassName='reply-btn'
-                onClick={() => handleOpenModalForm(userName, id)}
+                onClick={() => handleOpenModalForm(userName, _id)}
                 buttonText='Відповісти'
                 icon='arrow-return'
               />
               {replies.length > 0 && (
                 <ButtonWrapper
                   buttonClassName='open-replies-btn'
-                  onClick={() => toggleReplies(id)}
+                  onClick={() => toggleReplies(_id)}
                   buttonText={
-                    openRepliesIds.includes(id)
+                    openRepliesIds.includes(_id)
                       ? 'Приховати відповіді'
                       : 'Читати всі відповіді'
                   }
                 />
               )}
 
-              {openRepliesIds.includes(id) && (
+              {openRepliesIds.includes(_id) && (
                 <div className='replies-list'>
                   {replies
                     .slice()
@@ -83,7 +89,9 @@ const Reviews = ({ id, reviews, setReviews }) => {
                       <div className='item-review' key={replyIndex}>
                         <div className='review-header'>
                           <h4>{reply.userName}</h4>
-                          <p className='review-date'>{reply.date}</p>
+                          <p className='review-date'>
+                            {formatDate(reply.date)}
+                          </p>
                         </div>
                         <p>{reply.comment}</p>
                       </div>
@@ -95,11 +103,9 @@ const Reviews = ({ id, reviews, setReviews }) => {
         )
       )}
       <ReviewFormModal
-        id={id}
-        reviews={reviews}
+        productId={productId}
         openModalForm={openModalForm}
         closeModalForm={handleCloseModalForm}
-        setReviews={setReviews}
         replyToUser={replyToUser}
         parentCommentId={parentCommentId}
       />
@@ -108,9 +114,8 @@ const Reviews = ({ id, reviews, setReviews }) => {
 };
 
 Reviews.propTypes = {
-  id: PropTypes.string,
-  reviews: PropTypes.array,
-  setReviews: PropTypes.func,
+  productId: PropTypes.string,
+  reviews: PropTypes.array
 };
 
 export default Reviews;

@@ -17,6 +17,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'comma-dangle': ['error', 'never'],
     'arrow-parens': ['error', 'as-needed'],
     'prettier/prettier': [
       'error',
@@ -27,6 +28,7 @@ module.exports = {
         jsxSingleQuote: true,
         singleQuote: true,
         endOfLine: 'auto',
+        trailingComma: 'none',
         'max-len': ['error', { code: 80 }],
       },
     ],

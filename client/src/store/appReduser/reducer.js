@@ -6,6 +6,7 @@ const initialState = {
   isShowCategoryMenu: false,
   isShowMobileMenu: false,
   searchValue: '',
+  isLoading: false
 };
 
 const appReducer = (state = initialState, action) => {
@@ -30,6 +31,9 @@ const appReducer = (state = initialState, action) => {
 
     case storeActionType.SEARCH_PRODUCT:
       return { ...state, searchValue: action.payload };
+
+    case storeActionType.LOADING:
+      return { ...state, isLoading: action.payload };
 
     default:
       return state;

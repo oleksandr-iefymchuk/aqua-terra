@@ -13,7 +13,7 @@ import initialReviews from '../../constans/reviews';
 import {
   addToBasket,
   addToFavorites,
-  removeFromFavorites,
+  removeFromFavorites
 } from '../../store/user/actionCreators';
 import { updateQuantityThunk } from '../../store/thunk';
 
@@ -97,7 +97,7 @@ const CardInfo = () => {
           <img src={images[i]} alt={title} />
         </a>
       );
-    },
+    }
   };
 
   return (
@@ -206,8 +206,7 @@ const CardInfo = () => {
             </div>
           </div>
           <CardInfoDescription
-            id={id}
-            reviews={reviews}
+            productId={id}
             description={description}
             param={param}
             setReviews={setReviews}

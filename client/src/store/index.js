@@ -6,18 +6,20 @@ import storage from 'redux-persist/lib/storage';
 import userReducer from './user/reducer';
 import productsReducer from './products/reducer';
 import appReducer from './appReduser/reducer';
+import reviewsReducer from './reviews/reducer';
 
 const persistConfig = {
   key: 'root',
   storage: storage,
-  // whitelist: ['user'], // Список редьюсеров, которые вы хотите сохранить в персистентном хранилище
-  blacklist: ['products', 'user', 'app'], // Список редьюсеров, которые вы хотите исключить из персистентного хранилища
+  // whitelist: ['user'],
+  blacklist: ['products', 'user', 'app']
 };
 
 const rootReducer = combineReducers({
+  reviews: reviewsReducer,
   user: userReducer,
   products: productsReducer,
-  app: appReducer,
+  app: appReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -14,9 +14,9 @@ const reviews = [
         userName: 'Адміністратор',
         userEmail: 'admin@example.com',
         comment: 'Дякуємо за ваш відгук!',
-        date: '02.03.2023',
-      },
-    ],
+        date: '02.03.2023'
+      }
+    ]
   },
   {
     id: '2add393a-ce19-40dd-be87-72642766027e',
@@ -27,7 +27,7 @@ const reviews = [
     rating: 4,
     comment: 'Дуже подобається, але доставка зайняла багато часу',
     date: '22.04.2024',
-    replies: [],
-  },
+    replies: []
+  }
 ];
 export default reviews;

@@ -14,21 +14,15 @@ import ButtonWrapper from '../../../Button/Button';
 import Reviews from './components/Reviews/Reviews';
 import Markdown from 'markdown-to-jsx';
 
-const CardInfoDescription = ({
-  id,
-  description,
-  param,
-  reviews,
-  setReviews,
-}) => {
+const CardInfoDescription = ({ productId, description, param, setReviews }) => {
   const { value, setValue } = useTabContext();
   const [markdown, setMarkdown] = useState('');
   const [isExpandedDescription, setIsExpandedDescription] = useState(false);
   const [isExpandedCharacteristics, setIsExpandedCharacteristics] =
     useState(false);
 
-  const productReviews = reviews.filter(review => review.productId === id);
-  console.log('productReviews:', productReviews);
+  // const productReviews = reviews.filter(review => review.productId === id);
+  // console.log('productReviews:', productReviews);
 
   const toggleExpandDescription = () =>
     setIsExpandedDescription(!isExpandedDescription);
@@ -53,12 +47,12 @@ const CardInfoDescription = ({
             padding: '5px',
             '&:hover': {
               background: 'transparent',
-              borderBottom: '3px solid #008ec8',
-            },
-          },
-        },
-      },
-    },
+              borderBottom: '3px solid #008ec8'
+            }
+          }
+        }
+      }
+    }
   });
 
   const renderCharacteristics = () => (
@@ -137,7 +131,7 @@ const CardInfoDescription = ({
             )}
           </TabPanel>
           <TabPanel value='reviews' className='reviews'>
-            <Reviews id={id} reviews={reviews} setReviews={setReviews} />
+            <Reviews productId={productId} setReviews={setReviews} />
           </TabPanel>
         </TabContext>
       </ThemeProvider>
@@ -146,11 +140,10 @@ const CardInfoDescription = ({
 };
 
 CardInfoDescription.propTypes = {
-  id: PropTypes.string,
+  productId: PropTypes.string,
   description: PropTypes.string,
   param: PropTypes.object,
-  reviews: PropTypes.array,
-  setReviews: PropTypes.func,
+  setReviews: PropTypes.func
 };
 
 export default CardInfoDescription;

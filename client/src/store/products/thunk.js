@@ -1,12 +1,11 @@
+import axios from 'axios';
 import { getProducts } from './actionCreators';
-import { mockedProductsList } from '../../constans/mockedProductsList';
 
 const getProductsThunk = () => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
-      setTimeout(() => {
-        dispatch(getProducts(mockedProductsList));
-      }, 500);
+      const response = await axios.get('http://localhost:3000/products');
+      dispatch(getProducts(response.data));
     } catch (error) {
       throw new Error(error);
     }

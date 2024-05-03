@@ -6,6 +6,7 @@ const storeActionType = {
   TOGGLE_MOBILE_MENU: 'TOGGLE_MOBILE_MENU',
   CLOSE_MOBILE_MENU: 'CLOSE_MOBILE_MENU',
   SEARCH_PRODUCT: 'SEARCH_PRODUCT',
+  LOADING: 'LOADING'
 };
 
 export default storeActionType;

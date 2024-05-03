@@ -10,33 +10,33 @@ export const categories = [
     subcategories: [
       {
         name: 'Бойлери OCEAN FLAT',
-        linkName: 'bojleri-ocean-flat',
+        linkName: 'bojleri-ocean-flat'
       },
       {
         name: 'Бойлери OCEAN CUBE',
-        linkName: 'bojleri-ocean-cube',
+        linkName: 'bojleri-ocean-cube'
       },
       {
         name: 'Бойлери OCEAN FLAT серії Digital',
-        linkName: 'bojleri-ocean-flat-ser-digital',
+        linkName: 'bojleri-ocean-flat-ser-digital'
       },
       {
         name: 'Бойлер OCEAN FLAT BASIC',
-        linkName: 'bojler-ocean-flat-basic',
+        linkName: 'bojler-ocean-flat-basic'
       },
       {
         name: 'Бойлери OCEAN PRO квадратні',
-        linkName: 'bojleri-ocean-pro-kvadratn',
+        linkName: 'bojleri-ocean-pro-kvadratn'
       },
       {
         name: 'Бойлери OCEAN MINI',
-        linkName: 'bojleri-ocean-mini',
+        linkName: 'bojleri-ocean-mini'
       },
       {
         name: 'Бойлери Новатек',
-        linkName: 'bojleri-novatek',
-      },
-    ],
+        linkName: 'bojleri-novatek'
+      }
+    ]
   },
   {
     name: 'Ручні інструменти',
@@ -44,11 +44,11 @@ export const categories = [
     subcategories: [
       {
         name: 'Набір інструментів',
-        linkName: 'nab-r-nstrument-v',
+        linkName: 'nab-r-nstrument-v'
       },
       { name: 'Викрутки', linkName: 'vikrutki' },
-      { name: 'Молотки', linkName: 'molotki' },
-    ],
+      { name: 'Молотки', linkName: 'molotki' }
+    ]
   },
   {
     name: 'Спецодяг',
@@ -56,8 +56,8 @@ export const categories = [
     subcategories: [
       { name: 'Жилети', linkName: 'zhileti' },
       { name: 'Штани', linkName: 'shtani' },
-      { name: 'Куртки', linkName: 'kurtki' },
-    ],
+      { name: 'Куртки', linkName: 'kurtki' }
+    ]
   },
   {
     name: 'Електроінструменти',
@@ -65,9 +65,9 @@ export const categories = [
     subcategories: [
       { name: 'Шурупокрути', linkName: 'shurupokruti' },
       { name: 'Шліфмашини', linkName: 'shl-fmashini' },
-      { name: 'Електролобзики', linkName: 'elektrolobziki' },
-    ],
-  },
+      { name: 'Електролобзики', linkName: 'elektrolobziki' }
+    ]
+  }
 ];
 
 export const breadcrumbLinks = {
@@ -87,7 +87,7 @@ export const breadcrumbLinks = {
   '/catalog/bojler-ocean-flat-basic': 'Бойлер OCEAN FLAT BASIC',
   '/catalog/bojleri-ocean-pro-kvadratn': 'Бойлери OCEAN PRO квадратні',
   '/catalog/bojleri-ocean-mini': 'Бойлери OCEAN MINI',
-  '/catalog/bojleri-novatek': 'Бойлери Новатек',
+  '/catalog/bojleri-novatek': 'Бойлери Новатек'
 };
 
 export const banners = [
@@ -95,101 +95,101 @@ export const banners = [
     title: 'ТОП-товари',
     image: banner,
     route: '/tools',
-    class: 'tools',
+    class: 'tools'
   },
   {
     title: 'Акції',
     image: banner2,
     route: '/sale',
-    class: 'discountedProduct',
+    class: 'discountedProduct'
   },
   {
     title: 'Новинки',
     image: banner3,
     route: '/novelty',
-    class: 'novelty',
+    class: 'novelty'
   },
   {
     title: 'Популярне',
     image: banner4,
     route: '/popular',
-    class: 'popular',
-  },
+    class: 'popular'
+  }
 ];
 
 export const headerNavbarLinks = [
   {
     link: '/',
-    name: 'Головна',
+    name: 'Головна'
   },
   {
     link: '/about',
-    name: 'Про компанію',
+    name: 'Про компанію'
   },
   {
     link: '/sale',
-    name: 'Знижки',
+    name: 'Знижки'
   },
   {
     link: '/novelty',
-    name: 'Новинки',
+    name: 'Новинки'
   },
   {
     link: '/delivery-info',
-    name: 'Умови оплати та доставки',
-  },
+    name: 'Умови оплати та доставки'
+  }
 ];
 
 export const foterNavLinks = [
   {
     link: '/about',
-    name: 'Про компанію',
+    name: 'Про компанію'
   },
   {
     link: '/contacts',
-    name: 'Контакти',
+    name: 'Контакти'
   },
   {
     link: '/delivery-info',
-    name: 'Умови оплати та доставки',
-  },
+    name: 'Умови оплати та доставки'
+  }
 ];
 
-export const messengers = (url) => [
+export const messengers = url => [
   {
     icon: 'whatsapp',
-    link: `https://api.whatsapp.com/send?text=${encodeURIComponent(url)}`,
+    link: `https://api.whatsapp.com/send?text=${encodeURIComponent(url)}`
   },
   {
     icon: 'telegram',
-    link: `https://t.me/share/url?url=${encodeURIComponent(url)}`,
+    link: `https://t.me/share/url?url=${encodeURIComponent(url)}`
   },
   {
     icon: 'facebook',
     link: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-      url,
-    )}`,
+      url
+    )}`
   },
   {
     icon: 'gmail',
     link: `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=Your%20Subject&body=${encodeURIComponent(
-      url,
-    )}&ui=2&tf=1&pli=1`,
+      url
+    )}&ui=2&tf=1&pli=1`
   },
   {
     icon: 'skype',
-    link: `https://web.skype.com/share?url=${encodeURIComponent(url)}`,
+    link: `https://web.skype.com/share?url=${encodeURIComponent(url)}`
   },
   {
     icon: 'twitter',
     link: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-      url,
-    )}&text=Check%20this%20out!`,
-  },
+      url
+    )}&text=Check%20this%20out!`
+  }
 ];
 
 export const PLACEHOLDER_LABELS = {
-  SEARCH_PLACEHOLDER: 'Я шукаю ...',
+  SEARCH_PLACEHOLDER: 'Я шукаю ...'
 };
 
 export const BUTTON_LABELS = {
@@ -197,10 +197,10 @@ export const BUTTON_LABELS = {
   BUTTON_CATALOG: 'Каталог товарів',
   BUTTON_LOGOUT: 'Logout',
   BUTTON_REGISTRATION: 'Registration',
-  BUTTON_LOGIN: 'Login',
+  BUTTON_LOGIN: 'Login'
 };
 
 export const svgOption = {
   DEFAULT_SIZE: 25,
-  DEFAULT_COLOR: '#ffffff',
+  DEFAULT_COLOR: '#ffffff'
 };

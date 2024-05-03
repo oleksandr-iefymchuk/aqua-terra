@@ -8,23 +8,25 @@ const CustomAlert = ({
   onClose,
   message,
   severity,
-  autoHideDuration = 3000,
+  autoHideDuration = 3000
 }) => {
   return (
-    <Snackbar
-      className='alert'
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={open}
-      autoHideDuration={autoHideDuration}
-      onClose={onClose}
-    >
-      <Alert variant='filled' onClose={onClose} severity={severity}>
-        {message}
-      </Alert>
-    </Snackbar>
+    <div className='custom-alert-wrap'>
+      <Snackbar
+        className='alert'
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right'
+        }}
+        open={open}
+        autoHideDuration={autoHideDuration}
+        onClose={onClose}
+      >
+        <Alert variant='filled' onClose={onClose} severity={severity}>
+          {message}
+        </Alert>
+      </Snackbar>
+    </div>
   );
 };
 
@@ -33,7 +35,7 @@ CustomAlert.propTypes = {
   onClose: PropTypes.func.isRequired,
   message: PropTypes.string.isRequired,
   severity: PropTypes.oneOf(['error', 'warning', 'info', 'success']).isRequired,
-  autoHideDuration: PropTypes.number,
+  autoHideDuration: PropTypes.number
 };
 
 export default CustomAlert;

@@ -8,7 +8,7 @@ import {
   selectCategory,
   selectSubcategory,
   closeCategoryMenu,
-  closeMobileMenu,
+  closeMobileMenu
 } from '../../store/appReduser/actionCreators';
 
 import SvgIcon from '../SvgIcon';
@@ -146,7 +146,7 @@ CategoryMenu.propTypes = {
   categories: PropTypes.array.isRequired,
   isShowCategoryMenu: PropTypes.bool,
   closeCategoryMenu: PropTypes.func,
-  closeMenu: PropTypes.func,
+  closeMenu: PropTypes.func
 };
 
 export default CategoryMenu;
