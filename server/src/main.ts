@@ -24,6 +24,10 @@ mongoose
 app.use(apiEndpoints.PRODUCTS, productsRouter);
 app.use(apiEndpoints.REVIEWS, reviewsRouter);
 
+app.use('/', (req, res) => {
+  res.send('Server is running');
+});
+
 app.listen(PORT, (): void => {
   console.log(`Server listening on port ${PORT}`);
 });
