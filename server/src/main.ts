@@ -7,15 +7,22 @@ import { apiEndpoints } from './constants.js';
 import { swaggerSpec } from './swaggerOptions.js';
 import productsRouter from './routes/products.js';
 import reviewsRouter from './routes/reviews.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
+const uri = process.env.URI;
+
+if (!uri) {
+  console.error('URI is not defined in the environment variables');
+  process.exit(1);
+}
 
 app.use(cors());
 app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-const uri = 'mongodb+srv://bizmailer24:u1i0e2e0@cluster0.o3szzil.mongodb.net/aqua-terra';
 mongoose
   .connect(uri)
   .then(() => console.log('Connected to MongoDB'))
