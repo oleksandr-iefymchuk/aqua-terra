@@ -6,7 +6,9 @@ const getReviewsThunk = () => {
   return async dispatch => {
     try {
       dispatch(setLoading(true));
-      const response = await axios.get('http://localhost:3000/reviews');
+      const response = await axios.get(
+        'https://aqua-terra-server.vercel.app/reviews'
+      );
       dispatch(getReviwes(response.data));
       dispatch(setLoading(false));
     } catch (error) {
@@ -22,7 +24,7 @@ const addReviewThunk = review => {
     try {
       dispatch(setLoading(true));
       const response = await axios.post(
-        'http://localhost:3000/reviews',
+        'https://aqua-terra-server.vercel.app/reviews',
         review
       );
       const result = response.data;
@@ -40,7 +42,7 @@ const updateReviewThunk = review => {
     try {
       dispatch(setLoading(true));
       const response = await axios.put(
-        `http://localhost:3000/reviews/${review._id}`,
+        `https://aqua-terra-server.vercel.app/reviews/${review._id}`,
         review
       );
 
