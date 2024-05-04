@@ -8,7 +8,7 @@ import { swaggerSpec } from './swaggerOptions.js';
 import productsRouter from './routes/products.js';
 import reviewsRouter from './routes/reviews.js';
 
-export const app = express();
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
@@ -31,3 +31,5 @@ app.use('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+
+export default app;

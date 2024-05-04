@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "./src/main.js",
+  "main": "./src/index.js",
   "scripts": {
     "start:dev": "npx nodemon",
-    "start": "npm run build && node dist/main.js",
-    "build": "rimraf ./dist && npx tsc",
+    "start": "npm run build && node dist/index.js",
+    "build": "tsc",
     "lint": "npx eslint ./src",
-    "format": "npx eslint ./src --fix"
+    "format": "npx eslint ./src --fix",
+    "vercel-build": "echo hello"
   },
   "author": "",
   "license": "ISC",

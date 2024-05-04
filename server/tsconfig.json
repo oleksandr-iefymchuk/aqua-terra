@@ -3,7 +3,6 @@
     "target": "ES2018",
     "lib": ["ES6"],
     "module": "NodeNext",
-    "rootDir": "./src",
     "resolveJsonModule": true,
     "allowJs": true,
     "outDir": "./dist",
@@ -14,7 +13,7 @@
     "skipLibCheck": true,
     "removeComments": true
   },
-  "include": ["src/**/*"],
+  "include": ["./api/*.ts"],
   "exclude": ["./node_modules"],
   "lib": ["esnext"],
   "ts-node": {
