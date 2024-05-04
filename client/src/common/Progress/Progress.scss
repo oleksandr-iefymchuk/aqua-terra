@@ -1,7 +1,7 @@
 .circularProgressWrap {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   z-index: 101;
@@ -10,7 +10,7 @@
   .circularProgress {
     position: fixed;
     top: 50%;
-    left: 50%;
+    right: 50%;
     transform: translate(-50%, -50%);
   }
 }
