@@ -8,7 +8,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import { TabControlContext } from '../../contexts/TabControlContext';
-import initialReviews from '../../constans/reviews';
 
 import {
   addToBasket,
@@ -27,7 +26,6 @@ const CardInfo = () => {
   const isMobileDevice = useMediaQuery({ maxWidth: 1024 });
   const navigationBasket = () => navigate('/basket');
 
-  const [reviews, setReviews] = useState(initialReviews);
   const [cardInfoQuantity, setcardInfoQuantity] = useState(1);
   const [value, setValue] = useState('description');
 
@@ -104,12 +102,7 @@ const CardInfo = () => {
     <TabControlContext.Provider value={{ value, setValue }}>
       <div className='card-info-wrapper'>
         {isMobileDevice && (
-          <CardInfoTitle
-            id={id}
-            title={title}
-            quantity={quantity}
-            reviews={reviews}
-          />
+          <CardInfoTitle id={id} title={title} quantity={quantity} />
         )}
         <div className='slider-container'>
           <Slider {...settings}>
@@ -124,12 +117,7 @@ const CardInfo = () => {
         <div className='card-info'>
           <div className='card-info-header'>
             {!isMobileDevice && (
-              <CardInfoTitle
-                id={id}
-                title={title}
-                quantity={quantity}
-                reviews={reviews}
-              />
+              <CardInfoTitle id={id} title={title} quantity={quantity} />
             )}
 
             <div className='quantity-block'>
@@ -209,7 +197,6 @@ const CardInfo = () => {
             productId={id}
             description={description}
             param={param}
-            setReviews={setReviews}
           ></CardInfoDescription>
         </div>
       </div>

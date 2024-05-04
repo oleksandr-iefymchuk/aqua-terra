@@ -1,6 +1,7 @@
 import './CardInfoTitle.scss';
 import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import Rating from '@mui/material/Rating';
 
@@ -8,11 +9,12 @@ import { messengers } from '../../../../constans/constants';
 import ButtonWrapper from '../../../Button/Button';
 import { useTabContext } from '../../../../contexts/TabControlContext';
 
-const CardInfoTitle = ({ id, title, quantity, reviews }) => {
+const CardInfoTitle = ({ id, title, quantity }) => {
   const isMobileDevice = useMediaQuery({ maxWidth: 1024 });
   const [isOpen, setIsOpen] = useState(false);
   const { setValue } = useTabContext();
 
+  const reviews = useSelector(store => store.reviews);
   const productReviews = reviews.filter(review => review.productId === id);
 
   const calculateAverageRating = reviews => {
@@ -131,7 +133,7 @@ CardInfoTitle.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   quantity: PropTypes.number.isRequired,
-  reviews: PropTypes.array,
+  reviews: PropTypes.array
 };
 
 export default CardInfoTitle;

@@ -1,5 +1,5 @@
 import './ReviewFormModal.scss';
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Modal, Fade, TextField, Rating } from '@mui/material';
@@ -84,7 +84,10 @@ const ReviewFormModal = ({
         };
 
         dispatch(updateReviewThunk(updatedParentComment))
-          .then(handleSuccess)
+          .then(() => {
+            handleSuccess();
+            dispatch(getReviewsThunk());
+          })
           .catch(handleError);
       }
     } else {
@@ -93,6 +96,7 @@ const ReviewFormModal = ({
       newReview.replies = [];
       dispatch(addReviewThunk(newReview))
         .then(handleSuccess)
+        .then(dispatch(getReviewsThunk()))
         .catch(handleError);
     }
 
@@ -104,10 +108,6 @@ const ReviewFormModal = ({
     setRating(0);
     closeModalForm();
   };
-
-  useEffect(() => {
-    dispatch(getReviewsThunk());
-  }, [dispatch, parentCommentId]);
 
   return (
     <Fragment>

@@ -14,15 +14,12 @@ import ButtonWrapper from '../../../Button/Button';
 import Reviews from './components/Reviews/Reviews';
 import Markdown from 'markdown-to-jsx';
 
-const CardInfoDescription = ({ productId, description, param, setReviews }) => {
+const CardInfoDescription = ({ productId, description, param }) => {
   const { value, setValue } = useTabContext();
   const [markdown, setMarkdown] = useState('');
   const [isExpandedDescription, setIsExpandedDescription] = useState(false);
   const [isExpandedCharacteristics, setIsExpandedCharacteristics] =
     useState(false);
-
-  // const productReviews = reviews.filter(review => review.productId === id);
-  // console.log('productReviews:', productReviews);
 
   const toggleExpandDescription = () =>
     setIsExpandedDescription(!isExpandedDescription);
@@ -131,7 +128,7 @@ const CardInfoDescription = ({ productId, description, param, setReviews }) => {
             )}
           </TabPanel>
           <TabPanel value='reviews' className='reviews'>
-            <Reviews productId={productId} setReviews={setReviews} />
+            <Reviews productId={productId} />
           </TabPanel>
         </TabContext>
       </ThemeProvider>
