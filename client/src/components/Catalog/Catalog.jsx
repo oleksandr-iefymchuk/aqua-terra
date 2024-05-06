@@ -37,7 +37,7 @@ const Catalog = () => {
       setFilteredProducts(filteredProducts);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeCategory, activeSubcategory, products]);
+  }, [activeCategory, activeSubcategory]);
 
   return (
     <div className='catalog-wrap'>

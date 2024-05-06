@@ -9,7 +9,7 @@ import {
   FormGroup,
   Accordion,
   AccordionSummary,
-  AccordionDetails,
+  AccordionDetails
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
@@ -45,7 +45,7 @@ const FilterProducts = ({ products, showFilterButton }) => {
       ...selectedParams,
       [paramName]: isChecked
         ? updatedValues.filter(item => item !== value)
-        : [...updatedValues, value],
+        : [...updatedValues, value]
     };
     setSelectedParams(updatedParams);
     applyFilters(updatedParams);
@@ -68,7 +68,7 @@ const FilterProducts = ({ products, showFilterButton }) => {
       acc[paramName] = allParamValues[paramName].filter(paramValue => {
         const tempSelectedParams = {
           ...selectedParams,
-          [paramName]: [paramValue],
+          [paramName]: [paramValue]
         };
         const filtered = products.filter(product =>
           Object.entries(tempSelectedParams).every(
@@ -131,8 +131,8 @@ const FilterProducts = ({ products, showFilterButton }) => {
                 <AccordionSummary
                   sx={{
                     '.MuiAccordionSummary-content.Mui-expanded': {
-                      margin: '5px 0',
-                    },
+                      margin: '5px 0'
+                    }
                   }}
                   className='param-box-content'
                   expandIcon={<ExpandMoreIcon style={{ color: '#3e77aa' }} />}
@@ -147,7 +147,7 @@ const FilterProducts = ({ products, showFilterButton }) => {
                         control={
                           <Checkbox
                             sx={{
-                              '& .MuiSvgIcon-root': { fontSize: 28 },
+                              '& .MuiSvgIcon-root': { fontSize: 28 }
                             }}
                             checked={
                               selectedParams[paramName]
@@ -199,7 +199,7 @@ FilterProducts.propTypes = {
   products: PropTypes.array.isRequired,
   isShowFilterMenu: PropTypes.bool,
   setShowFilterMenu: PropTypes.func,
-  showFilterButton: PropTypes.bool,
+  showFilterButton: PropTypes.bool
 };
 
 export default FilterProducts;
