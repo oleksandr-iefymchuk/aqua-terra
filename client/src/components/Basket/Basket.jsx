@@ -13,26 +13,28 @@ const Basket = () => {
   const handleOrder = () => navigate('/order');
   const handlecontinueShopping = () => navigate('/');
 
-  const basketProducts = useSelector(store => store.user.basketProducts);
+  const products = useSelector(state => state.products);
+  const basket = useSelector(store => store.user.basket);
 
-  const sum = basketProducts.reduce(
-    (total, product) => total + product.price * product.quantity,
-    0
-  );
+  const sum = basket.reduce((total, { productId, quantity }) => {
+    const product = products.find(p => p._id === productId);
+    if (product) {
+      return total + product.price * quantity;
+    }
+    return total;
+  }, 0);
 
-  const totalDiscount = basketProducts.reduce((total, product) => {
-    const currentProduct = basketProducts.find(p => p.id === product.id);
-    const totalPrice = currentProduct
-      ? currentProduct.price * product.quantity
-      : 0;
-
-    const discountedPrice = calculateDiscountedPrice(
-      totalPrice,
-      product.discount
-    );
-
-    const discount = totalPrice - discountedPrice;
-    return total + discount;
+  const totalDiscount = basket.reduce((total, { productId, quantity }) => {
+    const product = products.find(p => p._id === productId);
+    if (product) {
+      const totalPrice = product.price * quantity;
+      const discountedPrice = calculateDiscountedPrice(
+        totalPrice,
+        product.discount
+      );
+      return total + (totalPrice - discountedPrice);
+    }
+    return total;
   }, 0);
 
   const totalAmount = sum - totalDiscount;
@@ -41,7 +43,7 @@ const Basket = () => {
     <div className='basket-wrap'>
       <h2 className='basket-title'>Кошик</h2>
       <div className='basket'>
-        {basketProducts.length > 0 && (
+        {basket.length > 0 && (
           <Button
             buttonClassName='continue-shopping-btn'
             buttonText='Продовжити покупки'
@@ -50,18 +52,21 @@ const Basket = () => {
         )}
 
         <div className='basket-list'>
-          {basketProducts.map(product => (
-            <BasketItem key={product.id} {...product} />
-          ))}
+          {basket.map(({ productId, quantity }) => {
+            const product = products.find(p => p._id === productId);
+            return product ? (
+              <BasketItem key={productId} {...product} quantity={quantity} />
+            ) : null;
+          })}
         </div>
-        {basketProducts.length > 0 ? (
+        {basket.length > 0 ? (
           <div className='total-amount-block'>
             <p>
               Сума:{' '}
               <span className='sum'>
                 {new Intl.NumberFormat(undefined, {
                   style: 'currency',
-                  currency: 'UAH',
+                  currency: 'UAH'
                 }).format(sum)}
               </span>
             </p>
@@ -70,7 +75,7 @@ const Basket = () => {
               <span className='total-discount'>
                 {new Intl.NumberFormat(undefined, {
                   style: 'currency',
-                  currency: 'UAH',
+                  currency: 'UAH'
                 }).format(totalDiscount)}
               </span>
             </p>
@@ -79,7 +84,7 @@ const Basket = () => {
               <span className='total-amount'>
                 {new Intl.NumberFormat(undefined, {
                   style: 'currency',
-                  currency: 'UAH',
+                  currency: 'UAH'
                 }).format(totalAmount)}
               </span>
             </p>

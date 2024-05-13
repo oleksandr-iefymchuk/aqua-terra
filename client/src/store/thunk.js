@@ -1,18 +1,18 @@
 import {
   increaseQuantityBasket,
-  decreaseQuantityBasket,
+  decreaseQuantityBasket
 } from './user/actionCreators';
 
 import {
   decreaseQuantityProducts,
-  increaseQuantityProducts,
+  increaseQuantityProducts
 } from './products/actionCreators';
 
 const updateQuantityThunk = (id, quantity, operation) => {
   return async (dispatch, getState) => {
     const state = getState();
-    const product = state.products.find((product) => product.id === id);
-    // const basketProduct = state.user.basketProducts.find(
+    const product = state.products.find(product => product.id === id);
+    // const basketProduct = state.user.basket.find(
     //   (product) => product.id === id,
     // );
     try {

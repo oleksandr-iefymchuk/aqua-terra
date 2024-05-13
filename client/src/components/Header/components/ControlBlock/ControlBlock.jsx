@@ -5,14 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import {
   searchProduct,
-  toggleMobileMenu,
+  toggleMobileMenu
 } from '../../../../store/appReduser/actionCreators';
 
 import {
   PLACEHOLDER_LABELS,
   BUTTON_LABELS,
-  categories,
-} from '../../../../constans/constants';
+  categories
+} from '../../../../constants/constants';
 
 import Logo from './components/Logo/Logo';
 import UserBox from './components/UserBox/UserBox';
@@ -48,7 +48,7 @@ const ControlBlock = () => {
   return (
     <div className='control-block-wrap'>
       <div className='control-block'>
-        <Logo onClick={navigationHome} />
+        <Logo className='logo' onClick={navigationHome} />
 
         {isMobileDevice ? (
           <Fragment>

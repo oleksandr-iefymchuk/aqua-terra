@@ -5,17 +5,17 @@ import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import Rating from '@mui/material/Rating';
 
-import { messengers } from '../../../../constans/constants';
+import { messengers } from '../../../../constants/constants';
 import ButtonWrapper from '../../../Button/Button';
 import { useTabContext } from '../../../../contexts/TabControlContext';
 
-const CardInfoTitle = ({ id, title, quantity }) => {
+const CardInfoTitle = ({ _id, productCode, title, quantity }) => {
   const isMobileDevice = useMediaQuery({ maxWidth: 1024 });
   const [isOpen, setIsOpen] = useState(false);
   const { setValue } = useTabContext();
 
   const reviews = useSelector(store => store.reviews);
-  const productReviews = reviews.filter(review => review.productId === id);
+  const productReviews = reviews.filter(review => review.productId === _id);
 
   const calculateAverageRating = reviews => {
     if (reviews.length === 0) return 0;
@@ -95,7 +95,7 @@ const CardInfoTitle = ({ id, title, quantity }) => {
           </p>
         )}
         <p>
-          Код: <span>{id}</span>{' '}
+          Код: <span>{productCode}</span>{' '}
         </p>
         <div className='reviews'>
           {productReviews.length > 0 ? (
@@ -130,7 +130,8 @@ const CardInfoTitle = ({ id, title, quantity }) => {
 };
 
 CardInfoTitle.propTypes = {
-  id: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
+  productCode: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   quantity: PropTypes.number.isRequired,
   reviews: PropTypes.array

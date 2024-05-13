@@ -37,14 +37,14 @@ body {
       justify-content: center;
     }
   }
-}
 
-@media screen and (max-width: 1024px) {
-  html,
-  body {
-    #root {
-      .home-page {
-        margin-top: 56px;
+  @media screen and (max-width: 1024px) {
+    html,
+    body {
+      #root {
+        .home-page {
+          margin-top: 56px;
+        }
       }
     }
   }

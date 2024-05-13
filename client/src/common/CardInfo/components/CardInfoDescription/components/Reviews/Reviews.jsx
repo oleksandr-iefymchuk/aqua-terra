@@ -9,7 +9,7 @@ import { formatDate } from '../../../../../../helpers';
 import ButtonWrapper from '../../../../../Button/Button';
 import ReviewFormModal from '../ReviewFormModal/ReviewFormModal';
 
-const Reviews = ({ productId }) => {
+const Reviews = ({ _id }) => {
   const isMobileDevice = useMediaQuery({ maxWidth: 768 });
   const [openModalForm, setOpenModalForm] = useState(false);
   const [parentCommentId, setParentCommentId] = useState(null);
@@ -17,9 +17,8 @@ const Reviews = ({ productId }) => {
   const [openRepliesIds, setOpenRepliesIds] = useState([]);
 
   const reviews = useSelector(store => store.reviews);
-  const productReviews = reviews.filter(
-    review => review.productId === productId
-  );
+  const productReviews = reviews.filter(review => review.productId === _id);
+  productReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const handleOpenModalForm = (userName, parentCommentId) => {
     setOpenModalForm(true);
@@ -103,7 +102,7 @@ const Reviews = ({ productId }) => {
         )
       )}
       <ReviewFormModal
-        productId={productId}
+        _id={_id}
         openModalForm={openModalForm}
         closeModalForm={handleCloseModalForm}
         replyToUser={replyToUser}
@@ -114,7 +113,7 @@ const Reviews = ({ productId }) => {
 };
 
 Reviews.propTypes = {
-  productId: PropTypes.string,
+  _id: PropTypes.string,
   reviews: PropTypes.array
 };
 

@@ -7,13 +7,15 @@ const ProductList = ({ products }) => {
   return (
     <div className='products'>
       {products &&
-        products.map(product => <CardProduct key={product.id} {...product} />)}
+        products.map(
+          product => product && <CardProduct key={product?._id} {...product} />
+        )}
     </div>
   );
 };
 
 ProductList.propTypes = {
-  products: PropTypes.array,
+  products: PropTypes.array
 };
 
 export default ProductList;

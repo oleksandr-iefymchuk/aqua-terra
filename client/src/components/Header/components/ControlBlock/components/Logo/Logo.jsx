@@ -7,6 +7,6 @@ const Logo = ({ onClick }) => (
 );
 
 Logo.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func
 };
 export default Logo;

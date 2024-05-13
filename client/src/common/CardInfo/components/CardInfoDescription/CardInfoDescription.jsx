@@ -14,7 +14,7 @@ import ButtonWrapper from '../../../Button/Button';
 import Reviews from './components/Reviews/Reviews';
 import Markdown from 'markdown-to-jsx';
 
-const CardInfoDescription = ({ productId, description, param }) => {
+const CardInfoDescription = ({ _id, description, param }) => {
   const { value, setValue } = useTabContext();
   const [markdown, setMarkdown] = useState('');
   const [isExpandedDescription, setIsExpandedDescription] = useState(false);
@@ -128,7 +128,7 @@ const CardInfoDescription = ({ productId, description, param }) => {
             )}
           </TabPanel>
           <TabPanel value='reviews' className='reviews'>
-            <Reviews productId={productId} />
+            <Reviews _id={_id} />
           </TabPanel>
         </TabContext>
       </ThemeProvider>
@@ -137,7 +137,7 @@ const CardInfoDescription = ({ productId, description, param }) => {
 };
 
 CardInfoDescription.propTypes = {
-  productId: PropTypes.string,
+  _id: PropTypes.string,
   description: PropTypes.string,
   param: PropTypes.object,
   setReviews: PropTypes.func

@@ -6,7 +6,9 @@ const Header = () => {
   return (
     <header className='header-wrap'>
       <ControlBlock />
-      <Navigation />
+      <div className='navigation-container'>
+        <Navigation />
+      </div>
     </header>
   );
 };

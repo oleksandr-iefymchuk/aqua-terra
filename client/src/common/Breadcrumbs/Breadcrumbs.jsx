@@ -5,10 +5,10 @@ import { useDispatch } from 'react-redux';
 
 import {
   selectCategory,
-  selectSubcategory,
+  selectSubcategory
 } from '../../store/appReduser/actionCreators';
 import Button from '../Button/Button';
-import { breadcrumbLinks } from '../../constans/constants';
+import { breadcrumbLinks } from '../../constants/constants';
 
 const Breadcrumbs = () => {
   const location = useLocation();

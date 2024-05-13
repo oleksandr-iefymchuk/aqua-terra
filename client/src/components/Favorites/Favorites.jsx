@@ -5,21 +5,21 @@ import SvgIcon from '../../common/SvgIcon';
 import SortList from '../../common/SortList/SortList';
 
 const Favorites = () => {
-  const favoriteProductsId = useSelector(state => state.user.favoriteProducts);
+  const favoriteProducts = useSelector(state => state.user.favorites);
   const allProducts = useSelector(state => state.products);
 
-  const favoriteProducts = favoriteProductsId.map(favoriteItem => {
-    return allProducts.find(product => product.id === favoriteItem.id);
+  const favorites = favoriteProducts.map(productId => {
+    return allProducts.find(product => product._id === productId);
   });
 
   return (
     <section className='favorites-wrap'>
       <h2>Список бажань</h2>
       <p className='quantity-products'>
-        Кількість товарів: {favoriteProducts.length}{' '}
+        Кількість товарів: {favorites.length}{' '}
       </p>
-      {favoriteProducts.length > 0 ? (
-        <SortList products={favoriteProducts}></SortList>
+      {favorites.length > 0 ? (
+        <SortList products={favorites}></SortList>
       ) : (
         <div className='empty-basket'>
           <SvgIcon

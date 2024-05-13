@@ -24,18 +24,18 @@ export const getAllProducts = async (req: Request, res: Response): Promise<void>
 
 // export const updateMovie = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 //   const { title, description, releaseDate, genre } = req.body;
-//   const updatedMovie: Movie | null = await movieModel.findOneAndUpdate(
-//     { _id: req.params.id },
-//     {
-//       $set: {
-//         title,
-//         description,
-//         releaseDate,
-//         genre
-//       }
-//     },
-//     { new: true, fields: { _id: 0, __v: 0 } }
-//   );
+// const updatedMovie: Movie | null = await movieModel.findOneAndUpdate(
+//   { _id: req.params.id },
+//   {
+//     $set: {
+//       title,
+//       description,
+//       releaseDate,
+//       genre
+//     }
+//   },
+//   { new: true, fields: { _id: 0, __v: 0 } }
+// );
 
 //   if (updatedMovie) {
 //     res.json(updatedMovie);

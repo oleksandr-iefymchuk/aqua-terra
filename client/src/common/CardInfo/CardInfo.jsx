@@ -9,16 +9,17 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import { TabControlContext } from '../../contexts/TabControlContext';
 
-import {
-  addToBasket,
-  addToFavorites,
-  removeFromFavorites
-} from '../../store/user/actionCreators';
+import { addToBasket } from '../../store/user/actionCreators';
 import { updateQuantityThunk } from '../../store/thunk';
 
 import ButtonWrapper from '../../common/Button/Button';
 import CardInfoTitle from './components/CardInfoTitle/CardInfoTitle';
 import CardInfoDescription from './components/CardInfoDescription/CardInfoDescription';
+import {
+  addToFavoritesThunk,
+  removeFromFavoritesThunk
+} from '../../store/user/thunk';
+import { toggleLogineModal } from '../../store/appReduser/actionCreators';
 
 const CardInfo = () => {
   const dispatch = useDispatch();
@@ -30,8 +31,9 @@ const CardInfo = () => {
   const [value, setValue] = useState('description');
 
   const products = useSelector(state => state.products);
-  const basketProducts = useSelector(store => store.user.basketProducts);
-  const favorites = useSelector(store => store.user.favoriteProducts);
+  const { favorites, basket, isAuthenticated } = useSelector(
+    store => store.user
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -43,15 +45,24 @@ const CardInfo = () => {
     return null;
   }
 
-  const { id, images, title, price, quantity, param, description } = cardInfo;
+  const {
+    _id,
+    productCode,
+    images,
+    title,
+    price,
+    quantity,
+    param,
+    description
+  } = cardInfo;
 
-  const isInBasket = basketProducts.find(product => product.id === id);
-  const isFavorite = favorites.some(item => item.id === id);
+  const isInBasket = basket.find(product => product._id === _id);
+  const isFavorite = favorites.some(item => item === _id);
 
   const handleAddToBasket = () => {
     if (!isInBasket) {
       dispatch(addToBasket(cardInfo));
-      dispatch(updateQuantityThunk(id, cardInfoQuantity, 'increase'));
+      dispatch(updateQuantityThunk(_id, cardInfoQuantity, 'increase'));
     }
     if (isInBasket) {
       navigationBasket();
@@ -59,10 +70,13 @@ const CardInfo = () => {
   };
 
   const handleAddToFavotites = () => {
-    if (isFavorite) {
-      dispatch(removeFromFavorites({ id }));
+    if (!isAuthenticated) {
+      dispatch(toggleLogineModal());
+    }
+    if (!isFavorite) {
+      dispatch(addToFavoritesThunk(_id));
     } else {
-      dispatch(addToFavorites({ id }));
+      dispatch(removeFromFavoritesThunk(_id));
     }
   };
 
@@ -102,7 +116,12 @@ const CardInfo = () => {
     <TabControlContext.Provider value={{ value, setValue }}>
       <div className='card-info-wrapper'>
         {isMobileDevice && (
-          <CardInfoTitle id={id} title={title} quantity={quantity} />
+          <CardInfoTitle
+            _id={_id}
+            productCode={productCode}
+            title={title}
+            quantity={quantity}
+          />
         )}
         <div className='slider-container'>
           <Slider {...settings}>
@@ -117,7 +136,12 @@ const CardInfo = () => {
         <div className='card-info'>
           <div className='card-info-header'>
             {!isMobileDevice && (
-              <CardInfoTitle id={id} title={title} quantity={quantity} />
+              <CardInfoTitle
+                _id={_id}
+                productCode={productCode}
+                title={title}
+                quantity={quantity}
+              />
             )}
 
             <div className='quantity-block'>
@@ -194,7 +218,7 @@ const CardInfo = () => {
             </div>
           </div>
           <CardInfoDescription
-            productId={id}
+            _id={_id}
             description={description}
             param={param}
           ></CardInfoDescription>

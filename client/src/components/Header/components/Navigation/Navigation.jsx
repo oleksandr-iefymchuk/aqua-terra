@@ -1,7 +1,7 @@
 import './Navigation.scss';
 import { Link } from 'react-router-dom';
 
-import { headerNavbarLinks } from '../../../../constans/constants';
+import { headerNavbarLinks } from '../../../../constants/constants';
 
 const Navigation = () => {
   return (

@@ -11,7 +11,7 @@ import { calculateDiscountedPrice } from '../../../helpers';
 
 const BasketItem = ({ id, images, title, price, quantity, discount }) => {
   const dispatch = useDispatch();
-  const basketProducts = useSelector(state => state.user.basketProducts);
+  const basket = useSelector(state => state.user.basket);
   const products = useSelector(state => state.products);
   const currentProduct = products.find(product => product.id === id);
 
@@ -19,7 +19,7 @@ const BasketItem = ({ id, images, title, price, quantity, discount }) => {
   const newTotalPrice = calculateDiscountedPrice(price, discount) * quantity;
 
   const handleRemoveFromBasket = update => {
-    const currentBasketproduct = basketProducts.find(item => item.id === id);
+    const currentBasketproduct = basket.find(item => item.id === id);
     const quantityToRemove = currentBasketproduct
       ? currentBasketproduct.quantity
       : 0;
@@ -65,7 +65,7 @@ const BasketItem = ({ id, images, title, price, quantity, discount }) => {
           <p className={discount > 0 ? 'old-price' : 'new-price'}>
             {new Intl.NumberFormat(undefined, {
               style: 'currency',
-              currency: 'UAH',
+              currency: 'UAH'
             }).format(oldTotalPrice)}
           </p>
 
@@ -73,7 +73,7 @@ const BasketItem = ({ id, images, title, price, quantity, discount }) => {
             <p className='new-price'>
               {new Intl.NumberFormat(undefined, {
                 style: 'currency',
-                currency: 'UAH',
+                currency: 'UAH'
               }).format(newTotalPrice)}
             </p>
           )}
@@ -94,7 +94,7 @@ BasketItem.propTypes = {
   title: PropTypes.string,
   price: PropTypes.number,
   quantity: PropTypes.number,
-  discount: PropTypes.number,
+  discount: PropTypes.number
 };
 
 export default BasketItem;

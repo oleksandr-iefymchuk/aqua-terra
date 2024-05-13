@@ -1,14 +1,17 @@
 import axios from 'axios';
 import { getProducts } from './actionCreators';
+import { setLoading } from '../appReduser/actionCreators';
+import { BASE_URL } from '../../constants/constants';
 
 const getProductsThunk = () => {
   return async dispatch => {
     try {
-      const response = await axios.get(
-        'https://aqua-terra-server.vercel.app/products'
-      );
+      dispatch(setLoading(true));
+      const response = await axios.get(`${BASE_URL}/products`);
       dispatch(getProducts(response.data));
+      dispatch(setLoading(false));
     } catch (error) {
+      dispatch(setLoading(false));
       throw new Error(error);
     }
   };

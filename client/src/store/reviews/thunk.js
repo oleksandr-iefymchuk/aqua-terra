@@ -1,14 +1,13 @@
 import axios from 'axios';
 import { getReviwes, addReview, updateReview } from './actionCreators';
 import { setLoading } from '../appReduser/actionCreators';
+import { BASE_URL } from '../../constants/constants';
 
 const getReviewsThunk = () => {
   return async dispatch => {
     try {
       dispatch(setLoading(true));
-      const response = await axios.get(
-        'https://aqua-terra-server.vercel.app/reviews'
-      );
+      const response = await axios.get(`${BASE_URL}/reviews`);
       dispatch(getReviwes(response.data));
       dispatch(setLoading(false));
     } catch (error) {
@@ -23,10 +22,7 @@ const addReviewThunk = review => {
   return async dispatch => {
     try {
       dispatch(setLoading(true));
-      const response = await axios.post(
-        'https://aqua-terra-server.vercel.app/reviews',
-        review
-      );
+      const response = await axios.post(`${BASE_URL}/reviews`, review);
       const result = response.data;
       dispatch(addReview(result));
       dispatch(setLoading(false));
@@ -42,12 +38,11 @@ const updateReviewThunk = review => {
     try {
       dispatch(setLoading(true));
       const response = await axios.put(
-        `https://aqua-terra-server.vercel.app/reviews/${review._id}`,
+        `${BASE_URL}/reviews/${review._id}`,
         review
       );
 
       const result = response.data;
-      console.log('result:', result);
       dispatch(updateReview(result));
       dispatch(setLoading(false));
     } catch (error) {

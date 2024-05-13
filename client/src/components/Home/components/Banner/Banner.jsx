@@ -5,7 +5,7 @@ import './Banner.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { banners } from '../../../../constans/constants';
+import { banners } from '../../../../constants/constants';
 
 import ButtonWrapper from '../../../../common/Button/Button';
 
@@ -22,7 +22,7 @@ const Banner = () => {
     pauseOnHover: true,
     dotsClass: 'slick-dots slick-thumb',
     nextArrow: <ButtonWrapper buttonClassName='arrow-next' icon='arrow-next' />,
-    prevArrow: <ButtonWrapper buttonClassName='arrow-prev' icon='arrow-prev' />,
+    prevArrow: <ButtonWrapper buttonClassName='arrow-prev' icon='arrow-prev' />
   };
 
   return (

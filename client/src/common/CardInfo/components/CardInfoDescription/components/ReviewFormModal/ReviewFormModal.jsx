@@ -12,7 +12,7 @@ import {
 } from '../../../../../../store/reviews/thunk';
 
 const ReviewFormModal = ({
-  productId,
+  _id,
   openModalForm,
   closeModalForm,
   replyToUser,
@@ -91,7 +91,7 @@ const ReviewFormModal = ({
           .catch(handleError);
       }
     } else {
-      newReview.productId = productId;
+      newReview.productId = _id;
       newReview.rating = rating;
       newReview.replies = [];
       dispatch(addReviewThunk(newReview))
@@ -193,7 +193,7 @@ const ReviewFormModal = ({
 };
 
 ReviewFormModal.propTypes = {
-  productId: PropTypes.string,
+  _id: PropTypes.string,
   openModalForm: PropTypes.bool,
   closeModalForm: PropTypes.func,
   onSubmit: PropTypes.func,

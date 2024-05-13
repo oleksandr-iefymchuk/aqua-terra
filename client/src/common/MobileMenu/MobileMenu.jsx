@@ -4,21 +4,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { categories, foterNavLinks } from '../../constans/constants';
+import { categories, foterNavLinks } from '../../constants/constants';
 import ButtonWrapper from '../Button/Button';
 import CatalogBatton from '../CatalogBatton/CatalogBatton';
 import Logo from '../../components/Header/components/ControlBlock/components/Logo/Logo';
 import {
   closeCategoryMenu,
   closeMobileMenu,
-  toggleMobileMenu,
+  toggleLogineModal,
+  toggleMobileMenu
 } from '../../store/appReduser/actionCreators';
+import { userLogout } from '../../store/user/thunk';
 
 const MobileMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const favoriteProducts = useSelector(store => store.user.favoriteProducts);
+  const { favorites, isAuthenticated, name, email } = useSelector(
+    store => store.user
+  );
+
   const isShowMobileMenu = useSelector(state => state.app.isShowMobileMenu);
 
   const navigationHome = () => {
@@ -41,6 +46,14 @@ const MobileMenu = () => {
     dispatch(closeCategoryMenu());
   };
 
+  const toggleLoginVisibility = () => {
+    dispatch(toggleLogineModal());
+  };
+
+  const handleLogout = () => {
+    dispatch(userLogout());
+  };
+
   useEffect(() => {
     if (isShowMobileMenu) {
       document.body.classList.add('mobile-menu-open');
@@ -58,10 +71,15 @@ const MobileMenu = () => {
       <div className={`mobile-menu ${isShowMobileMenu ? 'show' : 'hide'}`}>
         <div className='mobile-menu-navigation'>
           <div className='mobile-menu-header'>
-            <div className='mobile-menu-logo'>
-              <Logo onClick={navigationHome} />
-              <h3>AquaZone</h3>
-            </div>
+            <Logo onClick={navigationHome} />
+
+            {isAuthenticated && (
+              <div className='mobile-menu-user-name'>
+                <p className='user-name'>{name}</p>
+                <p className='user-email'>{email}</p>
+              </div>
+            )}
+
             <ButtonWrapper
               buttonClassName='mobile-menu-close-btn'
               icon='close'
@@ -69,22 +87,41 @@ const MobileMenu = () => {
             />
           </div>
           <div className='mobile-user-box'>
-            <ButtonWrapper
-              buttonClassName='mobile-btn-user'
-              buttonText='Кабінет'
-              icon='user'
-              onClick={() => {
-                console.log('Login');
-                dispatch(toggleMobileMenu());
-              }}
-            />
-
+            {!isAuthenticated ? (
+              <ButtonWrapper
+                buttonClassName='mobile-btn-user'
+                buttonText='Увійти'
+                icon='user'
+                onClick={() => {
+                  toggleLoginVisibility();
+                  dispatch(toggleMobileMenu());
+                }}
+              />
+            ) : (
+              <Fragment>
+                <ButtonWrapper
+                  buttonClassName='mobile-btn-user logout'
+                  buttonText='Вийти'
+                  icon='logout'
+                  onClick={handleLogout}
+                />
+                <ButtonWrapper
+                  buttonClassName='mobile-btn-user'
+                  buttonText='Кабінет'
+                  icon='logged-user'
+                  value={name.charAt(0)}
+                  onClick={() => {
+                    console.log('profile');
+                  }}
+                />
+              </Fragment>
+            )}
             <ButtonWrapper
               buttonClassName='mobile-btn-favorite'
               imgClassName='favorites-img'
               buttonText='Улюблене'
               icon='favorites'
-              value={favoriteProducts.length}
+              value={favorites.length}
               onClick={navigationFavorites}
             />
           </div>
@@ -124,6 +161,6 @@ MobileMenu.propTypes = {
   props: PropTypes.array,
   onClick: PropTypes.func,
   isShowMobileMenu: PropTypes.bool,
-  closeMenu: PropTypes.func,
+  closeMenu: PropTypes.func
 };
 export default MobileMenu;

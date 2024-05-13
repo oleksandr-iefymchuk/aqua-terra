@@ -30,3 +30,19 @@ interface Reply {
   comment: string;
   date: Date;
 }
+
+export interface User {
+  _id: string;
+  name: string;
+  email: string;
+  isAdmin: boolean;
+  favorites: string[];
+  basket: ProductInBasket[];
+  createdAt: Date;
+  matchPassword(password: string): Promise<boolean>;
+}
+
+interface ProductInBasket {
+  productId: string;
+  quantity: number;
+}

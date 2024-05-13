@@ -3,6 +3,8 @@ import banner2 from '../assets/banner/banner2.jpg';
 import banner3 from '../assets/banner/banner3.webp';
 import banner4 from '../assets/banner/banner4.jpg';
 
+export const BASE_URL = 'http://localhost:3000';
+
 export const categories = [
   {
     name: 'Бойлери',
@@ -204,3 +206,39 @@ export const svgOption = {
   DEFAULT_SIZE: 25,
   DEFAULT_COLOR: '#ffffff'
 };
+
+export const loginInputTemplates = [
+  {
+    type: 'email',
+    name: 'email',
+    label: 'Е-пошта',
+    id: 'email'
+  },
+  {
+    type: 'password',
+    name: 'password',
+    label: 'Пароль',
+    id: 'password'
+  }
+];
+
+export const registrationInputTemplates = [
+  {
+    type: 'text',
+    name: 'name',
+    label: "Ім'я",
+    id: 'name'
+  },
+  {
+    type: 'email',
+    name: 'email',
+    label: 'Е-пошта',
+    id: 'email'
+  },
+  {
+    type: 'password',
+    name: 'password',
+    label: 'Пароль',
+    id: 'password'
+  }
+];

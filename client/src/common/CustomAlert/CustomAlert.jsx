@@ -31,10 +31,10 @@ const CustomAlert = ({
 };
 
 CustomAlert.propTypes = {
-  open: PropTypes.bool.isRequired,
+  open: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
-  message: PropTypes.string.isRequired,
-  severity: PropTypes.oneOf(['error', 'warning', 'info', 'success']).isRequired,
+  message: PropTypes.string,
+  severity: PropTypes.oneOf(['error', 'warning', 'info', 'success', '']),
   autoHideDuration: PropTypes.number
 };
 

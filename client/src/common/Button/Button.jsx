@@ -13,7 +13,7 @@ const ButtonWrapper = ({
   svgColor,
   svgWidth,
   svgHeight,
-  value,
+  value
 }) => {
   return (
     <>
@@ -36,7 +36,7 @@ const ButtonWrapper = ({
               </span>
             )}
             {buttonText}
-            {value > 0 && <span className='value'>{value}</span>}
+            {value && value !== 0 && <span className='value'>{value}</span>}
           </button>
         </div>
       ) : (
@@ -57,7 +57,9 @@ const ButtonWrapper = ({
             </span>
           )}
           {buttonText}
-          {value > 0 && <span className='value'>{value}</span>}
+          {value !== undefined && value !== 0 && (
+            <span className='value'>{value}</span>
+          )}
         </button>
       )}
     </>
@@ -77,7 +79,7 @@ ButtonWrapper.propTypes = {
   svgColor: PropTypes.string,
   svgWidth: PropTypes.string,
   svgHeight: PropTypes.string,
-  value: PropTypes.number,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export default ButtonWrapper;

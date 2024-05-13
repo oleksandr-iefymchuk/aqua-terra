@@ -7,11 +7,12 @@ import { apiEndpoints } from './constants.js';
 import { swaggerSpec } from './swaggerOptions.js';
 import productsRouter from './routes/products.js';
 import reviewsRouter from './routes/reviews.js';
+import usersRouter from './routes/users.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
@@ -21,8 +22,14 @@ mongoose
   .then(() => console.log('Connected to MongoDB'))
   .catch((error) => console.log(error));
 
+app.use((req, res, next) => {
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+  next();
+});
+
 app.use(apiEndpoints.PRODUCTS, productsRouter);
 app.use(apiEndpoints.REVIEWS, reviewsRouter);
+app.use(apiEndpoints.USERS, usersRouter);
 
 app.use('/', (req, res) => {
   res.send('Server is running');

@@ -30,7 +30,7 @@
   padding: 8px 0;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 100;
 
   .control-block {
@@ -134,6 +134,18 @@
 @media screen and (max-width: 1024px) {
   .control-block-wrap {
     .control-block {
+      gap: 7px;
+      .mobile-menu-btn {
+        order: 1;
+      }
+
+      .logo {
+        order: 2;
+      }
+
+      .user-box {
+        order: 4;
+      }
       .catalog-btn-wrap {
         width: 100%;
 
@@ -151,10 +163,10 @@
         }
       }
       .search-bar {
+        order: 3;
         flex: 1;
         min-width: 30%;
         position: relative;
-        margin: 0 5px;
 
         .search-btn {
           position: absolute;

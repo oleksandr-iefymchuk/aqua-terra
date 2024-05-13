@@ -21,9 +21,11 @@ export const apiErrors: ApiErrors = {
 type ApiEndpoints = {
   PRODUCTS: string;
   REVIEWS: string;
+  USERS: string;
 };
 
 export const apiEndpoints: ApiEndpoints = {
   PRODUCTS: '/products',
-  REVIEWS: '/reviews'
+  REVIEWS: '/reviews',
+  USERS: '/users'
 };

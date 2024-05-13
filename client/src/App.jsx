@@ -1,16 +1,16 @@
 import './App.scss';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-import { categories } from './constans/constants';
+import { categories } from './constants/constants';
 import { getProductsThunk } from './store/products/thunk';
 import { getReviewsThunk } from './store/reviews/thunk';
 
 import Header from './components/Header/Header';
-import Registration from './components/Registration/Registration';
-import Login from './components/Login/Login';
+// import Registration from './components/Registration/Registration';
+// import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import DiscountedProducts from './components/DiscountedProducts/DiscountedProducts';
@@ -27,15 +27,34 @@ import CategoryMenu from './common/CategoryMenu/CategoryMenu';
 import Contacts from './components/Contacts/Contacts';
 import Breadcrumbs from './common/Breadcrumbs/Breadcrumbs';
 import Progress from './common/Progress/Progress';
+import { getUserProfileThunk } from './store/user/thunk';
+import CustomAlert from './common/CustomAlert/CustomAlert';
+import { clearMessage } from './store/user/actionCreators';
+import Authentication from './components/Authentication/Authentication';
+import { toggleLogineModal } from './store/appReduser/actionCreators';
 
 const App = () => {
   const dispatch = useDispatch();
   const isMobileDevice = useMediaQuery({ maxWidth: 1024 });
+  const { message, messageType } = useSelector(state => state.user);
+  const isShowLoginModal = useSelector(state => state.app.isShowLoginModal);
+  const tokenString = localStorage.getItem('userInfo');
+
+  const toggleLoginVisibility = () => {
+    dispatch(toggleLogineModal());
+  };
 
   useEffect(() => {
     dispatch(getProductsThunk());
     dispatch(getReviewsThunk());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (tokenString) {
+      const token = JSON.parse(tokenString);
+      dispatch(getUserProfileThunk(token));
+    }
+  }, [dispatch, tokenString]);
 
   return (
     <>
@@ -44,10 +63,20 @@ const App = () => {
         <Breadcrumbs />
         <Progress />
         {isMobileDevice && <CategoryMenu categories={categories} />}
+        <CustomAlert
+          open={!!message}
+          onClose={() => dispatch(clearMessage())}
+          message={message}
+          severity={messageType}
+        />
+        <Authentication
+          openModalForm={isShowLoginModal}
+          closeModalForm={toggleLoginVisibility}
+        />
         <main>
           <Routes>
-            <Route path='/registration' element={<Registration />} />
-            <Route path='/login' element={<Login />} />
+            {/* <Route path='/registration' element={<Registration />} /> */}
+            {/* <Route path='/login' element={<Login />} /> */}
             <Route path='/' element={<Home />} />
             <Route path='/catalog' element={<Catalog />} />
             <Route path='/catalog/:category' element={<Catalog />} />

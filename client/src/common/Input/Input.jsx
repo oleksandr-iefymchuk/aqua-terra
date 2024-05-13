@@ -8,7 +8,7 @@ const InputWrapper = ({
   type,
   id,
   value,
-  htmlFor,
+  htmlFor
 }) => {
   return (
     <div className='input-block'>
@@ -36,7 +36,7 @@ InputWrapper.propTypes = {
   type: PropTypes.string.isRequired,
   id: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  htmlFor: PropTypes.string,
+  htmlFor: PropTypes.string
 };
 
 export default InputWrapper;

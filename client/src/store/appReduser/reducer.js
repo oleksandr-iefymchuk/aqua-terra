@@ -6,7 +6,8 @@ const initialState = {
   isShowCategoryMenu: false,
   isShowMobileMenu: false,
   searchValue: '',
-  isLoading: false
+  isLoading: false,
+  isShowLoginModal: false
 };
 
 const appReducer = (state = initialState, action) => {
@@ -34,6 +35,9 @@ const appReducer = (state = initialState, action) => {
 
     case storeActionType.LOADING:
       return { ...state, isLoading: action.payload };
+
+    case storeActionType.TOGGLE_LOGIN_MODAL:
+      return { ...state, isShowLoginModal: !state.isShowLoginModal };
 
     default:
       return state;

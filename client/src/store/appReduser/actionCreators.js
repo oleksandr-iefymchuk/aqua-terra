@@ -36,6 +36,10 @@ const setLoading = isLoading => ({
   payload: isLoading
 });
 
+const toggleLogineModal = () => ({
+  type: storeActionType.TOGGLE_LOGIN_MODAL
+});
+
 export {
   selectCategory,
   selectSubcategory,
@@ -44,5 +48,6 @@ export {
   toggleMobileMenu,
   closeMobileMenu,
   searchProduct,
-  setLoading
+  setLoading,
+  toggleLogineModal
 };

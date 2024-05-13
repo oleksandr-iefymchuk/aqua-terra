@@ -4,17 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantityThunk } from '../../store/thunk';
 import { calculateDiscountedPrice, isNewProduct } from '../../helpers';
 
-import {
-  addToBasket,
-  addToFavorites,
-  removeFromFavorites,
-} from '../../store/user/actionCreators';
+import { addToBasket } from '../../store/user/actionCreators';
 
 import './CardProduct.scss';
 import ButtonWrapper from '../Button/Button';
+import {
+  addToFavoritesThunk,
+  removeFromFavoritesThunk
+} from '../../store/user/thunk';
+import { toggleLogineModal } from '../../store/appReduser/actionCreators';
 
 const CardProduct = ({
-  id,
+  _id,
+  productCode,
   images,
   title,
   slug,
@@ -22,38 +24,37 @@ const CardProduct = ({
   quantity,
   discount,
   subcategory,
-  dateAdded,
+  dateAdded
 }) => {
   const navigate = useNavigate();
   const navigationBasket = () => navigate('/basket');
 
   const dispatch = useDispatch();
   const products = useSelector(state => state.products);
-  const favorites = useSelector(store => store.user.favoriteProducts);
-  const basketProducts = useSelector(store => store.user.basketProducts);
-
-  const currentProduct = products.find(product => product.id === id);
-  const currentBasketProduct = basketProducts.find(
-    product => product.id === id
+  const { favorites, basket, isAuthenticated } = useSelector(
+    store => store.user
   );
 
-  const isFavorite = favorites.some(item => item.id === id);
-  const isInBasket = basketProducts.some(item => item.id === id);
+  const currentProduct = products.find(product => product._id === _id);
+  const currentBasketProduct = basket.find(product => product._id === _id);
+
+  const isFavorite = favorites.some(item => item === _id);
+  const isInBasket = basket.some(item => item._id === _id);
 
   const handleAddToBasket = () => {
     const newItem = {
-      id,
+      productCode,
       images,
       title,
       price,
       quantity,
       discount,
       subcategory,
-      dateAdded,
+      dateAdded
     };
     if (!isInBasket) {
       dispatch(addToBasket(newItem));
-      dispatch(updateQuantityThunk(id, 1, 'increase'));
+      dispatch(updateQuantityThunk(productCode, 1, 'increase'));
     }
     if (isInBasket) {
       navigationBasket();
@@ -61,10 +62,13 @@ const CardProduct = ({
   };
 
   const handleAddToFavotites = () => {
-    if (isFavorite) {
-      dispatch(removeFromFavorites({ id }));
+    if (!isAuthenticated) {
+      dispatch(toggleLogineModal());
+    }
+    if (!isFavorite) {
+      dispatch(addToFavoritesThunk(_id));
     } else {
-      dispatch(addToFavorites({ id }));
+      dispatch(removeFromFavoritesThunk(_id));
     }
   };
 
@@ -86,7 +90,7 @@ const CardProduct = ({
         <img src={images[0]} alt={title} />
       </Link>
       <div className='card-product-info'>
-        <p>Код: {id}</p>
+        <p>Код: {productCode}</p>
         <Link to={`/${slug}`}>
           <h3>{title}</h3>
         </Link>
@@ -105,14 +109,14 @@ const CardProduct = ({
             >
               {new Intl.NumberFormat(undefined, {
                 style: 'currency',
-                currency: 'UAH',
+                currency: 'UAH'
               }).format(price)}
             </p>
             {discount > 0 && (
               <p className='new-price'>
                 {new Intl.NumberFormat(undefined, {
                   style: 'currency',
-                  currency: 'UAH',
+                  currency: 'UAH'
                 }).format(calculateDiscountedPrice(price, discount))}
               </p>
             )}
@@ -139,7 +143,8 @@ const CardProduct = ({
 };
 
 CardProduct.propTypes = {
-  id: PropTypes.string,
+  _id: PropTypes.string,
+  productCode: PropTypes.string,
   images: PropTypes.array,
   title: PropTypes.string,
   slug: PropTypes.string,
@@ -147,7 +152,7 @@ CardProduct.propTypes = {
   price: PropTypes.number,
   quantity: PropTypes.number,
   dateAdded: PropTypes.string,
-  discount: PropTypes.number,
+  discount: PropTypes.number
 };
 
 export default CardProduct;
