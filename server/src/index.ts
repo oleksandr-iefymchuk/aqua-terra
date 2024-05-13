@@ -12,7 +12,7 @@ import usersRouter from './routes/users.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors());
 app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
@@ -21,11 +21,6 @@ mongoose
   .connect(uri)
   .then(() => console.log('Connected to MongoDB'))
   .catch((error) => console.log(error));
-
-app.use((req, res, next) => {
-  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
-  next();
-});
 
 app.use(apiEndpoints.PRODUCTS, productsRouter);
 app.use(apiEndpoints.REVIEWS, reviewsRouter);
