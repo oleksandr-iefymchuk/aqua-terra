@@ -2,6 +2,7 @@ import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
 
 import { apiEndpoints } from './constants.js';
 import { swaggerSpec } from './swaggerOptions.js';
@@ -11,6 +12,7 @@ import usersRouter from './routes/users.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+dotenv.config();
 
 app.use(cors({ origin: '*' }));
 app.use(express.json());

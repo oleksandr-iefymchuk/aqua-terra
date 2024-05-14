@@ -1,8 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
+import { v4 as uuidv4 } from 'uuid';
 import { userModel } from '../models/users.js';
 import { User } from '../interfaces.js';
 
 import generateToken from '../utils/generateToken.js';
+import sendingMail from '../utils/sendingMail.js';
 
 export const getUserProfile = async (req: Request, res: Response): Promise<void> => {
   const user = (req as Request & { user?: User }).user;
@@ -16,6 +18,7 @@ export const getUserProfile = async (req: Request, res: Response): Promise<void>
         isAdmin: userData.isAdmin,
         favorites: userData.favorites,
         basket: userData.basket,
+        isActivated: user.isActivated,
         createdAt: userData.createdAt
       });
     } else {
@@ -49,6 +52,7 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
         isAdmin: user.isAdmin,
         favorites: user.favorites,
         basket: user.basket,
+        isActivated: user.isActivated,
         token: generateToken(user._id),
         createdAt: user.createdAt
       });
@@ -72,11 +76,13 @@ export const registerUser = async (req: Request, res: Response, next: NextFuncti
 
     const userExist: User | null = await userModel.findOne({ email });
     if (userExist) {
-      res.status(400).json({ message: 'Ви вже зареєстровані!' });
+      res.status(400).json({ message: `Користувач з поштою ${email} вже зареєстрований!` });
     }
 
-    const user = await userModel.create({ name, email, password });
+    const activationLink = uuidv4();
+    const user = await userModel.create({ name, email, password, activationLink });
 
+    await sendingMail(email, `https://${process.env.API_URL}/users/activate/${activationLink}`);
     if (user) {
       res.status(201).json({ message: 'Успішна реєстрація!' });
     } else {
@@ -89,6 +95,24 @@ export const registerUser = async (req: Request, res: Response, next: NextFuncti
   }
 };
 
+export const activate = async (req: Request, res: Response): Promise<void> => {
+  const activationLink: string = req.params.link;
+  try {
+    const userExist: User | null = await userModel.findOneAndUpdate(
+      { activationLink },
+      { $set: { isActivated: true } },
+      { new: true }
+    );
+    if (!userExist) {
+      res.status(401).json({ message: 'Користувача не знайдено!' });
+      return;
+    }
+  } catch (error) {
+    console.error('Помилка при активації користувача:', error);
+    res.status(500).json({ message: 'Помилка при активації користувача' });
+  }
+};
+
 export const googleUserRegistration = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, email } = req.body;
@@ -96,7 +120,7 @@ export const googleUserRegistration = async (req: Request, res: Response): Promi
     let user = await userModel.findOne({ email });
 
     if (!user) {
-      user = await userModel.create({ name, email, password: 'google-oauth-no-pass' });
+      user = await userModel.create({ name, email, password: 'google-oauth-no-pass', isActivated: true });
     }
 
     const userToken = generateToken(user._id.toString());

@@ -18,7 +18,9 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     isAdmin: { type: Boolean, required: true, default: false },
     favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'products' }],
-    basket: [productInBasketSchema]
+    basket: [productInBasketSchema],
+    isActivated: { type: Boolean, default: false },
+    activationLink: { type: String }
   },
   { timestamps: true }
 );

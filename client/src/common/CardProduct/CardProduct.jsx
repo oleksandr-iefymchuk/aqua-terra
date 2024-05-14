@@ -65,9 +65,10 @@ const CardProduct = ({
     if (!isAuthenticated) {
       dispatch(toggleLogineModal());
     }
-    if (!isFavorite) {
+    if (isAuthenticated && !isFavorite) {
       dispatch(addToFavoritesThunk(_id));
-    } else {
+    }
+    if (isAuthenticated && isFavorite) {
       dispatch(removeFromFavoritesThunk(_id));
     }
   };

@@ -7,6 +7,9 @@ import { useMediaQuery } from 'react-responsive';
 import { categories } from './constants/constants';
 import { getProductsThunk } from './store/products/thunk';
 import { getReviewsThunk } from './store/reviews/thunk';
+import { getUserProfileThunk } from './store/user/thunk';
+import { clearMessage } from './store/user/actionCreators';
+import { toggleLogineModal } from './store/appReduser/actionCreators';
 
 import Header from './components/Header/Header';
 // import Registration from './components/Registration/Registration';
@@ -27,11 +30,8 @@ import CategoryMenu from './common/CategoryMenu/CategoryMenu';
 import Contacts from './components/Contacts/Contacts';
 import Breadcrumbs from './common/Breadcrumbs/Breadcrumbs';
 import Progress from './common/Progress/Progress';
-import { getUserProfileThunk } from './store/user/thunk';
 import CustomAlert from './common/CustomAlert/CustomAlert';
-import { clearMessage } from './store/user/actionCreators';
 import Authentication from './components/Authentication/Authentication';
-import { toggleLogineModal } from './store/appReduser/actionCreators';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -89,7 +89,6 @@ const App = () => {
             <Route path='/delivery-info' element={<DeliveryInfo />}></Route>
             <Route path='/sale' element={<DiscountedProducts />}></Route>
             <Route path='/novelty' element={<Novelty />}></Route>
-
             <Route path='/search' element={<SearchList />}></Route>
           </Routes>
         </main>

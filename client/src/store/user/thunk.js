@@ -51,7 +51,9 @@ export const getUserProfileThunk = token => {
     } catch (error) {
       dispatch(setLoading(false));
       console.error(error);
-      localStorage.removeItem('userInfo');
+      if (error.response && error.response.status === 401) {
+        localStorage.removeItem('userInfo');
+      }
     }
   };
 };

@@ -12,8 +12,8 @@ import {
   loginUserThunk
 } from '../../../../store/user/thunk';
 
-import { useGoogleLogin } from '@react-oauth/google';
-import axios from 'axios';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 import { showMessage } from '../../../../store/user/actionCreators';
 
 const Login = ({
@@ -27,33 +27,32 @@ const Login = ({
     password: ''
   });
 
-  const handleGoogleLoginSuccess = useGoogleLogin({
-    onSuccess: async response => {
-      try {
-        const res = await axios.get(
-          'https://www.googleapis.com/oauth2/v3/userinfo',
-          {
-            headers: {
-              Authorization: `Bearer ${response.access_token}`
-            }
-          }
-        );
-
-        dispatch(
-          googleUserRegistrationThunk(
-            { name: res.data.name, email: res.data.email },
-            closeModalForm
-          )
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    },
-    onFailure: error => {
-      console.log('Login Failed:', error);
-      dispatch(showMessage('Не вдалося авторизуватися через Google', 'error'));
-    }
-  });
+  // const handleGoogleLoginSuccess = useGoogleLogin({
+  //   onSuccess: async response => {
+  //     try {
+  //       const res = await axios.get(
+  //         'https://www.googleapis.com/oauth2/v3/userinfo',
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${response.access_token}`
+  //           }
+  //         }
+  //       );
+  //       dispatch(
+  //         googleUserRegistrationThunk(
+  //           { name: res.data.name, email: res.data.email },
+  //           closeModalForm
+  //         )
+  //       );
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   },
+  //   onFailure: error => {
+  //     console.log('Login Failed:', error);
+  //     dispatch(showMessage('Не вдалося авторизуватися через Google', 'error'));
+  //   }
+  // });
 
   const handleInputChange =
     id =>
@@ -114,23 +113,34 @@ const Login = ({
               <p>або</p>
               <span className='separator'></span>
             </div>
-            <ButtonWrapper
+            {/* <ButtonWrapper
               buttonText='Продовжити з Google'
               buttonClassName='google-btn'
               icon='google'
               onClick={handleGoogleLoginSuccess}
-            />
-            {/* <GoogleLogin
-              onSuccess={credentialResponse => {
-                const credentialResponseDecoded = jwtDecode(
-                  credentialResponse.credential
-                );
-                console.log(credentialResponseDecoded);
-              }}
-              onError={() => {
-                console.log('Login Failed');
-              }}
             /> */}
+            <div className='google-login'>
+              <GoogleLogin
+                onSuccess={credentialResponse => {
+                  const { name, email } = jwtDecode(
+                    credentialResponse.credential
+                  );
+                  dispatch(
+                    googleUserRegistrationThunk({ name, email }, closeModalForm)
+                  );
+                }}
+                size='medium'
+                onError={error => {
+                  console.log('Login Failed:', error);
+                  dispatch(
+                    showMessage(
+                      'Не вдалося авторизуватися через Google',
+                      'error'
+                    )
+                  );
+                }}
+              />
+            </div>
           </section>
         </Fade>
       </Modal>

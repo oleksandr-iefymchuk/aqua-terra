@@ -86,11 +86,11 @@
       width: 120px;
       height: 30px;
       background-color: transparent;
-      border: 1px solid #cbcbcb;
+      border: 1px solid #ddeafd;
       color: #000;
 
       &:hover {
-        background-color: #e7e8eb;
+        background-color: #f7faff;
       }
     }
   }
@@ -128,6 +128,16 @@
       margin-right: 5px;
     }
   }
+
+  .google-login {
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    button {
+      border: none;
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -142,6 +152,7 @@
       }
 
       .registration-btn {
+        width: 110px;
         font-size: 12px;
       }
     }

@@ -18,10 +18,10 @@ const Navigation = () => {
         </nav>
         <div className='contacts'>
           <p>
-            <span>Телефон:</span> +38 (093) 93-04-137
+            <span>Телефон:</span> +38 (050) 174-70-15
           </p>
           <p>
-            <span>E-mail:</span> masterok.mk24@gmail.com
+            <span>E-mail:</span> bizmailer24@gmail.com
           </p>
         </div>
       </div>

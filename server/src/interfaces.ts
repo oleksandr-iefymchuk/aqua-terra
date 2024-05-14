@@ -38,6 +38,8 @@ export interface User {
   isAdmin: boolean;
   favorites: string[];
   basket: ProductInBasket[];
+  isActivated: boolean;
+  activationLink: string;
   createdAt: Date;
   matchPassword(password: string): Promise<boolean>;
 }
