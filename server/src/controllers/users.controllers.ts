@@ -84,7 +84,7 @@ export const registerUser = async (req: Request, res: Response, next: NextFuncti
 
     await sendingMail(email, `https://${process.env.API_URL}/users/activate/${activationLink}`);
     if (user) {
-      res.status(201).json({ message: 'Успішна реєстрація!' });
+      res.status(201).json({ message: 'Успішна реєстрація! Перевірте вашу Е-пошту для активації аккаунту!' });
     } else {
       res.status(400).json({ message: 'Недійсні дані користувача!' });
     }
@@ -107,6 +107,7 @@ export const activate = async (req: Request, res: Response): Promise<void> => {
       res.status(401).json({ message: 'Користувача не знайдено!' });
       return;
     }
+    res.redirect(process.env.CLIENT_URL!);
   } catch (error) {
     console.error('Помилка при активації користувача:', error);
     res.status(500).json({ message: 'Помилка при активації користувача' });
