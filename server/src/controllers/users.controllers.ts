@@ -81,13 +81,13 @@ export const registerUser = async (req: Request, res: Response, next: NextFuncti
 
     const activationLink = uuidv4();
     const user = await userModel.create({ name, email, password, activationLink });
-
-    await sendingMail(email, `https://${process.env.API_URL}/users/activate/${activationLink}`);
     if (user) {
       res.status(201).json({ message: 'Успішна реєстрація! Перевірте вашу Е-пошту для активації аккаунту!' });
     } else {
       res.status(400).json({ message: 'Недійсні дані користувача!' });
     }
+
+    await sendingMail(email, `https://${process.env.API_URL}/users/activate/${activationLink}`);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Внутрішня помилка сервера!' });

@@ -8,7 +8,7 @@ import { categories } from './constants/constants';
 import { getProductsThunk } from './store/products/thunk';
 import { getReviewsThunk } from './store/reviews/thunk';
 import { getUserProfileThunk } from './store/user/thunk';
-import { clearMessage } from './store/user/actionCreators';
+import { clearMessage, showMessage } from './store/user/actionCreators';
 import { toggleLogineModal } from './store/appReduser/actionCreators';
 
 import Header from './components/Header/Header';
@@ -36,7 +36,9 @@ import Authentication from './components/Authentication/Authentication';
 const App = () => {
   const dispatch = useDispatch();
   const isMobileDevice = useMediaQuery({ maxWidth: 1024 });
-  const { message, messageType } = useSelector(state => state.user);
+  const { message, messageType, isActivated } = useSelector(
+    state => state.user
+  );
   const isShowLoginModal = useSelector(state => state.app.isShowLoginModal);
   const tokenString = localStorage.getItem('userInfo');
 
@@ -55,6 +57,14 @@ const App = () => {
       dispatch(getUserProfileThunk(token));
     }
   }, [dispatch, tokenString]);
+
+  useEffect(() => {
+    if (isActivated) {
+      dispatch(
+        showMessage('Ви успішно підтвердили обліковий запис!', 'success')
+      );
+    }
+  }, [dispatch, isActivated]);
 
   return (
     <>

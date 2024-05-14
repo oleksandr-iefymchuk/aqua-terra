@@ -36,7 +36,12 @@ const Registration = ({
 
   const onRegistrationSucces = () => {
     toggleAuthenticationModal();
-    dispatch(showMessage('Ви успішно зареєструвались!', 'success'));
+    dispatch(
+      showMessage(
+        'Успішна реєстрація! Перевірте вашу Е-пошту для активації облікового запису!',
+        'success'
+      )
+    );
   };
 
   return (
