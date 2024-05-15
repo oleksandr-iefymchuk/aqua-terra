@@ -82,7 +82,7 @@ export const registerUser = async (req: Request, res: Response, next: NextFuncti
     const activationLink = uuidv4();
     const user = await userModel.create({ name, email, password, activationLink });
     if (user) {
-      res.status(201).json({ message: 'Успішна реєстрація! Перевірте вашу Е-пошту для активації аккаунту!' });
+      res.status(201).json({ message: 'Успішна реєстрація!' });
     } else {
       res.status(400).json({ message: 'Недійсні дані користувача!' });
     }
@@ -107,7 +107,8 @@ export const activate = async (req: Request, res: Response): Promise<void> => {
       res.status(401).json({ message: 'Користувача не знайдено!' });
       return;
     }
-    res.redirect(process.env.CLIENT_URL!);
+    res.status(200).json({ message: 'Успішна активація користувача!' });
+    // res.redirect(process.env.CLIENT_URL!);
   } catch (error) {
     console.error('Помилка при активації користувача:', error);
     res.status(500).json({ message: 'Помилка при активації користувача' });
