@@ -3,7 +3,7 @@ import banner2 from '../assets/banner/banner2.jpg';
 import banner3 from '../assets/banner/banner3.webp';
 import banner4 from '../assets/banner/banner4.jpg';
 
-export const BASE_URL = 'https://aqua-terra-server.vercel.app';
+export const BASE_URL = 'http://localhost:3000';
 
 export const categories = [
   {

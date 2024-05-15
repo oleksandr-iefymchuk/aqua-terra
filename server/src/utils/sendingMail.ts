@@ -2,7 +2,6 @@ import nodemailer from 'nodemailer';
 
 const sendingMail = async (to: string, link: string): Promise<void> => {
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
     host: 'smtp.gmail.com',
     port: 587,
     secure: false,
@@ -13,7 +12,7 @@ const sendingMail = async (to: string, link: string): Promise<void> => {
   });
 
   try {
-    await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: { name: 'AquaTerra', address: 'bizmailer24@gmail.com' },
       to: to,
       subject: `Активація акаунту в інтернет-магазині AquaTerra`,
@@ -48,38 +47,10 @@ const sendingMail = async (to: string, link: string): Promise<void> => {
             </table>
             `
     });
+    console.log('info:', info);
   } catch (error) {
     console.error('Error sending activation mail:', error);
   }
 };
 
 export default sendingMail;
-
-// class sendingMail {
-//   constructor() {
-//     this.transporter = nodemailer.createTransport({
-//       host: process.env.SMTP_HOST,
-//       port: process.env.SMTP_PORT,
-//       secure: false,
-//       auth: {
-//         user: process.env.SMTP_USER,
-//         pass: process.env.SMTP_PASSWORD
-//       }
-//     });
-//   }
-
-//   async sendActivationMail(to, link) {
-//     await this.transporter.sendMail({
-//       from: process.env.SMTP_USER,
-//       to,
-//       subject: `Активація акаунту на ${process.env.API_URL}`,
-//       text: '',
-//       html: `
-//                 <div>
-//                     <h1>Для активації облікового запису перейдіть за посиланням</h1>
-//                     <ahref='${link}'>${link}</ahref=>
-//                 </div>
-//             `
-//     });
-//   }
-// }
