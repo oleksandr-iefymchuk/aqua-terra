@@ -3,12 +3,13 @@ import nodemailer from 'nodemailer';
 const sendingMail = async (to: string, link: string): Promise<void> => {
   console.log('to:', to);
   const transporter = nodemailer.createTransport({
+    service: 'gmail',
     host: 'smtp.gmail.com',
     port: 587,
-    secure: false,
+    secure: true,
     auth: {
       user: 'bizmailer24@gmail.com',
-      pass: 'fhxm fvsg zgoj djec'
+      pass: 'fhxmfvsgzgojdjec'
     }
   });
 
@@ -16,7 +17,7 @@ const sendingMail = async (to: string, link: string): Promise<void> => {
     await transporter.sendMail({
       from: 'bizmailer24@gmail.com',
       to,
-      subject: `Активація акаунту на ${process.env.API_URL}`,
+      subject: `Активація акаунту в інтернет-магазині AquaTerra`,
       text: '',
       html: `
             <table width="800px">
