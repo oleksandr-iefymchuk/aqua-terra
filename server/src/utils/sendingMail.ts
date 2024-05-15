@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
 
 const sendingMail = async (to: string, link: string): Promise<void> => {
+  console.log('to:', to);
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
