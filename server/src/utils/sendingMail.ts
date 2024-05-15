@@ -8,7 +8,7 @@ const sendingMail = async (to: string, link: string): Promise<void> => {
     secure: false,
     auth: {
       user: 'bizmailer24@gmail.com',
-      pass: 'oadvziznerrxjkxj'
+      pass: 'rimzqfyxutxdpsdn'
     }
   });
 

@@ -10,11 +10,11 @@ import productsRouter from './routes/products.js';
 import reviewsRouter from './routes/reviews.js';
 import usersRouter from './routes/users.js';
 
+dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
-dotenv.config();
 
-app.use(cors({ origin: '*' }));
+app.use(cors());
 app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
