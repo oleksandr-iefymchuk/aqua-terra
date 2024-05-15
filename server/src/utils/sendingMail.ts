@@ -2,18 +2,18 @@ import nodemailer from 'nodemailer';
 
 const sendingMail = async (to: string, link: string): Promise<void> => {
   const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT as unknown as number,
     secure: false,
     auth: {
-      user: 'bizmailer24@gmail.com',
-      pass: 'rimzqfyxutxdpsdn'
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASSWORD
     }
   });
 
   try {
-    const info = await transporter.sendMail({
-      from: { name: 'AquaTerra', address: 'bizmailer24@gmail.com' },
+    await transporter.sendMail({
+      from: { name: 'AquaTerra', address: process.env.SMTP_USER as unknown as string },
       to: to,
       subject: `Активація акаунту в інтернет-магазині AquaTerra`,
       text: '',
@@ -47,7 +47,6 @@ const sendingMail = async (to: string, link: string): Promise<void> => {
             </table>
             `
     });
-    console.log('info:', info);
   } catch (error) {
     console.error('Error sending activation mail:', error);
   }
