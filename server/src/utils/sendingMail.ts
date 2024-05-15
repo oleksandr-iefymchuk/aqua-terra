@@ -3,8 +3,8 @@ import nodemailer from 'nodemailer';
 const sendingMail = async (to: string, link: string): Promise<void> => {
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
+    port: 465,
+    secure: true,
     auth: {
       user: 'bizmailer24@gmail.com',
       pass: 'rimzqfyxutxdpsdn'
