@@ -107,8 +107,7 @@ export const activate = async (req: Request, res: Response): Promise<void> => {
       res.status(401).json({ message: 'Користувача не знайдено!' });
       return;
     }
-    res.status(200).json({ message: 'Успішна активація користувача!' });
-    // res.redirect(process.env.CLIENT_URL!);
+    res.redirect(process.env.CLIENT_URL!);
   } catch (error) {
     console.error('Помилка при активації користувача:', error);
     res.status(500).json({ message: 'Помилка при активації користувача' });

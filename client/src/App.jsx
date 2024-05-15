@@ -1,19 +1,14 @@
 import './App.scss';
-import {
-  Route,
-  BrowserRouter as Router,
-  Routes,
-  useParams
-} from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-import { BASE_URL, categories } from './constants/constants';
+import { categories } from './constants/constants';
 import { getProductsThunk } from './store/products/thunk';
 import { getReviewsThunk } from './store/reviews/thunk';
 import { getUserProfileThunk } from './store/user/thunk';
-import { clearMessage, showMessage } from './store/user/actionCreators';
+import { clearMessage } from './store/user/actionCreators';
 import { toggleLogineModal } from './store/appReduser/actionCreators';
 
 import Header from './components/Header/Header';
@@ -37,11 +32,9 @@ import Breadcrumbs from './common/Breadcrumbs/Breadcrumbs';
 import Progress from './common/Progress/Progress';
 import CustomAlert from './common/CustomAlert/CustomAlert';
 import Authentication from './components/Authentication/Authentication';
-import axios from 'axios';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { link } = useParams();
   const isMobileDevice = useMediaQuery({ maxWidth: 1024 });
   const { message, messageType, isActivated } = useSelector(
     state => state.user
@@ -65,33 +58,6 @@ const App = () => {
       dispatch(getUserProfileThunk(token));
     }
   }, [dispatch, tokenString]);
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const activationLink = urlParams.get('activationLink');
-    console.log('activationLink:', activationLink);
-
-    if (activationLink) {
-      axios
-        .get(`${BASE_URL}/users/activate/${activationLink}`)
-        .then(response => {
-          const { message } = response.data;
-          // Показать уведомление об успешной активации
-          dispatch(showMessage(message, 'success'));
-        })
-        .catch(error => {
-          console.error('Ошибка при активации:', error);
-        });
-    }
-  }, []);
-
-  // useEffect(() => {
-  //   if (isActivated) {
-  //     dispatch(
-  //       showMessage('Ви успішно підтвердили обліковий запис!', 'success')
-  //     );
-  //   }
-  // }, [dispatch, isActivated]);
 
   return (
     <>
