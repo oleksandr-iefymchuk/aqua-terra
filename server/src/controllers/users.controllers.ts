@@ -201,7 +201,7 @@ export const addToBasket = async (req: Request, res: Response): Promise<void> =>
       )
       .select('-password -createdAt -updatedAt -__v')) as User;
 
-    res.status(200).json({ message: 'Product added to basket successfully', user: updatedUser });
+    res.status(200).json(updatedUser);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
@@ -232,7 +232,7 @@ export const removeFromBasket = async (req: Request, res: Response): Promise<voi
       .findOneAndUpdate({ _id: user._id }, { $pull: { basket: { productId } } }, { new: true })
       .select('-password -createdAt -updatedAt -__v')) as User;
 
-    res.status(200).json({ message: 'Product removed from basket successfully', user: updatedUser });
+    res.status(200).json(updatedUser);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
@@ -268,7 +268,7 @@ export const increaseQuantityInBasket = async (req: Request, res: Response): Pro
       )
       .select('-password -createdAt -updatedAt -__v')) as User;
 
-    res.status(200).json({ message: 'Quantity increased in basket successfully', user: updatedUser });
+    res.status(200).json(updatedUser);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
@@ -304,50 +304,9 @@ export const decreaseQuantityInBasket = async (req: Request, res: Response): Pro
       )
       .select('-password -createdAt -updatedAt -__v')) as User;
 
-    res.status(200).json({ message: 'Quantity decreased in basket successfully', user: updatedUser });
+    res.status(200).json(updatedUser);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
   }
 };
-
-// export const getFavorites = async (req: Request, res: Response): Promise<void> => {
-//   try {
-//     const { userId } = req.body;
-
-//     const user: User | null = await userModel.findById(userId).populate('favorites');
-
-//     if (!user) {
-//       res.status(404).json({ message: 'User not found' });
-//       return;
-//     }
-
-//     if (user.favorites.length === 0) {
-//       res.status(404).json({ message: 'User has no favorites' });
-//       return;
-//     }
-
-//     res.status(200).json({ favorites: user.favorites });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: 'Internal server error' });
-//   }
-// };
-
-// export const getBasket = async (req: Request, res: Response): Promise<void> => {
-//   try {
-//     const { userId } = req.body;
-
-//     const user: User | null = await userModel.findById(userId).populate('basket.productId');
-
-//     if (!user) {
-//       res.status(404).json({ message: 'User not found' });
-//       return;
-//     }
-
-//     res.status(200).json({ basket: user.basket });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: 'Internal server error' });
-//   }
-// };

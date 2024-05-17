@@ -29,7 +29,4 @@ router.put('/favorites/remove', protect, asyncWrapper(removeFromFavorites));
 router.put('/basket/remove', protect, asyncWrapper(removeFromBasket));
 router.put('/basket/inc', protect, asyncWrapper(increaseQuantityInBasket));
 router.put('/basket/dec', protect, asyncWrapper(decreaseQuantityInBasket));
-
-// router.get('/favorite', asyncWrapper(getFavorites));
-// router.get('/basket', asyncWrapper(getBasket));
 export default router;

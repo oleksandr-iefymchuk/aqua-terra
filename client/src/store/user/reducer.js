@@ -2,12 +2,7 @@ import {
   SET_USER_DATA,
   LOGOUT,
   MESSAGE_USER,
-  MESSAGE_CLEARING,
-  ADD_TO_BASKET,
-  REMOVE_FROM_FAVORITES,
-  REMOVE_FROM_BASKET,
-  INCREASE_QUANTITY_BASKET,
-  DECREASE_QUANTITY_BASKET
+  MESSAGE_CLEARING
 } from './actionTypes';
 
 const userInitialState = {
@@ -22,10 +17,6 @@ const userInitialState = {
 };
 
 const userReducer = (state = userInitialState, action) => {
-  const existingItem = state.basket?.find(
-    ({ id }) => id === (action.payload ? action.payload.id : null)
-  );
-
   switch (action.type) {
     case SET_USER_DATA:
       return {
@@ -60,51 +51,51 @@ const userReducer = (state = userInitialState, action) => {
     //       : [...state.favorites, action.payload]
     //   };
 
-    case REMOVE_FROM_FAVORITES:
-      return {
-        ...state,
-        favorites: state.favorites.filter(({ id }) => id !== action.payload.id)
-      };
+    // case REMOVE_FROM_FAVORITES:
+    //   return {
+    //     ...state,
+    //     favorites: state.favorites.filter(({ id }) => id !== action.payload.id)
+    //   };
 
-    case ADD_TO_BASKET:
-      return {
-        ...state,
-        basket: existingItem
-          ? state.basket
-          : [...state.basket, { ...action.payload, quantity: 0 }]
-      };
+    // case ADD_TO_BASKET:
+    //   return {
+    //     ...state,
+    //     basket: existingItem
+    //       ? state.basket
+    //       : [...state.basket, { ...action.payload, quantity: 0 }]
+    //   };
 
-    case REMOVE_FROM_BASKET:
-      return {
-        ...state,
-        basket: state.basket.filter(product => product.id !== action.payload)
-      };
+    // case REMOVE_FROM_BASKET:
+    //   return {
+    //     ...state,
+    //     basket: state.basket.filter(product => product.id !== action.payload)
+    //   };
 
-    case INCREASE_QUANTITY_BASKET:
-      return {
-        ...state,
-        basket: state.basket.map(product =>
-          product.id === action.payload.id
-            ? {
-                ...product,
-                quantity: product.quantity + action.payload.quantity
-              }
-            : product
-        )
-      };
+    // case INCREASE_QUANTITY_BASKET:
+    //   return {
+    //     ...state,
+    //     basket: state.basket.map(product =>
+    //       product.id === action.payload.id
+    //         ? {
+    //             ...product,
+    //             quantity: product.quantity + action.payload.quantity
+    //           }
+    //         : product
+    //     )
+    //   };
 
-    case DECREASE_QUANTITY_BASKET:
-      return {
-        ...state,
-        basket: state.basket.map(product =>
-          product.id === action.payload.id
-            ? {
-                ...product,
-                quantity: product.quantity - action.payload.quantity
-              }
-            : product
-        )
-      };
+    // case DECREASE_QUANTITY_BASKET:
+    //   return {
+    //     ...state,
+    //     basket: state.basket.map(product =>
+    //       product.id === action.payload.id
+    //         ? {
+    //             ...product,
+    //             quantity: product.quantity - action.payload.quantity
+    //           }
+    //         : product
+    //     )
+    //   };
 
     default:
       return state;

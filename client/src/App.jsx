@@ -11,41 +11,38 @@ import { getUserProfileThunk } from './store/user/thunk';
 import { clearMessage } from './store/user/actionCreators';
 import { toggleLogineModal } from './store/appReduser/actionCreators';
 
-import Header from './components/Header/Header';
-// import Registration from './components/Registration/Registration';
-// import Login from './components/Login/Login';
-import Home from './components/Home/Home';
-import About from './components/About/About';
-import DiscountedProducts from './components/DiscountedProducts/DiscountedProducts';
-import Novelty from './components/Novelty/Novelty';
-import DeliveryInfo from './components/DeliveryInfo/DeliveryInfo';
-import CardInfo from './common/CardInfo/CardInfo';
-import Basket from './components/Basket/Basket';
-import Favorites from './components/Favorites/Favorites';
-import Footer from './components/Footer/Footer';
-import Order from './components/Order/Order';
-import SearchList from './common/SearchList/SearchList';
-import Catalog from './components/Catalog/Catalog';
-import CategoryMenu from './common/CategoryMenu/CategoryMenu';
-import Contacts from './components/Contacts/Contacts';
-import Breadcrumbs from './common/Breadcrumbs/Breadcrumbs';
-import Progress from './common/Progress/Progress';
-import CustomAlert from './common/CustomAlert/CustomAlert';
-import Authentication from './components/Authentication/Authentication';
+import Header from './components/pages/Header/Header';
+import Home from './components/pages/Home/Home';
+import About from './components/pages/About/About';
+import DiscountedProducts from './components/pages/DiscountedProducts/DiscountedProducts';
+import Novelty from './components/pages/Novelty/Novelty';
+import DeliveryInfo from './components/pages/DeliveryInfo/DeliveryInfo';
+import CardInfo from './components/layout/CardInfo/CardInfo';
+import Basket from './components/pages/Basket/Basket';
+import Favorites from './components/pages/Favorites/Favorites';
+import Footer from './components/pages/Footer/Footer';
+import Order from './components/pages/Order/Order';
+import SearchList from './components/layout/SearchList/SearchList';
+import Catalog from './components/pages/Catalog/Catalog';
+import CategoryMenu from './components/layout/CategoryMenu/CategoryMenu';
+import Contacts from './components/pages/Contacts/Contacts';
+import Breadcrumbs from './components/common/Breadcrumbs/Breadcrumbs';
+import Progress from './components/common/Progress/Progress';
+import CustomAlert from './components/common/CustomAlert/CustomAlert';
+import Authentication from './components/pages/Authentication/Authentication';
 
 const App = () => {
   const dispatch = useDispatch();
   const isMobileDevice = useMediaQuery({ maxWidth: 1024 });
-  const { message, messageType, isActivated } = useSelector(
-    state => state.user
-  );
+  const { message, messageType } = useSelector(state => state.user);
   const isShowLoginModal = useSelector(state => state.app.isShowLoginModal);
   const tokenString = localStorage.getItem('userInfo');
+  // const user = useSelector(state => state.user);
+  // console.log('user:', user);
 
   const toggleLoginVisibility = () => {
     dispatch(toggleLogineModal());
   };
-  console.log('isActivated:', isActivated);
 
   useEffect(() => {
     dispatch(getProductsThunk());
@@ -57,7 +54,8 @@ const App = () => {
       const token = JSON.parse(tokenString);
       dispatch(getUserProfileThunk(token));
     }
-  }, [dispatch, tokenString]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

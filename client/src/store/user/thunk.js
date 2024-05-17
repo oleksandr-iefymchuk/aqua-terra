@@ -51,14 +51,14 @@ export const getUserProfileThunk = token => {
     } catch (error) {
       dispatch(setLoading(false));
       console.error(error);
-      if (error.response && error.response.status === 401) {
-        localStorage.removeItem('userInfo');
-      }
+      // if (error.response && error.response.status === 401) {
+      //   localStorage.removeItem('userInfo');
+      // }
     }
   };
 };
 
-export const registrationUserThunk = (user, onRegistrationSucces) => {
+export const registrationUserThunk = (user, onRegistrationSuccess) => {
   return async dispatch => {
     try {
       dispatch(setLoading(true));
@@ -69,7 +69,7 @@ export const registrationUserThunk = (user, onRegistrationSucces) => {
         }
       };
       await axios.post(`${BASE_URL}/users/register`, user, config);
-      onRegistrationSucces();
+      onRegistrationSuccess();
       dispatch(setLoading(false));
     } catch (error) {
       dispatch(setLoading(false));
@@ -106,6 +106,8 @@ export const googleUserRegistrationThunk = (
 
       if (data.token) {
         localStorage.setItem('userInfo', JSON.stringify(data.token));
+      }
+      if (onRegistrationSuccess) {
         onRegistrationSuccess();
       }
       dispatch(setLoading(false));
@@ -183,6 +185,150 @@ export const removeFromFavoritesThunk = productId => async dispatch => {
     };
     const { data } = await axios.put(
       `${BASE_URL}/users/favorites/remove`,
+      { productId },
+      config
+    );
+
+    dispatch(setUserData(data));
+  } catch (error) {
+    dispatch(
+      showMessage(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+        'error'
+      )
+    );
+  }
+};
+
+export const addToBasketThunk = (productId, quantity) => async dispatch => {
+  try {
+    const tokenString = localStorage.getItem('userInfo');
+    if (!tokenString) {
+      dispatch(
+        showMessage('Ви не авторизовані. Авторизуйтесь будь-ласка!', 'error')
+      );
+      return;
+    }
+    const token = JSON.parse(tokenString);
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    };
+
+    const { data } = await axios.put(
+      `${BASE_URL}/users/basket/add`,
+      { productId, quantity },
+      config
+    );
+
+    dispatch(setUserData(data));
+  } catch (error) {
+    dispatch(
+      showMessage(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+        'error'
+      )
+    );
+  }
+};
+
+export const removeFromBasketThunk = productId => async dispatch => {
+  try {
+    const tokenString = localStorage.getItem('userInfo');
+    if (!tokenString) {
+      dispatch(
+        showMessage('Ви не авторизовані. Авторизуйтесь будь-ласка!', 'error')
+      );
+      return;
+    }
+    const token = JSON.parse(tokenString);
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    };
+
+    const { data } = await axios.put(
+      `${BASE_URL}/users/basket/remove`,
+      { productId },
+      config
+    );
+
+    dispatch(setUserData(data));
+  } catch (error) {
+    dispatch(
+      showMessage(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+        'error'
+      )
+    );
+  }
+};
+
+export const increaseQuantityInBasketThunk = productId => async dispatch => {
+  try {
+    const tokenString = localStorage.getItem('userInfo');
+    if (!tokenString) {
+      dispatch(
+        showMessage('Ви не авторизовані. Авторизуйтесь будь-ласка!', 'error')
+      );
+      return;
+    }
+    const token = JSON.parse(tokenString);
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    };
+
+    const { data } = await axios.put(
+      `${BASE_URL}/users/basket/inc`,
+      { productId },
+      config
+    );
+
+    dispatch(setUserData(data));
+  } catch (error) {
+    dispatch(
+      showMessage(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+        'error'
+      )
+    );
+  }
+};
+
+export const decreaseQuantityInBasketThunk = productId => async dispatch => {
+  try {
+    const tokenString = localStorage.getItem('userInfo');
+    if (!tokenString) {
+      dispatch(
+        showMessage('Ви не авторизовані. Авторизуйтесь будь-ласка!', 'error')
+      );
+      return;
+    }
+    const token = JSON.parse(tokenString);
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    };
+
+    const { data } = await axios.put(
+      `${BASE_URL}/users/basket/dec`,
       { productId },
       config
     );

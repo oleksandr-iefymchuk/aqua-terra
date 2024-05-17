@@ -2,12 +2,7 @@ import {
   SET_USER_DATA,
   LOGOUT,
   MESSAGE_USER,
-  MESSAGE_CLEARING,
-  ADD_TO_BASKET,
-  INCREASE_QUANTITY_BASKET,
-  DECREASE_QUANTITY_BASKET,
-  REMOVE_FROM_BASKET,
-  REMOVE_FROM_FAVORITES
+  MESSAGE_CLEARING
 } from './actionTypes';
 
 export const setUserData = userData => ({
@@ -30,27 +25,27 @@ export const clearMessage = () => {
   };
 };
 
-export const removeFromFavorites = id => ({
-  type: REMOVE_FROM_FAVORITES,
-  payload: id
-});
+// export const removeFromFavorites = id => ({
+//   type: REMOVE_FROM_FAVORITES,
+//   payload: id
+// });
 
-export const addToBasket = product => ({
-  type: ADD_TO_BASKET,
-  payload: product
-});
+// export const addToBasket = product => ({
+//   type: ADD_TO_BASKET,
+//   payload: product
+// });
 
-export const increaseQuantityBasket = (id, quantity) => ({
-  type: INCREASE_QUANTITY_BASKET,
-  payload: { id, quantity }
-});
+// export const increaseQuantityBasket = (id, quantity) => ({
+//   type: INCREASE_QUANTITY_BASKET,
+//   payload: { id, quantity }
+// });
 
-export const decreaseQuantityBasket = (id, quantity) => ({
-  type: DECREASE_QUANTITY_BASKET,
-  payload: { id, quantity }
-});
+// export const decreaseQuantityBasket = (id, quantity) => ({
+//   type: DECREASE_QUANTITY_BASKET,
+//   payload: { id, quantity }
+// });
 
-export const removeFromBasket = id => ({
-  type: REMOVE_FROM_BASKET,
-  payload: id
-});
+// export const removeFromBasket = id => ({
+//   type: REMOVE_FROM_BASKET,
+//   payload: id
+// });
