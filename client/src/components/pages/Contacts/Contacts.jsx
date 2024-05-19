@@ -1,5 +1,6 @@
 import './Contacts.scss';
 import 'leaflet/dist/leaflet.css';
+import '../../../../fix-leaflet-icon';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useMediaQuery } from 'react-responsive';
 
