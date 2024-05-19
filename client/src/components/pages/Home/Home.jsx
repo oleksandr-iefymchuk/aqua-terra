@@ -8,6 +8,7 @@ import Banner from './components/Banner/Banner';
 import ButtonWrapper from '../../common/Button/Button';
 import ProductList from '../../layout/ProductList/ProductList';
 import CatalogBatton from '../../layout/CatalogBatton/CatalogBatton';
+import NoveltySlider from './components/NoveltySlider/NoveltySlider';
 
 const Home = () => {
   const { BUTTON_CATALOG } = BUTTON_LABELS;
@@ -82,6 +83,7 @@ const Home = () => {
           );
         })}
       </div>
+      <NoveltySlider />
     </div>
   );
 };

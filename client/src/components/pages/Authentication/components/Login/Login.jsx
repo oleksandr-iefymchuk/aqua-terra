@@ -110,7 +110,7 @@ const Login = ({
                   );
                 }}
                 size='medium'
-                width={isMobileDevice ? '350px' : '330px'}
+                width={isMobileDevice ? '300px' : '330px'}
                 onError={error => {
                   console.log('Login Failed:', error);
                   dispatch(
