@@ -34,6 +34,10 @@ interface Reply {
 export interface User {
   _id: string;
   name: string;
+  surname?: string;
+  phone?: string;
+  city?: string;
+  address?: string;
   email: string;
   isAdmin: boolean;
   favorites: string[];
@@ -41,10 +45,24 @@ export interface User {
   isActivated: boolean;
   activationLink: string;
   createdAt: Date;
+  authType: string;
   matchPassword(password: string): Promise<boolean>;
 }
 
 interface ProductInBasket {
   productId: string;
   quantity: number;
+}
+
+export interface Orders {
+  _id: string;
+  orderNumber: number;
+  user: object;
+  orderItems: [];
+  totalPrice: number;
+  paymentMethod: string;
+  isPaid: boolean;
+  deliveryOption: string;
+  isDelivered: boolean;
+  createdAt: string;
 }

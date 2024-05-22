@@ -9,6 +9,7 @@ import { swaggerSpec } from './swaggerOptions.js';
 import productsRouter from './routes/products.js';
 import reviewsRouter from './routes/reviews.js';
 import usersRouter from './routes/users.js';
+import ordersRouter from './routes/orders.js';
 
 dotenv.config();
 const app = express();
@@ -27,6 +28,7 @@ mongoose
 app.use(apiEndpoints.PRODUCTS, productsRouter);
 app.use(apiEndpoints.REVIEWS, reviewsRouter);
 app.use(apiEndpoints.USERS, usersRouter);
+app.use(apiEndpoints.ORDERS, ordersRouter);
 
 app.use('/', (req, res) => {
   res.send('Server is running');

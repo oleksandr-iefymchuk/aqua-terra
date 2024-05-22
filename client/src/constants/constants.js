@@ -79,6 +79,7 @@ export const breadcrumbLinks = {
   '/sale': 'Знижки',
   '/novelty': 'Новинки',
   '/delivery-info': 'Умови оплати та доставки',
+  '/profile': 'Особистий кабінет',
   '/favorites': 'Список бажань',
   '/basket': 'Кошик',
   '/catalog': 'Каталог',
@@ -206,39 +207,3 @@ export const svgOption = {
   DEFAULT_SIZE: 25,
   DEFAULT_COLOR: '#ffffff'
 };
-
-export const loginInputTemplates = [
-  {
-    type: 'email',
-    name: 'email',
-    label: 'Е-пошта',
-    id: 'email'
-  },
-  {
-    type: 'password',
-    name: 'password',
-    label: 'Пароль',
-    id: 'password'
-  }
-];
-
-export const registrationInputTemplates = [
-  {
-    type: 'text',
-    name: 'name',
-    label: "Ім'я",
-    id: 'name'
-  },
-  {
-    type: 'email',
-    name: 'email',
-    label: 'Е-пошта',
-    id: 'email'
-  },
-  {
-    type: 'password',
-    name: 'password',
-    label: 'Пароль',
-    id: 'password'
-  }
-];

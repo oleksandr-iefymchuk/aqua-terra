@@ -1,6 +1,11 @@
 import './DeliveryInfo.scss';
+import { useEffect } from 'react';
 
 const DeliveryInfo = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className='delivery-info'>
       <h2>Умови доставки та оплати</h2>

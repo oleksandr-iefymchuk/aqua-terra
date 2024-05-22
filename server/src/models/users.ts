@@ -14,13 +14,18 @@ const productInBasketSchema: mongoose.Schema = new mongoose.Schema(
 const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
+    surname: { type: String },
+    phone: { type: String },
+    city: { type: String },
+    address: { type: String },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     isAdmin: { type: Boolean, required: true, default: false },
     favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'products' }],
     basket: [productInBasketSchema],
     isActivated: { type: Boolean, default: false },
-    activationLink: { type: String }
+    activationLink: { type: String },
+    authType: { type: String, enum: ['local', 'google'], default: 'local' }
   },
   { timestamps: true }
 );
@@ -35,6 +40,16 @@ userSchema.pre('save', async function (next) {
   }
   const salt = await bcryptjs.genSalt(10);
   this.password = await bcryptjs.hash(this.password, salt);
+});
+
+userSchema.pre('findOneAndUpdate', async function (next) {
+  const update = this.getUpdate() as { password?: string };
+
+  if (update.password) {
+    const salt = await bcryptjs.genSalt(10);
+    update.password = await bcryptjs.hash(update.password, salt);
+  }
+  next();
 });
 
 export const userModel = mongoose.model(COLLECTION, userSchema);

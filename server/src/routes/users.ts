@@ -10,7 +10,9 @@ import {
   decreaseQuantityInBasket,
   getUserProfile,
   googleUserRegistration,
-  activate
+  activate,
+  updateUserProfile,
+  updateUserPassword
 } from '../controllers/users.controllers.js';
 import { asyncWrapper } from '../asyncWrapper.js';
 import asyncHandler from 'express-async-handler';
@@ -18,11 +20,13 @@ import asyncHandler from 'express-async-handler';
 import protect from '../middlewares/authMiddleware.js';
 const router: express.Router = express.Router();
 
-router.get('/profile', protect, asyncWrapper(getUserProfile));
 router.post('/login', asyncWrapper(loginUser));
 router.post('/register', asyncHandler(registerUser));
 router.post('/register/google', asyncHandler(googleUserRegistration));
+router.put('/update-profile', protect, updateUserProfile);
+router.put('/update-password', protect, updateUserPassword);
 router.get('/activate/:link', asyncHandler(activate));
+router.get('/profile', protect, asyncWrapper(getUserProfile));
 router.put('/favorites/add', protect, asyncWrapper(addToFavorites));
 router.put('/basket/add', protect, asyncWrapper(addToBasket));
 router.put('/favorites/remove', protect, asyncWrapper(removeFromFavorites));

@@ -14,11 +14,16 @@ export const getUserProfile = async (req: Request, res: Response): Promise<void>
       res.json({
         _id: userData._id,
         name: userData.name,
+        surname: userData.surname,
+        phone: userData.phone,
+        city: userData.city,
+        address: userData.address,
         email: userData.email,
         isAdmin: userData.isAdmin,
         favorites: userData.favorites,
         basket: userData.basket,
         isActivated: user.isActivated,
+        authType: userData.authType,
         createdAt: userData.createdAt
       });
     } else {
@@ -26,6 +31,89 @@ export const getUserProfile = async (req: Request, res: Response): Promise<void>
     }
   } else {
     res.status(401).json({ message: 'Не вдалося авторизуватися!' });
+  }
+};
+
+export const updateUserProfile = async (req: Request, res: Response): Promise<void> => {
+  const user = (req as Request & { user?: User }).user;
+
+  if (!user) {
+    res.status(401).json({ message: 'Не вдалося авторизуватися!' });
+    return;
+  }
+
+  try {
+    const { name, email, surname, phone, city, address } = req.body;
+
+    const updatedData = {
+      name: name || user.name,
+      email: email || user.email,
+      surname: surname || user.surname,
+      phone: phone || user.phone,
+      city: city || user.city,
+      address: address || user.address
+    };
+
+    const updatedUser = await userModel.findByIdAndUpdate(user._id, updatedData, { new: true });
+
+    if (!updatedUser) {
+      res.status(404).json({ message: 'Користувач не знайдений!' });
+      return;
+    }
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      surname: updatedUser.surname,
+      phone: updatedUser.phone,
+      city: updatedUser.city,
+      address: updatedUser.address,
+      isAdmin: updatedUser.isAdmin,
+      favorites: updatedUser.favorites,
+      basket: updatedUser.basket,
+      isActivated: updatedUser.isActivated,
+      authType: updatedUser.authType,
+      createdAt: updatedUser.createdAt
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Внутрішня помилка сервера!' });
+  }
+};
+
+export const updateUserPassword = async (req: Request, res: Response): Promise<void> => {
+  const user = (req as Request & { user?: User }).user;
+
+  if (!user) {
+    res.status(401).json({ message: 'Не вдалося авторизуватися!' });
+    return;
+  }
+
+  try {
+    const { currentPassword, newPassword } = req.body;
+
+    const userData: User | null = await userModel.findById(user._id);
+
+    if (!userData) {
+      res.status(404).json({ message: 'Користувач не знайдений!' });
+      return;
+    }
+
+    if (userData.authType !== 'google') {
+      const isMatchPassword = await userData.matchPassword(currentPassword);
+      if (!isMatchPassword) {
+        res.status(401).json({ message: 'Невірний поточний пароль!' });
+        return;
+      }
+    }
+
+    await userModel.findByIdAndUpdate(user._id, { password: newPassword });
+
+    res.json({ message: 'Пароль успішно оновлено!' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Внутрішня помилка сервера!' });
   }
 };
 
@@ -48,12 +136,17 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
       res.json({
         _id: user._id,
         name: user.name,
+        surname: user.surname,
+        phone: user.phone,
+        city: user.city,
+        address: user.address,
         email: user.email,
         isAdmin: user.isAdmin,
         favorites: user.favorites,
         basket: user.basket,
         isActivated: user.isActivated,
         token: generateToken(user._id),
+        authType: user.authType,
         createdAt: user.createdAt
       });
     } else {
@@ -80,7 +173,7 @@ export const registerUser = async (req: Request, res: Response, next: NextFuncti
     }
 
     const activationLink = uuidv4();
-    const user = await userModel.create({ name, email, password, activationLink });
+    const user = await userModel.create({ name, email, password, activationLink, authType: 'local' });
     if (user) {
       res.status(201).json({ message: 'Успішна реєстрація!' });
     } else {
@@ -121,7 +214,7 @@ export const googleUserRegistration = async (req: Request, res: Response): Promi
     let user = await userModel.findOne({ email });
 
     if (!user) {
-      user = await userModel.create({ name, email, password: 'google-oauth-no-pass', isActivated: true });
+      user = await userModel.create({ name, email, password: 'no-pass', isActivated: true, authType: 'google' });
     }
 
     const userToken = generateToken(user._id.toString());

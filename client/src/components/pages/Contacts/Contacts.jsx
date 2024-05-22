@@ -1,6 +1,8 @@
 import './Contacts.scss';
 import 'leaflet/dist/leaflet.css';
 import '../../../../fix-leaflet-icon';
+import { useEffect } from 'react';
+
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useMediaQuery } from 'react-responsive';
 
@@ -19,6 +21,10 @@ const Contacts = () => {
     height: isMobileDevice ? '250px' : '400px',
     width: isMobileDevice ? '100%' : '50%'
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className='contacts-wrap'>

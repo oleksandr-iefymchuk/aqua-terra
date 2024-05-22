@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { registrationInputTemplates } from '../../../../../constants/constants';
+import { registrationInputTemplates } from '../../../../../constants/inputTemplates';
 import { Modal, Fade, TextField } from '@mui/material';
 
 import ButtonWrapper from '../../../../common/Button/Button';
@@ -29,7 +29,7 @@ const Registration = ({
       setUserData({ ...userData, [id]: value });
     };
 
-  const handleLogin = e => {
+  const handleRegistration = e => {
     e.preventDefault();
     dispatch(registrationUserThunk(userData, onRegistrationSucces));
   };
@@ -55,7 +55,7 @@ const Registration = ({
     >
       <Fade in={openModalForm}>
         <section className='registration-block'>
-          <form className='registration-form' onSubmit={handleLogin}>
+          <form className='registration-form' onSubmit={handleRegistration}>
             <div className='registration-form-header'>
               <h2>Реєстрація</h2>
               <ButtonWrapper

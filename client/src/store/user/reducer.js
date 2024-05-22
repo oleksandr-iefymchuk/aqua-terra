@@ -43,60 +43,6 @@ const userReducer = (state = userInitialState, action) => {
         messageType: ''
       };
 
-    // case ADD_TO_FAVORITES:
-    //   return {
-    //     ...state,
-    //     favorites: isItemInFavorites
-    //       ? state.favorites
-    //       : [...state.favorites, action.payload]
-    //   };
-
-    // case REMOVE_FROM_FAVORITES:
-    //   return {
-    //     ...state,
-    //     favorites: state.favorites.filter(({ id }) => id !== action.payload.id)
-    //   };
-
-    // case ADD_TO_BASKET:
-    //   return {
-    //     ...state,
-    //     basket: existingItem
-    //       ? state.basket
-    //       : [...state.basket, { ...action.payload, quantity: 0 }]
-    //   };
-
-    // case REMOVE_FROM_BASKET:
-    //   return {
-    //     ...state,
-    //     basket: state.basket.filter(product => product.id !== action.payload)
-    //   };
-
-    // case INCREASE_QUANTITY_BASKET:
-    //   return {
-    //     ...state,
-    //     basket: state.basket.map(product =>
-    //       product.id === action.payload.id
-    //         ? {
-    //             ...product,
-    //             quantity: product.quantity + action.payload.quantity
-    //           }
-    //         : product
-    //     )
-    //   };
-
-    // case DECREASE_QUANTITY_BASKET:
-    //   return {
-    //     ...state,
-    //     basket: state.basket.map(product =>
-    //       product.id === action.payload.id
-    //         ? {
-    //             ...product,
-    //             quantity: product.quantity - action.payload.quantity
-    //           }
-    //         : product
-    //     )
-    //   };
-
     default:
       return state;
   }

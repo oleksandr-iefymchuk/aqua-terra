@@ -1,5 +1,10 @@
 import './App.scss';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  Navigate
+} from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
@@ -30,6 +35,9 @@ import Breadcrumbs from './components/common/Breadcrumbs/Breadcrumbs';
 import Progress from './components/common/Progress/Progress';
 import CustomAlert from './components/common/CustomAlert/CustomAlert';
 import Authentication from './components/pages/Authentication/Authentication';
+import Profile from './components/pages/Profile/Profile';
+import OrderHistory from './components/pages/Profile/components/OrderHistory/OrderHistory';
+import PersonalInfo from './components/pages/Profile/components/PersonalInfo/PersonalInfo';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -37,8 +45,6 @@ const App = () => {
   const { message, messageType } = useSelector(state => state.user);
   const isShowLoginModal = useSelector(state => state.app.isShowLoginModal);
   const tokenString = localStorage.getItem('userInfo');
-  // const user = useSelector(state => state.user);
-  // console.log('user:', user);
 
   const toggleLoginVisibility = () => {
     dispatch(toggleLogineModal());
@@ -76,8 +82,6 @@ const App = () => {
         />
         <main>
           <Routes>
-            {/* <Route path='/registration' element={<Registration />} /> */}
-            {/* <Route path='/login' element={<Login />} /> */}
             <Route path='/' element={<Home />} />
             <Route path='/catalog' element={<Catalog />} />
             <Route path='/catalog/:category' element={<Catalog />} />
@@ -91,6 +95,11 @@ const App = () => {
             <Route path='/sale' element={<DiscountedProducts />}></Route>
             <Route path='/novelty' element={<Novelty />}></Route>
             <Route path='/search' element={<SearchList />}></Route>
+            <Route path='/profile' element={<Profile />}>
+              <Route path='' element={<Navigate to='personal-info' />} />
+              <Route path='personal-info' element={<PersonalInfo />} />
+              <Route path='personal-orders' element={<OrderHistory />} />
+            </Route>
           </Routes>
         </main>
         <Footer />

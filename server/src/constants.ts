@@ -22,10 +22,12 @@ type ApiEndpoints = {
   PRODUCTS: string;
   REVIEWS: string;
   USERS: string;
+  ORDERS: string;
 };
 
 export const apiEndpoints: ApiEndpoints = {
   PRODUCTS: '/products',
   REVIEWS: '/reviews',
-  USERS: '/users'
+  USERS: '/users',
+  ORDERS: '/orders'
 };

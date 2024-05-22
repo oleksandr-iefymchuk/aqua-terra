@@ -23,6 +23,10 @@ const UserBox = () => {
   const dispatch = useDispatch();
   const navigationBasket = () => navigate('/basket');
   const navigationFavorites = () => navigate('/favorites');
+  const navigationProfile = () => {
+    navigate('/profile');
+    setIsProfileModalVisible(false);
+  };
 
   const isMobileDevice = useMediaQuery({ maxWidth: 768 });
 
@@ -41,6 +45,7 @@ const UserBox = () => {
 
   const handleLogout = () => {
     dispatch(userLogout()).then(setIsProfileModalVisible(false));
+    navigate('/');
   };
 
   const handleOutsideClick = event => {
@@ -92,7 +97,7 @@ const UserBox = () => {
             <Button
               buttonClassName='user-box-btn profile'
               buttonText='Особистий кабінет'
-              onClick={() => console.log()}
+              onClick={navigationProfile}
             />
             <Button
               buttonClassName='user-box-btn profile'

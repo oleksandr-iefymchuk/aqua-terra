@@ -1,6 +1,11 @@
 import './About.scss';
+import { useEffect } from 'react';
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className='about-wrap'>
       <h1>Інтернет-магазин сантехніки AquaTerra</h1>

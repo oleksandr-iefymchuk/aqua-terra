@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useMediaQuery } from 'react-responsive';
 
-import { loginInputTemplates } from '../../../../../constants/constants';
+import { loginInputTemplates } from '../../../../../constants/inputTemplates';
 import { Modal, Fade, TextField } from '@mui/material';
 
 import ButtonWrapper from '../../../../common/Button/Button';

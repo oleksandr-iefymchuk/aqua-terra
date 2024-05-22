@@ -58,6 +58,75 @@ export const getUserProfileThunk = token => {
   };
 };
 
+export const updateUserProfileThunk = (userData, token, onUpdateUserSucces) => {
+  return async dispatch => {
+    try {
+      dispatch(setLoading(true));
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      };
+
+      const { data } = await axios.put(
+        `${BASE_URL}/users/update-profile`,
+        userData,
+        config
+      );
+
+      dispatch(setUserData(data));
+      onUpdateUserSucces();
+      dispatch(setLoading(false));
+    } catch (error) {
+      dispatch(setLoading(false));
+      dispatch(
+        showMessage(
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+          'error'
+        )
+      );
+    }
+  };
+};
+
+export const updateUserPasswordThunk = (passwordData, token) => {
+  return async dispatch => {
+    try {
+      dispatch(setLoading(true));
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      };
+
+      const { data } = await axios.put(
+        `${BASE_URL}/users/update-password`,
+        passwordData,
+        config
+      );
+
+      dispatch(setLoading(false));
+      dispatch(showMessage(data.message, 'success'));
+    } catch (error) {
+      dispatch(setLoading(false));
+      dispatch(
+        showMessage(
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+          'error'
+        )
+      );
+    }
+  };
+};
+
 export const registrationUserThunk = (user, onRegistrationSuccess) => {
   return async dispatch => {
     try {
