@@ -95,3 +95,55 @@ export const passwordInputTemplates = [
     id: 'passwordConfirmation'
   }
 ];
+
+export const userOrderInputTemplates = [
+  {
+    type: 'text',
+    name: 'surname',
+    label: 'Прізвище',
+    id: 'surname'
+  },
+  {
+    type: 'text',
+    name: 'name',
+    label: "Ім'я",
+    id: 'name'
+  },
+
+  {
+    type: 'email',
+    name: 'email',
+    label: 'Е-пошта',
+    id: 'email'
+  },
+  {
+    type: 'tel',
+    name: 'phone',
+    label: 'Телефон',
+    id: 'phone',
+    placeholder: '+38 (0__) ___ __ __'
+  }
+];
+
+export const adressInputTemplates = [
+  {
+    type: 'text',
+    name: 'city',
+    label: 'Місто',
+    id: 'city'
+  },
+  {
+    type: 'text',
+    name: 'address',
+    label: 'Вулиця, будинок, квартира',
+    id: 'address'
+  }
+];
+
+export const deliveryOptions = [
+  'Доставка Новою поштою',
+  'Доставка Укрпоштою',
+  'Самовивіз'
+];
+
+export const paymentOptions = ['Оплата онлайн', 'Оплата при отриманні'];

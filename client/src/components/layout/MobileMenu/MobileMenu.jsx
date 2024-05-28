@@ -41,6 +41,11 @@ const MobileMenu = () => {
     dispatch(toggleMobileMenu());
   };
 
+  const navigationProfile = () => {
+    navigate('/profile');
+    dispatch(toggleMobileMenu());
+  };
+
   const handleCloseMenu = () => {
     dispatch(toggleMobileMenu());
     dispatch(closeCategoryMenu());
@@ -110,9 +115,7 @@ const MobileMenu = () => {
                   buttonText='Кабінет'
                   icon='logged-user'
                   value={name.charAt(0)}
-                  onClick={() => {
-                    console.log('profile');
-                  }}
+                  onClick={navigationProfile}
                 />
               </Fragment>
             )}

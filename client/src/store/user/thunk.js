@@ -343,6 +343,42 @@ export const removeFromBasketThunk = productId => async dispatch => {
   }
 };
 
+export const clearBasketThunk = () => async dispatch => {
+  try {
+    const tokenString = localStorage.getItem('userInfo');
+    if (!tokenString) {
+      dispatch(
+        showMessage('Ви не авторизовані. Авторизуйтесь будь-ласка!', 'error')
+      );
+      return;
+    }
+    const token = JSON.parse(tokenString);
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    };
+
+    const { data } = await axios.put(
+      `${BASE_URL}/users/basket/clear`,
+      null,
+      config
+    );
+
+    dispatch(setUserData(data));
+  } catch (error) {
+    dispatch(
+      showMessage(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+        'error'
+      )
+    );
+  }
+};
+
 export const increaseQuantityInBasketThunk = productId => async dispatch => {
   try {
     const tokenString = localStorage.getItem('userInfo');

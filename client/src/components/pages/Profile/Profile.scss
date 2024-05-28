@@ -38,12 +38,11 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1366px) {
   .user-profile-wrap {
     .user-profile {
       flex-direction: column;
       align-items: center;
-      margin: 0 auto;
 
       .profile-sidebar {
         margin-bottom: 30px;
@@ -57,7 +56,6 @@
           display: flex;
           justify-content: center;
           gap: 10px;
-          font-size: 14px;
 
           li {
             align-items: center;
@@ -81,6 +79,18 @@
               text-decoration: none;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .user-profile-wrap {
+    .user-profile {
+      .profile-sidebar {
+        ul {
+          font-size: 14px;
         }
       }
     }

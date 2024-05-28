@@ -3,9 +3,7 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
+import { TabPanel, TabContext, TabList } from '@mui/lab';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useTabContext } from '../../../../../contexts/TabControlContext';

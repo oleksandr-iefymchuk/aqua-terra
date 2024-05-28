@@ -47,13 +47,11 @@ const orderItemSchema = new Schema({
 const userSchema = new Schema({
   _id: { type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true },
   name: { type: String, required: true },
-  email: { type: String, required: true }
-});
-
-const deliveryAddress = new Schema({
-  city: { type: String, required: true },
-  address: { type: String, required: true },
-  postalCode: { type: String, required: true }
+  surname: { type: String, required: true },
+  phone: { type: String, required: true },
+  email: { type: String, required: true },
+  deliveryCity: { type: String, required: true },
+  deliveryAddress: { type: String, required: true }
 });
 
 const orderSchema = new Schema(
@@ -64,9 +62,8 @@ const orderSchema = new Schema(
     deliveryOption: {
       type: String,
       required: true,
-      enum: ['самовивіз', 'нова пошта', 'укрпошта']
+      enum: ['Доставка Новою поштою', 'Доставка Укрпоштою', 'Самовивіз']
     },
-    deliveryAddress: { type: deliveryAddress, required: true },
     totalPrice: { type: Number, required: true },
     isPaid: { type: Boolean, required: true },
     isDelivered: { type: Boolean, required: true },

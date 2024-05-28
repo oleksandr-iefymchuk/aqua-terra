@@ -1,7 +1,7 @@
 .personal-info-wrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 30px;
   padding: 0 0 0 60px;
   justify-content: flex-start;
   width: 100%;
@@ -33,6 +33,14 @@
         background-color: #00a7e9;
       }
     }
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .personal-info-wrap {
+    padding: 0;
+    gap: 20px;
+    justify-content: center;
   }
 }
 

@@ -36,6 +36,13 @@ const OrderHistory = () => {
             <div className='order-header'>
               <h4>Замовлення №{order.orderNumber}</h4>
               <p>Створене: {formatDate(order.createdAt)}</p>
+              <h4>
+                Загальна сума:{' '}
+                {new Intl.NumberFormat(undefined, {
+                  style: 'currency',
+                  currency: 'UAH'
+                }).format(order.totalPrice)}
+              </h4>
             </div>
           </AccordionSummary>
           <AccordionDetails>

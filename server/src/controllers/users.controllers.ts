@@ -332,6 +332,26 @@ export const removeFromBasket = async (req: Request, res: Response): Promise<voi
   }
 };
 
+export const clearBasket = async (req: Request, res: Response): Promise<void> => {
+  const user = (req as Request & { user?: User }).user;
+
+  if (!user) {
+    res.status(401).json({ message: 'Not authorized' });
+    return;
+  }
+
+  try {
+    const updatedUser: User | null = (await userModel
+      .findOneAndUpdate({ _id: user._id }, { $set: { basket: [] } }, { new: true })
+      .select('-password -createdAt -updatedAt -__v')) as User;
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 export const increaseQuantityInBasket = async (req: Request, res: Response): Promise<void> => {
   const user = (req as Request & { user?: User }).user;
   const { productId } = req.body;

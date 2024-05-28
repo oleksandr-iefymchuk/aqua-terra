@@ -12,7 +12,8 @@ import {
   googleUserRegistration,
   activate,
   updateUserProfile,
-  updateUserPassword
+  updateUserPassword,
+  clearBasket
 } from '../controllers/users.controllers.js';
 import { asyncWrapper } from '../asyncWrapper.js';
 import asyncHandler from 'express-async-handler';
@@ -31,6 +32,7 @@ router.put('/favorites/add', protect, asyncWrapper(addToFavorites));
 router.put('/basket/add', protect, asyncWrapper(addToBasket));
 router.put('/favorites/remove', protect, asyncWrapper(removeFromFavorites));
 router.put('/basket/remove', protect, asyncWrapper(removeFromBasket));
+router.put('/basket/clear', protect, asyncWrapper(clearBasket));
 router.put('/basket/inc', protect, asyncWrapper(increaseQuantityInBasket));
 router.put('/basket/dec', protect, asyncWrapper(decreaseQuantityInBasket));
 export default router;

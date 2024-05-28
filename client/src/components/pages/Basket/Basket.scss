@@ -27,10 +27,7 @@
       letter-spacing: 1px;
 
       &:hover {
-        background-color: #f05a00;
-        color: #fff;
-        border: none;
-        transition: 0.3s;
+        background-color: #f7faff;
       }
     }
 
@@ -47,43 +44,20 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      width: 300px;
       margin-top: 25px;
-
-      p {
-        width: 100%;
-        font-weight: 500;
-        color: #000;
-        border-bottom: 1px solid #a2a2a2;
-        padding-bottom: 5px;
-        margin-bottom: 5px;
-        justify-content: space-between;
-        display: flex;
-
-        &:nth-child(2) {
-          color: #a2a2a2;
-        }
-
-        &:last-of-type {
-          border-bottom: none;
-        }
-
-        span {
-          font-size: 18px;
-          margin-left: 15px;
-        }
-
-        .total-amount {
-          color: #f05a00;
-        }
-      }
+      width: 100%;
 
       .order-btn {
-        margin-top: 15px;
+        margin-top: 30px;
         width: 256px;
         height: 36px;
         text-transform: uppercase;
         letter-spacing: 1px;
+        background-color: #008ec8;
+
+        &:hover {
+          background-color: #00a7e9;
+        }
       }
     }
 

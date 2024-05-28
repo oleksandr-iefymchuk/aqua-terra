@@ -11,16 +11,11 @@ body {
   line-height: 1.5;
   font-weight: 400;
 
-  &.mobile-menu-open {
-    overflow: hidden;
-  }
-
-  &.category-menu-open {
-    overflow: hidden;
-  }
-
+  &.mobile-menu-open,
+  &.category-menu-open,
   &.loading {
     overflow: hidden;
+    margin-right: 20px;
   }
 
   #root {
@@ -37,14 +32,20 @@ body {
       justify-content: center;
     }
   }
+}
 
-  @media screen and (max-width: 1024px) {
-    html,
-    body {
-      #root {
-        .home-page {
-          margin-top: 56px;
-        }
+@media screen and (max-width: 1024px) {
+  html,
+  body {
+    &.mobile-menu-open,
+    &.category-menu-open,
+    &.loading {
+      margin-right: 0;
+    }
+
+    #root {
+      .home-page {
+        margin-top: 56px;
       }
     }
   }
