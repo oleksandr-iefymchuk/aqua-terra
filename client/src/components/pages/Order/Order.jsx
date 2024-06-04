@@ -10,9 +10,8 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
-  FormControl,
-  FormLabel,
-  ThemeProvider
+  ThemeProvider,
+  MenuItem
 } from '@mui/material';
 import {
   adressInputTemplates,
@@ -27,35 +26,73 @@ import TextMaskCustom from '../Profile/components/MaskedInput/MaskedInput';
 import TotalPrice from '../../layout/TotalPrice/TotalPrice';
 import { saveOrderThunk } from '../../../store/orders/thunk';
 import { clearBasketThunk } from '../../../store/user/thunk';
+import { addOrder } from '../../../store/orders/actionCreators';
+import BasketItem from '../Basket/components/BasketItem';
+import LiqPay from '../../layout/LiqPay/LiqPay';
+import { fetchPostOffice } from '../../../api';
+import CityInput from '../Profile/components/CityInput/CityInput';
 
 const Order = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { _id, name, surname, email, phone, city, address, basket } =
-    useSelector(store => store.user);
+  const { _id, name, surname, email, phone, basket } = useSelector(
+    store => store.user
+  );
   const products = useSelector(state => state.products);
+
   const [value, setValue] = useState('customerData');
-
-  const [deliveryOption, setDeliveryOption] = useState('Доставка Новою поштою');
-  const [paymentMethod, setPaymentMethod] = useState('Оплата онлайн');
-  const [isPaid, setIsPaid] = useState(false);
-
+  const [deliveryMethod, setDeliveryMethodn] = useState(deliveryOptions[0]);
+  const [paymentMethod, setPaymentMethod] = useState(paymentOptions[0]);
+  const [errors, setErrors] = useState({});
   const [personalInfo, setPersonalInfo] = useState({
     name: '',
     surname: '',
     email: '',
     phone: '',
-    city: '',
-    address: ''
+    deliveryCity: '',
+    street: '',
+    house: '',
+    apartment: '',
+    deliveryAddress: ''
   });
-
+  const [warehouses, setWarehouses] = useState([]);
+  const [selectedCity, setSelectedCity] = useState(null);
   const { totalPrice } = calculatePrice(products, basket);
 
-  const handleNext = () => {
+  const validateFields = fields => {
+    const newErrors = {};
+    let valid = true;
+
+    fields.forEach(field => {
+      if (!personalInfo[field]) {
+        newErrors[field] = 'Поле не може бути порожнім';
+        valid = false;
+      }
+    });
+
+    if (deliveryMethod === deliveryOptions[0]) {
+      delete newErrors['street'];
+      delete newErrors['house'];
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
+  const handleTabChange = newValue => {
+    let fieldsToValidate = [];
     if (value === 'customerData') {
-      setValue('delivery');
+      fieldsToValidate = ['name', 'surname', 'email', 'phone'];
     } else if (value === 'delivery') {
-      setValue('payment');
+      if (deliveryMethod === deliveryOptions[0]) {
+        fieldsToValidate = ['deliveryCity', 'deliveryAddress'];
+      } else {
+        fieldsToValidate = ['deliveryCity', 'street', 'house'];
+      }
+    }
+
+    if (validateFields(fieldsToValidate)) {
+      setValue(newValue);
     }
   };
 
@@ -63,11 +100,8 @@ const Order = () => {
     id =>
     ({ target: { value } }) => {
       setPersonalInfo({ ...personalInfo, [id]: value });
+      setErrors(prevErrors => ({ ...prevErrors, [id]: '' }));
     };
-
-  const handleChangeTab = (event, newValue) => {
-    setValue(newValue);
-  };
 
   const orderItems = basket
     .map(({ productId, quantity }) => {
@@ -93,6 +127,24 @@ const Order = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
+    if (
+      !validateFields(
+        [
+          'name',
+          'surname',
+          'email',
+          'phone',
+          'deliveryCity',
+          ...(deliveryMethod === deliveryOptions[0]
+            ? ['deliveryAddress']
+            : ['street', 'house'])
+        ],
+        deliveryMethod
+      )
+    ) {
+      return;
+    }
+
     const orderData = {
       user: {
         _id,
@@ -100,21 +152,29 @@ const Order = () => {
         surname: personalInfo.surname,
         email: personalInfo.email,
         phone: personalInfo.phone,
-        deliveryCity: personalInfo.city,
-        deliveryAddress: personalInfo.address
+        deliveryCity: personalInfo.deliveryCity,
+        deliveryAddress:
+          deliveryMethod === deliveryOptions[0]
+            ? personalInfo.deliveryAddress
+            : `вул.${personalInfo.street}, буд.${personalInfo.house}, кв.${personalInfo.apartment}`
       },
       orderItems,
-      deliveryOption,
+      deliveryMethod,
       totalPrice,
-      isPaid,
+      isPaid: false,
       isDelivered: false,
       paymentMethod
     };
 
     const tokenString = localStorage.getItem('userInfo');
-    if (tokenString) {
+
+    if (paymentMethod !== 'Оплата онлайн' && tokenString) {
       const token = JSON.parse(tokenString);
       dispatch(saveOrderThunk(orderData, token, onSaveOrderSucces));
+    }
+
+    if (paymentMethod === 'Оплата онлайн') {
+      dispatch(addOrder(orderData));
     }
   };
 
@@ -123,16 +183,28 @@ const Order = () => {
     navigate('/');
   };
 
+  const handleCitySelect = newValue => {
+    setSelectedCity(newValue);
+    setPersonalInfo(prevInfo => ({
+      ...prevInfo,
+      deliveryCity: newValue.display_name
+    }));
+    setErrors(prevErrors => ({ ...prevErrors, deliveryCity: '' }));
+    fetchPostOffice(newValue.structured_formatting.locality)
+      .then(departments => {
+        setWarehouses(departments);
+      })
+      .catch(error => console.error('Error fetching warehouses:', error));
+  };
+
   useEffect(() => {
     setPersonalInfo({
       name: name || '',
       surname: surname || '',
       email: email || '',
-      phone: phone || '',
-      city: city || '',
-      address: address || ''
+      phone: phone || ''
     });
-  }, [name, surname, email, phone, city, address]);
+  }, [name, surname, email, phone]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -144,7 +216,7 @@ const Order = () => {
       <div className='order-info'>
         <ThemeProvider theme={orderTabStyles}>
           <TabContext value={value}>
-            <TabList onChange={handleChangeTab}>
+            <TabList onChange={(event, newValue) => handleTabChange(newValue)}>
               <Tab label='Дані покупця' value='customerData' />
               <Tab label='Доставка' value='delivery' />
               <Tab label='Оплата' value='payment' />
@@ -153,99 +225,122 @@ const Order = () => {
               <TabPanel value='customerData'>
                 <div className='order-section'>
                   {userOrderInputTemplates.map(({ id, ...otherInputProps }) => {
-                    if (id === 'phone') {
-                      return (
-                        <TextField
-                          key={id}
-                          {...otherInputProps}
-                          value={personalInfo[id]}
-                          onChange={handlePersonalInfoChange(id)}
-                          size='small'
-                          className='user-order-input'
-                          variant='standard'
-                          InputProps={{
-                            inputComponent: TextMaskCustom
-                          }}
-                        />
-                      );
-                    }
                     return (
                       <TextField
                         key={id}
                         {...otherInputProps}
-                        value={personalInfo[id]}
+                        value={personalInfo[id] || ''}
                         onChange={handlePersonalInfoChange(id)}
                         size='small'
                         className='user-order-input'
                         variant='standard'
+                        disabled={id === 'email'}
+                        InputProps={
+                          id === 'phone'
+                            ? { inputComponent: TextMaskCustom }
+                            : {}
+                        }
+                        error={!!errors[id]}
+                        helperText={errors[id]}
                       />
                     );
                   })}
                   <ButtonWrapper
                     buttonClassName='btn-next'
+                    onClick={() => handleTabChange('delivery')}
                     buttonText='Далі'
-                    onClick={handleNext}
                   />
                 </div>
               </TabPanel>
               <TabPanel value='delivery'>
                 <div className='order-section'>
-                  <FormControl component='fieldset'>
-                    <FormLabel component='legend'>Варіант доставки</FormLabel>
-                    <RadioGroup
-                      value={deliveryOption}
-                      onChange={e => setDeliveryOption(e.target.value)}
-                    >
-                      {deliveryOptions.map(option => (
-                        <FormControlLabel
-                          key={option}
-                          value={option}
-                          control={<Radio />}
-                          label={option}
-                        />
-                      ))}
-                    </RadioGroup>
-                  </FormControl>
+                  <h4>Варіант доставки</h4>
+                  <RadioGroup
+                    value={deliveryMethod}
+                    onChange={e => setDeliveryMethodn(e.target.value)}
+                  >
+                    {deliveryOptions.map(option => (
+                      <FormControlLabel
+                        key={option}
+                        value={option}
+                        control={<Radio />}
+                        label={option}
+                      />
+                    ))}
+                    <p>* за тарифами перевізника</p>
+                  </RadioGroup>
                   <div className='adress-block'>
-                    {adressInputTemplates.map(({ id, ...otherInputProps }) => {
-                      return (
+                    <CityInput
+                      selectedCity={selectedCity}
+                      onCitySelect={handleCitySelect}
+                      error={!!errors.deliveryCity}
+                      helperText={errors.deliveryCity}
+                    />
+                    {deliveryMethod === deliveryOptions[0] ? (
+                      <TextField
+                        select
+                        label='Виберіть відділення пошти'
+                        variant='standard'
+                        value={personalInfo.deliveryAddress || ''}
+                        onChange={handlePersonalInfoChange('deliveryAddress')}
+                        error={!!errors.deliveryAddress}
+                        helperText={errors.deliveryAddress}
+                        disabled={!warehouses.length}
+                        className='user-order-input'
+                      >
+                        {warehouses.map((warehouse, index) => (
+                          <MenuItem
+                            key={`${warehouse.value}-${index}`}
+                            value={warehouse.value}
+                            className='user-order-input post'
+                          >
+                            {warehouse.label}
+                          </MenuItem>
+                        ))}
+                      </TextField>
+                    ) : (
+                      adressInputTemplates.map(({ id, ...otherInputProps }) => (
                         <TextField
                           key={id}
                           {...otherInputProps}
-                          value={personalInfo[id]}
+                          value={personalInfo[id] || ''}
                           onChange={handlePersonalInfoChange(id)}
                           size='small'
                           className='user-order-input'
                           variant='standard'
+                          error={!!errors[id]}
+                          helperText={errors[id]}
                         />
-                      );
-                    })}
+                      ))
+                    )}
                   </div>
                   <ButtonWrapper
                     buttonClassName='btn-next'
+                    onClick={() => handleTabChange('payment')}
                     buttonText='Далі'
-                    onClick={handleNext}
                   />
                 </div>
               </TabPanel>
               <TabPanel value='payment'>
                 <div className='order-section'>
-                  <FormControl component='fieldset'>
-                    <FormLabel component='legend'>Метод оплати</FormLabel>
-                    <RadioGroup
-                      value={paymentMethod}
-                      onChange={e => setPaymentMethod(e.target.value)}
-                    >
-                      {paymentOptions.map(option => (
-                        <FormControlLabel
-                          key={option}
-                          value={option}
-                          control={<Radio />}
-                          label={option}
-                        />
-                      ))}
-                    </RadioGroup>
-                  </FormControl>
+                  <h4>Метод оплати</h4>
+                  <RadioGroup
+                    value={paymentMethod}
+                    onChange={e => setPaymentMethod(e.target.value)}
+                  >
+                    {paymentOptions.map(option => (
+                      <FormControlLabel
+                        key={option}
+                        value={option}
+                        control={<Radio />}
+                        label={option}
+                      />
+                    ))}
+                  </RadioGroup>
+                  <p>
+                    * реквізити для оплати онлайн будуть надіслані на електронну
+                    пошту
+                  </p>
                   <ButtonWrapper
                     buttonClassName='btn-next'
                     type='submit'
@@ -257,7 +352,30 @@ const Order = () => {
           </TabContext>
         </ThemeProvider>
       </div>
-      <TotalPrice />
+      <div className='current-order'>
+        <h4>Ваше замовлення</h4>
+        {basket.map(({ productId, quantity }) => {
+          const product = products.find(p => p._id === productId);
+          return product ? (
+            <BasketItem
+              key={productId}
+              {...product}
+              quantity={quantity}
+              isInOrders={true}
+            />
+          ) : null;
+        })}
+        <TotalPrice />
+        {/* <LiqPay
+          public_key='sandbox_i89780154994'
+          private_key='sandbox_vLSKy2izIhgOHcgTnhMHKCNoBUKUnZMfVnV0flSf'
+          amount={totalPrice}
+          currency='UAH'
+          description='Оплата товара'
+          order_id='6'
+          server_url='https://aqua-terra.vercel.app'
+        /> */}
+      </div>
     </div>
   );
 };

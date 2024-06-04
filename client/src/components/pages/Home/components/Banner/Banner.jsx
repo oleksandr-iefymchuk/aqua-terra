@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 
-import { banners } from '../../../../../constants/constants';
+import { banners } from '../../../../../constants/banners';
 import ButtonWrapper from '../../../../common/Button/Button';
 
 const Banner = () => {

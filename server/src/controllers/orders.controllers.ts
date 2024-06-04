@@ -10,12 +10,12 @@ export const saveOrder = async (req: Request, res: Response): Promise<void> => {
       res.status(401).json({ message: 'Користувача не знайдено!' });
     }
 
-    const { user, orderItems, deliveryOption, totalPrice, isPaid, isDelivered, paymentMethod } = req.body;
+    const { user, orderItems, deliveryMethod, totalPrice, isPaid, isDelivered, paymentMethod } = req.body;
 
     if (
       !user ||
       !orderItems ||
-      !deliveryOption ||
+      !deliveryMethod ||
       !totalPrice ||
       isPaid === undefined ||
       isDelivered === undefined ||
@@ -28,7 +28,7 @@ export const saveOrder = async (req: Request, res: Response): Promise<void> => {
     const newOrder = await orderModel.create({
       user,
       orderItems,
-      deliveryOption,
+      deliveryMethod,
       totalPrice,
       isPaid,
       isDelivered,

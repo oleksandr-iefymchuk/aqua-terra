@@ -11,7 +11,15 @@ import {
   removeFromBasketThunk
 } from '../../../../store/user/thunk';
 
-const BasketItem = ({ _id, images, title, price, quantity, discount }) => {
+const BasketItem = ({
+  _id,
+  images,
+  title,
+  price,
+  quantity,
+  discount,
+  isInOrders = false
+}) => {
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector(store => store.user);
   const products = useSelector(state => state.products);
@@ -46,27 +54,32 @@ const BasketItem = ({ _id, images, title, price, quantity, discount }) => {
       </div>
       <div className='basket-cost-block'>
         <div className='quantity-control-btn'>
-          <ButtonWrapper
-            buttonClassName={
-              quantity <= 1
-                ? 'disabled-btn-increase-quantity'
-                : 'active-btn-increase-quantity'
-            }
-            disabled={quantity <= 1}
-            onClick={handleDecreaseQuantity}
-            icon='minus'
-          />
+          {!isInOrders && (
+            <ButtonWrapper
+              buttonClassName={
+                quantity <= 1
+                  ? 'disabled-btn-increase-quantity'
+                  : 'active-btn-increase-quantity'
+              }
+              disabled={quantity <= 1}
+              onClick={handleDecreaseQuantity}
+              icon='minus'
+            />
+          )}
+
           <p className='quantity'>{quantity}</p>
-          <ButtonWrapper
-            buttonClassName={
-              quantity >= currentProduct.quantity
-                ? 'disabled-btn-increase-quantity'
-                : 'active-btn-increase-quantity'
-            }
-            disabled={quantity >= currentProduct.quantity}
-            onClick={handleIncreaseQuantity}
-            icon='plus'
-          />
+          {!isInOrders && (
+            <ButtonWrapper
+              buttonClassName={
+                quantity >= currentProduct.quantity
+                  ? 'disabled-btn-increase-quantity'
+                  : 'active-btn-increase-quantity'
+              }
+              disabled={quantity >= currentProduct.quantity}
+              onClick={handleIncreaseQuantity}
+              icon='plus'
+            />
+          )}
         </div>
         <div className='price'>
           <p className={discount > 0 ? 'old-price' : 'new-price'}>
@@ -85,11 +98,13 @@ const BasketItem = ({ _id, images, title, price, quantity, discount }) => {
             </p>
           )}
         </div>
-        <ButtonWrapper
-          buttonClassName='delete-btn'
-          onClick={() => handleRemoveFromBasket('decrease')}
-          icon='close'
-        />
+        {!isInOrders && (
+          <ButtonWrapper
+            buttonClassName='delete-btn'
+            onClick={() => handleRemoveFromBasket('decrease')}
+            icon='close'
+          />
+        )}
       </div>
     </div>
   );
@@ -101,7 +116,8 @@ BasketItem.propTypes = {
   title: PropTypes.string,
   price: PropTypes.number,
   quantity: PropTypes.number,
-  discount: PropTypes.number
+  discount: PropTypes.number,
+  isInOrders: PropTypes.bool
 };
 
 export default BasketItem;

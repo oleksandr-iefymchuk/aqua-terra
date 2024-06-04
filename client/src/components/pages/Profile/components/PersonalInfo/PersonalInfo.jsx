@@ -110,22 +110,6 @@ const PersonalInfo = () => {
         <h3>Загальна інформація</h3>
         <div className='list-personal-info-inputs'>
           {personalInfoInputTemplates.map(({ id, ...otherInputProps }) => {
-            if (id === 'phone') {
-              return (
-                <TextField
-                  key={id}
-                  {...otherInputProps}
-                  value={personalInfo[id]}
-                  onChange={handlePersonalInfoChange(id)}
-                  size='small'
-                  className='personal-info-input'
-                  variant='standard'
-                  InputProps={{
-                    inputComponent: TextMaskCustom
-                  }}
-                />
-              );
-            }
             return (
               <TextField
                 key={id}
@@ -135,6 +119,10 @@ const PersonalInfo = () => {
                 size='small'
                 className='personal-info-input'
                 variant='standard'
+                disabled={id === 'email'}
+                InputProps={
+                  id === 'phone' ? { inputComponent: TextMaskCustom } : {}
+                }
               />
             );
           })}

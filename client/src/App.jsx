@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-import { categories } from './constants/constants';
+import { categories } from './constants/categories';
 import { getProductsThunk } from './store/products/thunk';
 import { getReviewsThunk } from './store/reviews/thunk';
 import { getUserProfileThunk } from './store/user/thunk';

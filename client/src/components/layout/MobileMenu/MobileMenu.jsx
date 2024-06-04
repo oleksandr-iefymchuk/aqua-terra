@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { categories, foterNavLinks } from '../../../constants/constants';
+import { foterNavLinks } from '../../../constants/constants';
+import { categories } from '../../../constants/categories';
 import ButtonWrapper from '../../common/Button/Button';
 import CatalogBatton from '../CatalogBatton/CatalogBatton';
 import Logo from '../../common/Logo/Logo';

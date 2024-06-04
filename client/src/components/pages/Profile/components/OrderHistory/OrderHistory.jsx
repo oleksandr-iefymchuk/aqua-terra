@@ -10,7 +10,7 @@ import OrderItem from './components/OrderItem';
 const OrderHistory = () => {
   const tokenString = localStorage.getItem('userInfo');
   const dispatch = useDispatch();
-  const orders = useSelector(state => state.orders);
+  const { orders } = useSelector(state => state.orders);
 
   useEffect(() => {
     if (tokenString) {
@@ -26,6 +26,7 @@ const OrderHistory = () => {
       {orders.map(order => (
         <Accordion key={order._id} className='order-box'>
           <AccordionSummary
+            className='order-box-summary'
             sx={{
               '.MuiAccordionSummary-content.Mui-expanded': {
                 margin: '5px 0'
@@ -45,7 +46,7 @@ const OrderHistory = () => {
               </h4>
             </div>
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails className='order-item-details'>
             {order.orderItems.map(item => (
               <OrderItem key={item._id} {...item} />
             ))}

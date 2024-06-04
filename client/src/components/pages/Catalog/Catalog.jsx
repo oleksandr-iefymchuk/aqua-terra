@@ -2,7 +2,7 @@ import './Catalog.scss';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import { categories } from '../../../constants/constants';
+import { categories } from '../../../constants/categories';
 import FilterProducts from '../../layout/FilterProducts/FilterProducts';
 
 const Catalog = () => {

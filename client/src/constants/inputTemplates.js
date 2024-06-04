@@ -128,22 +128,27 @@ export const userOrderInputTemplates = [
 export const adressInputTemplates = [
   {
     type: 'text',
-    name: 'city',
-    label: 'Місто',
-    id: 'city'
+    name: 'street',
+    label: 'Вулиця',
+    id: 'street'
   },
   {
     type: 'text',
-    name: 'address',
-    label: 'Вулиця, будинок, квартира',
-    id: 'address'
+    name: 'house',
+    label: 'Будинок',
+    id: 'house'
+  },
+  {
+    type: 'text',
+    name: 'apartment',
+    label: 'Квартира',
+    id: 'apartment'
   }
 ];
 
 export const deliveryOptions = [
-  'Доставка Новою поштою',
-  'Доставка Укрпоштою',
-  'Самовивіз'
+  'Самовивіз з Нової Пошти*',
+  `Кур'єр Нової Пошти*`
 ];
 
-export const paymentOptions = ['Оплата онлайн', 'Оплата при отриманні'];
+export const paymentOptions = ['Оплата при отриманні', 'Оплата онлайн*'];

@@ -2,7 +2,8 @@ import './Home.scss';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
-import { BUTTON_LABELS, categories } from '../../../constants/constants';
+import { BUTTON_LABELS } from '../../../constants/constants';
+import { categories } from '../../../constants/categories';
 
 import Banner from './components/Banner/Banner';
 import ButtonWrapper from '../../common/Button/Button';

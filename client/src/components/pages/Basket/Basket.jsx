@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,6 +16,10 @@ const Basket = () => {
 
   const products = useSelector(state => state.products);
   const basket = useSelector(store => store.user.basket);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className='basket-wrap'>

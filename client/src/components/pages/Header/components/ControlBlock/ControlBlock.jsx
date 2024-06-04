@@ -10,9 +10,9 @@ import {
 
 import {
   PLACEHOLDER_LABELS,
-  BUTTON_LABELS,
-  categories
+  BUTTON_LABELS
 } from '../../../../../constants/constants';
+import { categories } from '../../../../../constants/categories';
 
 import Logo from '../../../../common/Logo/Logo';
 import UserBox from './components/UserBox/UserBox';

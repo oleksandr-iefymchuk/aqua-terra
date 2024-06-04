@@ -59,11 +59,7 @@ const orderSchema = new Schema(
     orderNumber: { type: Number, unique: true },
     user: { type: userSchema, required: true },
     orderItems: { type: [orderItemSchema], required: true },
-    deliveryOption: {
-      type: String,
-      required: true,
-      enum: ['Доставка Новою поштою', 'Доставка Укрпоштою', 'Самовивіз']
-    },
+    deliveryMethod: { type: String, required: true },
     totalPrice: { type: Number, required: true },
     isPaid: { type: Boolean, required: true },
     isDelivered: { type: Boolean, required: true },

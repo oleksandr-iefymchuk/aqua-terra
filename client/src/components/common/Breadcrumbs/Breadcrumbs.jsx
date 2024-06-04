@@ -8,7 +8,7 @@ import {
   selectSubcategory
 } from '../../../store/appReduser/actionCreators';
 import Button from '../Button/Button';
-import { breadcrumbLinks } from '../../../constants/constants';
+import { breadcrumbLinks } from '../../../constants/breadcrumbLinks';
 
 const Breadcrumbs = () => {
   const location = useLocation();
