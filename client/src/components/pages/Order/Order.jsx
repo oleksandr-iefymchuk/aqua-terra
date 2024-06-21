@@ -28,7 +28,7 @@ import { saveOrderThunk } from '../../../store/orders/thunk';
 import { clearBasketThunk } from '../../../store/user/thunk';
 import { addOrder } from '../../../store/orders/actionCreators';
 import BasketItem from '../Basket/components/BasketItem';
-import LiqPay from '../../layout/LiqPay/LiqPay';
+// import LiqPay from '../../layout/LiqPay/LiqPay';
 import { fetchPostOffice } from '../../../api';
 import CityInput from '../Profile/components/CityInput/CityInput';
 
